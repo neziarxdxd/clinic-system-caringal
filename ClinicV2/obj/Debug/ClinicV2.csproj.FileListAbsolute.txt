@@ -1,0 +1,12 @@
+c:\users\my-pc\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe.config
+c:\users\my-pc\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe
+c:\users\my-pc\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\bin\Debug\ClinicV2.pdb
+c:\users\my-pc\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Form1.resources
+c:\users\my-pc\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Properties.Resources.resources
+c:\users\my-pc\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csproj.GenerateResource.Cache
+c:\users\my-pc\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug\ClinicV2.exe
+c:\users\my-pc\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug\ClinicV2.pdb
+c:\users\my-pc\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csprojResolveAssemblyReference.cache
+c:\users\my-pc\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Dashboard.resources
+C:\Users\MY-PC\Documents\Visual Studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Home.resources
+C:\Users\MY-PC\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug\ClinicV2.regular_patient.resources
