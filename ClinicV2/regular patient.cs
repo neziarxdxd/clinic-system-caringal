@@ -17,7 +17,7 @@ namespace ClinicV2
         {
             InitializeComponent();
         }
-
+        DataTable table = new DataTable();
         private void label10_Click(object sender, EventArgs e)
         {
 
@@ -129,7 +129,7 @@ namespace ClinicV2
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            Console.WriteLine("test");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -194,6 +194,12 @@ namespace ClinicV2
 
         private void button5_Click(object sender, EventArgs e)
         {
+            int n = dataGridView1.Rows.Add();
+            dataGridView1.Rows[n].Cells[0].Value = txtBoxQuantity.Text;
+            dataGridView1.Rows[n].Cells[1].Value = comboBox2.Text;
+            dataGridView1.Rows[n].Cells[2].Value = txtBoxPrice.Text;
+            dataGridView1.Rows[n].Cells[3].Value = 4954;
+
 
         }
 
@@ -205,6 +211,17 @@ namespace ClinicV2
         private void label11_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 0 &&
+            this.dataGridView1.SelectedRows[0].Index !=
+            this.dataGridView1.Rows.Count - 1)
+            {
+                this.dataGridView1.Rows.RemoveAt(
+                    this.dataGridView1.SelectedRows[0].Index);
+            }
         }
     }
 }

@@ -21,3 +21,4 @@ C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Home.resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Properties.Resources.resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.regular_patient.resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csproj.GenerateResource.Cache
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csprojResolveAssemblyReference.cache
