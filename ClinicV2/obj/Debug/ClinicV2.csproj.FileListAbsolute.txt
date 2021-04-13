@@ -10,3 +10,14 @@ c:\users\my-pc\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug
 c:\users\my-pc\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Dashboard.resources
 C:\Users\MY-PC\Documents\Visual Studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Home.resources
 C:\Users\MY-PC\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug\ClinicV2.regular_patient.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe.config
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.exe
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.pdb
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.pdb
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Dashboard.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Form1.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Home.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Properties.Resources.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.regular_patient.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csproj.GenerateResource.Cache

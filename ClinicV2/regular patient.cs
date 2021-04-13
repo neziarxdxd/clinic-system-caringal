@@ -36,11 +36,12 @@ namespace ClinicV2
         private void regular_patient_Load(object sender, EventArgs e)
         {
             string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
-            string query = "SELECT * FROM tbl_doctor";
+            string queryDoctor = "SELECT * FROM tbl_doctor";
+            string queryService = "SELECT * FROM tbl_service";
 
 
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
-            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
+            MySqlCommand commandDatabase = new MySqlCommand(queryDoctor, databaseConnection);
             databaseConnection.Open();
             MySqlDataReader dataReader= commandDatabase.ExecuteReader();
 
@@ -48,6 +49,16 @@ namespace ClinicV2
                 comboBox1.Items.Add(dataReader.GetString(1));            
             }
             databaseConnection.Close();
+
+            commandDatabase = new MySqlCommand(queryService, databaseConnection);
+            databaseConnection.Open();
+            dataReader = commandDatabase.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                comboBox2.Items.Add(dataReader.GetString(2));
+            }
+
 
 
         }
@@ -178,6 +189,7 @@ namespace ClinicV2
 
         private void button3_Click(object sender, EventArgs e)
         {
+
                     }
 
         private void button5_Click(object sender, EventArgs e)
