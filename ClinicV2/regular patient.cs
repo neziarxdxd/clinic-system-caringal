@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using DGVPrinterHelper;
+using System.IO;
+using System.Drawing.Printing;
 namespace ClinicV2
 {
     public partial class regular_patient : UserControl
     {
-        
+        private Font printFont;
+        private StreamReader streamToPrint;
+
         public regular_patient()
         {
             InitializeComponent();
@@ -76,7 +81,12 @@ namespace ClinicV2
         private void button8_Click(object sender, EventArgs e)
         {
 
+            
         }
+
+        //to be deleted 
+
+        
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
@@ -129,7 +139,7 @@ namespace ClinicV2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("test");
+            Console.WriteLine("fdfd");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -194,13 +204,24 @@ namespace ClinicV2
 
         private void button5_Click(object sender, EventArgs e)
         {
+            
+            double totalPrice = 0.00;
+            
+            
+            double price = Double.Parse(txtBoxPrice.Text);
+            double quantity = Double.Parse(txtBoxQuantity.Text);
             int n = dataGridView1.Rows.Add();
-            dataGridView1.Rows[n].Cells[0].Value = txtBoxQuantity.Text;
+            dataGridView1.Rows[n].Cells[0].Value = quantity;
             dataGridView1.Rows[n].Cells[1].Value = comboBox2.Text;
-            dataGridView1.Rows[n].Cells[2].Value = txtBoxPrice.Text;
-            dataGridView1.Rows[n].Cells[3].Value = 4954;
+            dataGridView1.Rows[n].Cells[2].Value = price;
+            dataGridView1.Rows[n].Cells[3].Value = price*quantity;
 
-
+           for (int rows = 0; rows < dataGridView1.Rows.Count; rows++)
+            {
+                totalPrice = totalPrice + Convert.ToDouble(dataGridView1.Rows[rows].Cells[3].Value);
+            }
+           textBoxTotalPrice.Text = "PHP. "+totalPrice.ToString("N");
+        
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
