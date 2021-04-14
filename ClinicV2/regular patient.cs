@@ -79,7 +79,9 @@ namespace ClinicV2
 
         private void button8_Click(object sender, EventArgs e)
         {
-            
+            printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Statement",550,850);
+            //printDocument1.DefaultPageSettings.Landscape = true;
+
             if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
             {
                 printPreviewDialog1.Document = printDocument1;
@@ -252,10 +254,10 @@ namespace ClinicV2
         {
             int width = 0;
             int height = 0;
-            int x = 0;
-            int y = 300;
+            int x = 25;
+            int y = 100;
             int rowheight = 0;
-            int columnwidth = 150;
+            int columnwidth = 100;
 
             StringFormat str = new StringFormat();
             str.Alignment = StringAlignment.Near;
@@ -265,17 +267,21 @@ namespace ClinicV2
            
             #region Draw Column 1
 
-            e.Graphics.FillRectangle(Brushes.LightGray, new Rectangle(100, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height));
-            e.Graphics.DrawRectangle(Pens.Black, 100, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
+            e.Graphics.FillRectangle(Brushes.LightGray, new Rectangle(x, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height));
+            e.Graphics.DrawRectangle(Pens.Black, x, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
             e.Graphics.DrawString(dataGridView1.Columns[0].HeaderText, dataGridView1.Font, Brushes.Black, new RectangleF(100, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
 
             #endregion
 
             #region Draw column 2
 
-            e.Graphics.FillRectangle(Brushes.LightGray, new Rectangle(100 + dataGridView1.Columns[0].Width, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height));
-            e.Graphics.DrawRectangle(Pens.Black, 100 + dataGridView1.Columns[0].Width, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
-            e.Graphics.DrawString(dataGridView1.Columns[1].HeaderText, dataGridView1.Font, Brushes.Black, new RectangleF(100 + dataGridView1.Columns[0].Width, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
+            e.Graphics.FillRectangle(Brushes.LightGray, new Rectangle(x + dataGridView1.Columns[0].Width, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height));
+            e.Graphics.DrawRectangle(Pens.Black, x + dataGridView1.Columns[0].Width, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
+            e.Graphics.DrawString(dataGridView1.Columns[1].HeaderText, dataGridView1.Font, Brushes.Black, new RectangleF(x + dataGridView1.Columns[0].Width, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
+
+            e.Graphics.FillRectangle(Brushes.LightGray, new Rectangle(3*x + dataGridView1.Columns[0].Width, 100 + y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height));
+            e.Graphics.DrawRectangle(Pens.Black, 50 + dataGridView1.Columns[0].Width, 100 + y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
+            e.Graphics.DrawString(dataGridView1.Columns[2].HeaderText, dataGridView1.Font, Brushes.Black, new RectangleF(3*x + dataGridView1.Columns[0].Width, 100 + y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
 
             width = 0 + dataGridView1.Columns[0].Width;
             height = 100;
@@ -285,28 +291,40 @@ namespace ClinicV2
                 if (height > e.MarginBounds.Height)
                 {
                     height = 100;
-                    width = 300;
+                    width = 50;
                     e.HasMorePages = true;
                     return;
                 }
 
                 // first column
+                
                 height += dataGridView1.Rows[i].Height;
-                e.Graphics.DrawRectangle(Pens.Black, 100, height, dataGridView1.Columns[0].Width, dataGridView1.Rows[0].Height);
+                
+                e.Graphics.DrawRectangle(Pens.Black, x, height+y, dataGridView1.Columns[0].Width, dataGridView1.Rows[0].Height);
                 e.Graphics.DrawString(dataGridView1.Rows[i].Cells[0].FormattedValue.ToString(), dataGridView1.Font, Brushes.Black, 
-                    new RectangleF(100, height, dataGridView1.Columns[0].Width, 
+                    new RectangleF(x, height+y, dataGridView1.Columns[0].Width, 
                         dataGridView1.Rows[0].Height), str);
                 
                 // second column
-                e.Graphics.DrawRectangle(Pens.Black, 100 + dataGridView1.Columns[0].Width, height, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
+                e.Graphics.DrawRectangle(Pens.Black, x + dataGridView1.Columns[0].Width, height+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
               e.Graphics.DrawString(dataGridView1.Rows[i].Cells[1].FormattedValue.ToString(), 
                     dataGridView1.Font, Brushes.Black, 
-                    new RectangleF(100 + dataGridView1.Columns[0].Width, height, 
+                    new RectangleF(x + dataGridView1.Columns[0].Width, height+y, 
                         dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
-                
+
+
+              // third column
+            /**
+              e.Graphics.DrawRectangle(Pens.Black, 175 + dataGridView1.Columns[0].Width, height + y, dataGridView1.Columns[0].Width, dataGridView1.Rows[0].Height);
+              e.Graphics.DrawString(dataGridView1.Rows[i].Cells[1].FormattedValue.ToString(),
+                    dataGridView1.Font, Brushes.Black,
+                    new RectangleF(50 + dataGridView1.Columns[0].Width, height + y,
+                        dataGridView1.Columns[0].Width, dataGridView1.Rows[0].Height), str);
+             **/
                 width += dataGridView1.Columns[0].Width;
                 i++;
             }
+
 
             #endregion
         }
