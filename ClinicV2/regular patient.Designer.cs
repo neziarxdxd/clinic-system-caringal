@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(regular_patient));
             this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBoxName = new System.Windows.Forms.TextBox();
@@ -41,10 +42,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBoxQuantity = new System.Windows.Forms.TextBox();
@@ -62,6 +59,12 @@
             this.label13 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.textBoxTotalPrice = new System.Windows.Forms.TextBox();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -222,28 +225,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(396, 306);
             this.dataGridView1.TabIndex = 62;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Quantity";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 75;
-            // 
-            // Quantity
-            // 
-            this.Quantity.FillWeight = 175F;
-            this.Quantity.HeaderText = "Service/Medicine";
-            this.Quantity.Name = "Quantity";
-            // 
-            // unitprice
-            // 
-            this.unitprice.HeaderText = "Price/Fee";
-            this.unitprice.Name = "unitprice";
-            // 
-            // Amount
-            // 
-            this.Amount.HeaderText = "Amount";
-            this.Amount.Name = "Amount";
             // 
             // label6
             // 
@@ -443,6 +424,44 @@
             this.textBoxTotalPrice.TabIndex = 75;
             this.textBoxTotalPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Quantity";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 75;
+            // 
+            // Quantity
+            // 
+            this.Quantity.FillWeight = 175F;
+            this.Quantity.HeaderText = "Service/Medicine";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Width = 300;
+            // 
+            // unitprice
+            // 
+            this.unitprice.HeaderText = "Price/Fee";
+            this.unitprice.Name = "unitprice";
+            // 
+            // Amount
+            // 
+            this.Amount.HeaderText = "Amount";
+            this.Amount.Name = "Amount";
+            // 
             // regular_patient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -506,10 +525,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitprice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Windows.Forms.TextBox txtBoxQuantity;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label12;
@@ -517,5 +532,11 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBoxTotalPrice;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitprice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
     }
 }

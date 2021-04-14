@@ -15,8 +15,7 @@ namespace ClinicV2
 {
     public partial class regular_patient : UserControl
     {
-        private Font printFont;
-        private StreamReader streamToPrint;
+        int i = 0;
 
         public regular_patient()
         {
@@ -80,7 +79,11 @@ namespace ClinicV2
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+            
+            if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+            {
+                printPreviewDialog1.Document = printDocument1;
+            }
             
         }
 
@@ -243,6 +246,69 @@ namespace ClinicV2
                 this.dataGridView1.Rows.RemoveAt(
                     this.dataGridView1.SelectedRows[0].Index);
             }
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            int width = 0;
+            int height = 0;
+            int x = 0;
+            int y = 300;
+            int rowheight = 0;
+            int columnwidth = 150;
+
+            StringFormat str = new StringFormat();
+            str.Alignment = StringAlignment.Near;
+            str.LineAlignment = StringAlignment.Center;
+            str.Trimming = StringTrimming.EllipsisCharacter;
+            Pen p = new Pen(Color.Black, 2.5f);
+           
+            #region Draw Column 1
+
+            e.Graphics.FillRectangle(Brushes.LightGray, new Rectangle(100, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height));
+            e.Graphics.DrawRectangle(Pens.Black, 100, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
+            e.Graphics.DrawString(dataGridView1.Columns[0].HeaderText, dataGridView1.Font, Brushes.Black, new RectangleF(100, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
+
+            #endregion
+
+            #region Draw column 2
+
+            e.Graphics.FillRectangle(Brushes.LightGray, new Rectangle(100 + dataGridView1.Columns[0].Width, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height));
+            e.Graphics.DrawRectangle(Pens.Black, 100 + dataGridView1.Columns[0].Width, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
+            e.Graphics.DrawString(dataGridView1.Columns[1].HeaderText, dataGridView1.Font, Brushes.Black, new RectangleF(100 + dataGridView1.Columns[0].Width, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
+
+            width = 0 + dataGridView1.Columns[0].Width;
+            height = 100;
+            //variable i is declared at class level to preserve the value of i if e.hasmorepages is true
+            while (i < dataGridView1.Rows.Count)
+            {
+                if (height > e.MarginBounds.Height)
+                {
+                    height = 100;
+                    width = 300;
+                    e.HasMorePages = true;
+                    return;
+                }
+
+                // first column
+                height += dataGridView1.Rows[i].Height;
+                e.Graphics.DrawRectangle(Pens.Black, 100, height, dataGridView1.Columns[0].Width, dataGridView1.Rows[0].Height);
+                e.Graphics.DrawString(dataGridView1.Rows[i].Cells[0].FormattedValue.ToString(), dataGridView1.Font, Brushes.Black, 
+                    new RectangleF(100, height, dataGridView1.Columns[0].Width, 
+                        dataGridView1.Rows[0].Height), str);
+                
+                // second column
+                e.Graphics.DrawRectangle(Pens.Black, 100 + dataGridView1.Columns[0].Width, height, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
+              e.Graphics.DrawString(dataGridView1.Rows[i].Cells[1].FormattedValue.ToString(), 
+                    dataGridView1.Font, Brushes.Black, 
+                    new RectangleF(100 + dataGridView1.Columns[0].Width, height, 
+                        dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
+                
+                width += dataGridView1.Columns[0].Width;
+                i++;
+            }
+
+            #endregion
         }
     }
 }
