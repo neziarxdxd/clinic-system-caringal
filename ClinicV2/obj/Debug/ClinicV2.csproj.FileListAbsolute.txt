@@ -22,3 +22,17 @@ C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Properties.Resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.regular_patient.resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csproj.GenerateResource.Cache
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csprojResolveAssemblyReference.cache
+C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\bin\Debug\ClinicV2.exe.config
+C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\ClinicV2.exe
+C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\ClinicV2.pdb
+C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\bin\Debug\ClinicV2.exe
+C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\bin\Debug\ClinicV2.pdb
+C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\ClinicV2.Dashboard.resources
+C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\ClinicV2.Form1.resources
+C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\ClinicV2.Form2.resources
+C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\ClinicV2.Home.resources
+C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\ClinicV2.Properties.Resources.resources
+C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\ClinicV2.regular_patient.resources
+C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\ClinicV2.csproj.GenerateResource.Cache
+C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\RdlCompile.cache
+C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\RdlCompile.compiled

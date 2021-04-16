@@ -42,6 +42,10 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBoxQuantity = new System.Windows.Forms.TextBox();
@@ -61,10 +65,6 @@
             this.textBoxTotalPrice = new System.Windows.Forms.TextBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -225,6 +225,29 @@
             this.dataGridView1.Size = new System.Drawing.Size(396, 306);
             this.dataGridView1.TabIndex = 62;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Quantity";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 75;
+            // 
+            // Quantity
+            // 
+            this.Quantity.FillWeight = 175F;
+            this.Quantity.HeaderText = "Service/Medicine";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Width = 300;
+            // 
+            // unitprice
+            // 
+            this.unitprice.HeaderText = "Price/Fee";
+            this.unitprice.Name = "unitprice";
+            // 
+            // Amount
+            // 
+            this.Amount.HeaderText = "Amount";
+            this.Amount.Name = "Amount";
             // 
             // label6
             // 
@@ -438,29 +461,8 @@
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Quantity";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 75;
-            // 
-            // Quantity
-            // 
-            this.Quantity.FillWeight = 175F;
-            this.Quantity.HeaderText = "Service/Medicine";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.Width = 300;
-            // 
-            // unitprice
-            // 
-            this.unitprice.HeaderText = "Price/Fee";
-            this.unitprice.Name = "unitprice";
-            // 
-            // Amount
-            // 
-            this.Amount.HeaderText = "Amount";
-            this.Amount.Name = "Amount";
+            this.printPreviewDialog1.Load += new System.EventHandler(this.printPreviewDialog1_Load);
+            this.printPreviewDialog1.Click += new System.EventHandler(this.printPreviewDialog1_Click);
             // 
             // regular_patient
             // 

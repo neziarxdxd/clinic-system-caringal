@@ -11,6 +11,8 @@ using MySql.Data.MySqlClient;
 using DGVPrinterHelper;
 using System.IO;
 using System.Drawing.Printing;
+using Microsoft.Reporting.WinForms;
+
 namespace ClinicV2
 {
     public partial class regular_patient : UserControl
@@ -20,6 +22,7 @@ namespace ClinicV2
         public regular_patient()
         {
             InitializeComponent();
+            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
         }
         DataTable table = new DataTable();
         private void label10_Click(object sender, EventArgs e)
@@ -39,6 +42,8 @@ namespace ClinicV2
 
         private void regular_patient_Load(object sender, EventArgs e)
         {
+            
+
             string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
             string queryDoctor = "SELECT * FROM tbl_doctor";
             string queryService = "SELECT * FROM tbl_service";
@@ -62,6 +67,8 @@ namespace ClinicV2
             {
                 comboBox2.Items.Add(dataReader.GetString(2));
             }
+            
+
 
 
 
@@ -81,10 +88,21 @@ namespace ClinicV2
         {
             printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Statement",550,850);
             //printDocument1.DefaultPageSettings.Landscape = true;
-
+            /**
             if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
             {
-                printPreviewDialog1.Document = printDocument1;
+                printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+                printDocument1.Print();
+
+            }**/
+
+            printPreviewDialog1.Document = printDocument1;
+            if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+            {
+                printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+                printDocument1.DefaultPageSettings.Landscape = false;
+                printDocument1.Print();
+                //printDocument1.Dispose();
             }
             
         }
@@ -141,10 +159,37 @@ namespace ClinicV2
         {
 
         }
-
+        ReportDataSource rs = new ReportDataSource();
         private void button2_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("fdfd");
+
+            List<Services> listServices = new List<Services>();
+            listServices.Clear();
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++) {
+                Services services = new Services
+                {
+                    nameOfService = dataGridView1.Rows[i].Cells[1].Value.ToString(),
+                    
+                    price = double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
+                    quantity = int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString()),
+                    total = double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString())
+                    
+                };
+                listServices.Add(services);
+            }
+           
+            rs.Name = "DataSet1";
+            rs.Value=listServices;
+            Form2 form = new Form2();
+            form.reportViewer1.LocalReport.DataSources.Clear();
+            form.reportViewer1.LocalReport.DataSources.Add(rs);
+            form.reportViewer1.LocalReport.ReportEmbeddedResource = "ClinicV2.Report1.rdlc";
+            form.ShowDialog();
+
+
+           // form.reportViewer1.LocalReport.DataSources;
+            Console.WriteLine("LORD help me");
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -269,7 +314,7 @@ namespace ClinicV2
 
             e.Graphics.FillRectangle(Brushes.LightGray, new Rectangle(x, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height));
             e.Graphics.DrawRectangle(Pens.Black, x, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
-            e.Graphics.DrawString(dataGridView1.Columns[0].HeaderText, dataGridView1.Font, Brushes.Black, new RectangleF(100, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
+            e.Graphics.DrawString(dataGridView1.Columns[0].HeaderText, dataGridView1.Font, Brushes.Black, new RectangleF(25, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
 
             #endregion
 
@@ -278,11 +323,11 @@ namespace ClinicV2
             e.Graphics.FillRectangle(Brushes.LightGray, new Rectangle(x + dataGridView1.Columns[0].Width, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height));
             e.Graphics.DrawRectangle(Pens.Black, x + dataGridView1.Columns[0].Width, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
             e.Graphics.DrawString(dataGridView1.Columns[1].HeaderText, dataGridView1.Font, Brushes.Black, new RectangleF(x + dataGridView1.Columns[0].Width, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
-
-            e.Graphics.FillRectangle(Brushes.LightGray, new Rectangle(3*x + dataGridView1.Columns[0].Width, 100 + y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height));
-            e.Graphics.DrawRectangle(Pens.Black, 50 + dataGridView1.Columns[0].Width, 100 + y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
-            e.Graphics.DrawString(dataGridView1.Columns[2].HeaderText, dataGridView1.Font, Brushes.Black, new RectangleF(3*x + dataGridView1.Columns[0].Width, 100 + y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
-
+            
+            e.Graphics.FillRectangle(Brushes.LightGray, new Rectangle(8*x + dataGridView1.Columns[0].Width, 100 + y, dataGridView1.Columns[0].Width+30, dataGridView1.Rows[0].Height));
+            e.Graphics.DrawRectangle(Pens.Black, 8*x + dataGridView1.Columns[0].Width, 100 + y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
+            e.Graphics.DrawString(dataGridView1.Columns[2].HeaderText, dataGridView1.Font, Brushes.Black, new RectangleF(8*x + dataGridView1.Columns[0].Width, 100 + y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
+            
             width = 0 + dataGridView1.Columns[0].Width;
             height = 100;
             //variable i is declared at class level to preserve the value of i if e.hasmorepages is true
@@ -291,7 +336,7 @@ namespace ClinicV2
                 if (height > e.MarginBounds.Height)
                 {
                     height = 100;
-                    width = 50;
+                    width = 100;
                     e.HasMorePages = true;
                     return;
                 }
@@ -327,6 +372,17 @@ namespace ClinicV2
 
 
             #endregion
+        }
+
+        private void printPreviewDialog1_Click(object sender, EventArgs e)
+        {
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
