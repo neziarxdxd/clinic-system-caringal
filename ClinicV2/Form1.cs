@@ -15,15 +15,20 @@ namespace ClinicV2
         public Form1()
         {
             InitializeComponent();
+            txtBoxPassword.PasswordChar = '*';
+            txtBoxPassword.MaxLength = 10;
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            /**
             this.Hide();
             Dashboard dashboard = new Dashboard();
             dashboard.ShowDialog();
+            **/
             
-            /**
             string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
             string query = "SELECT * FROM tbl_user WHERE name=@name AND password=@password";
 
@@ -35,7 +40,7 @@ namespace ClinicV2
             {
                 databaseConnection.Open();
                 commandDatabase.Parameters.AddWithValue("@name", textBox1.Text);
-                commandDatabase.Parameters.AddWithValue("@password", textBox2.Text);
+                commandDatabase.Parameters.AddWithValue("@password", txtBoxPassword.Text);
                 MySqlDataReader myReader = commandDatabase.ExecuteReader();
 
                 if (myReader.HasRows)
@@ -57,7 +62,7 @@ namespace ClinicV2
                 // Show any error message.
                 MessageBox.Show(ex.Message);
             }
-            **/
+           
             
         }
 
@@ -84,6 +89,11 @@ namespace ClinicV2
         private void Form1_Load(object sender, EventArgs e)
         {
            
+        }
+
+        private void txtBoxPassword_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -92,5 +92,22 @@ namespace ClinicV2
             home1.Show();
             home1.BringToFront();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            regular_patient1.Hide();
+            home1.Show();
+            home1.BringToFront();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
