@@ -162,6 +162,11 @@ namespace ClinicV2
         ReportDataSource rs = new ReportDataSource();
         private void button2_Click(object sender, EventArgs e)
         {
+            DateTime dateTime = DateTime.Now;
+            ReportParameterCollection reportParameters = new ReportParameterCollection();
+            reportParameters.Add(new ReportParameter("parameterCustomer",txtBoxName.Text));
+            reportParameters.Add(new ReportParameter("parameterDate", dateTime.ToString("dddd, dd MMMM yyyy")));
+            reportParameters.Add(new ReportParameter("parameterAddress", txtBoxAddress.Text));
 
             List<Services> listServices = new List<Services>();
             listServices.Clear();
@@ -183,6 +188,7 @@ namespace ClinicV2
             Form2 form = new Form2();
             form.reportViewer1.LocalReport.DataSources.Clear();
             form.reportViewer1.LocalReport.DataSources.Add(rs);
+            form.reportViewer1.LocalReport.SetParameters(reportParameters);
             form.reportViewer1.LocalReport.ReportEmbeddedResource = "ClinicV2.Report1.rdlc";
             form.ShowDialog();
 
