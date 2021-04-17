@@ -42,8 +42,14 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtBoxPrice = new System.Windows.Forms.NumericUpDown();
+            this.txtBoxQuantity = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -59,16 +65,10 @@
             this.textBoxTotalPrice = new System.Windows.Forms.TextBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.txtBoxQuantity = new System.Windows.Forms.NumericUpDown();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtBoxPrice = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBoxQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBoxQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // label10
@@ -230,6 +230,29 @@
             this.dataGridView1.TabIndex = 62;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Quantity";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 75;
+            // 
+            // Quantity
+            // 
+            this.Quantity.FillWeight = 175F;
+            this.Quantity.HeaderText = "Service/Medicine";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Width = 200;
+            // 
+            // unitprice
+            // 
+            this.unitprice.HeaderText = "Price/Fee";
+            this.unitprice.Name = "unitprice";
+            // 
+            // Amount
+            // 
+            this.Amount.HeaderText = "Amount";
+            this.Amount.Name = "Amount";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -257,6 +280,28 @@
             this.panel1.Size = new System.Drawing.Size(395, 200);
             this.panel1.TabIndex = 67;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
+            // 
+            // txtBoxPrice
+            // 
+            this.txtBoxPrice.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxPrice.Location = new System.Drawing.Point(125, 89);
+            this.txtBoxPrice.Name = "txtBoxPrice";
+            this.txtBoxPrice.Size = new System.Drawing.Size(232, 27);
+            this.txtBoxPrice.TabIndex = 76;
+            this.txtBoxPrice.ValueChanged += new System.EventHandler(this.txtBoxPrice_ValueChanged);
+            // 
+            // txtBoxQuantity
+            // 
+            this.txtBoxQuantity.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxQuantity.Location = new System.Drawing.Point(125, 56);
+            this.txtBoxQuantity.Maximum = new decimal(new int[] {
+            2000000,
+            0,
+            0,
+            0});
+            this.txtBoxQuantity.Name = "txtBoxQuantity";
+            this.txtBoxQuantity.Size = new System.Drawing.Size(232, 27);
+            this.txtBoxQuantity.TabIndex = 75;
             // 
             // label11
             // 
@@ -428,45 +473,6 @@
             this.printPreviewDialog1.Load += new System.EventHandler(this.printPreviewDialog1_Load);
             this.printPreviewDialog1.Click += new System.EventHandler(this.printPreviewDialog1_Click);
             // 
-            // txtBoxQuantity
-            // 
-            this.txtBoxQuantity.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxQuantity.Location = new System.Drawing.Point(125, 56);
-            this.txtBoxQuantity.Name = "txtBoxQuantity";
-            this.txtBoxQuantity.Size = new System.Drawing.Size(232, 27);
-            this.txtBoxQuantity.TabIndex = 75;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Quantity";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 75;
-            // 
-            // Quantity
-            // 
-            this.Quantity.FillWeight = 175F;
-            this.Quantity.HeaderText = "Service/Medicine";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.Width = 200;
-            // 
-            // unitprice
-            // 
-            this.unitprice.HeaderText = "Price/Fee";
-            this.unitprice.Name = "unitprice";
-            // 
-            // Amount
-            // 
-            this.Amount.HeaderText = "Amount";
-            this.Amount.Name = "Amount";
-            // 
-            // txtBoxPrice
-            // 
-            this.txtBoxPrice.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxPrice.Location = new System.Drawing.Point(125, 89);
-            this.txtBoxPrice.Name = "txtBoxPrice";
-            this.txtBoxPrice.Size = new System.Drawing.Size(232, 27);
-            this.txtBoxPrice.TabIndex = 76;
-            // 
             // regular_patient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -500,8 +506,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBoxQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBoxQuantity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

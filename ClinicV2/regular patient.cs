@@ -256,16 +256,34 @@ namespace ClinicV2
         {
             
             double totalPrice = 0.00;
-            
-            
-            double price = Double.Parse(txtBoxPrice.Text);
-            double quantity = Double.Parse(txtBoxQuantity.Text);
-            int n = dataGridView1.Rows.Add();
-            dataGridView1.Rows[n].Cells[0].Value = quantity;
-            dataGridView1.Rows[n].Cells[1].Value = comboBox2.Text;
-            dataGridView1.Rows[n].Cells[2].Value = price;
-            dataGridView1.Rows[n].Cells[3].Value = price*quantity;
 
+
+            bool isFound = false;
+            if (dataGridView1.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (Convert.ToString(row.Cells[1].Value) == comboBox2.Text && Convert.ToString(row.Cells[2].Value) == txtBoxPrice.Value.ToString())
+                    {
+                        row.Cells[0].Value = Convert.ToString(Convert.ToInt16(txtBoxQuantity.Value) + Convert.ToInt16(row.Cells[0].Value));
+                        isFound = true;
+                    }
+
+                }
+                if (!isFound)
+                {
+                    dataGridView1.Rows.Add(txtBoxQuantity.Value.ToString(), comboBox2.Text, txtBoxPrice.Value.ToString());
+                }
+
+            }
+            else {
+                dataGridView1.Rows.Add(txtBoxQuantity.Value.ToString(), comboBox2.Text, txtBoxPrice.Value.ToString());
+            }
+
+            foreach(DataGridViewRow row in dataGridView1.Rows){
+                row.Cells[3].Value = Convert.ToDouble(row.Cells[0].Value) * Convert.ToInt16(row.Cells[2].Value);
+            }
+       
            for (int rows = 0; rows < dataGridView1.Rows.Count; rows++)
             {
                 totalPrice = totalPrice + Convert.ToDouble(dataGridView1.Rows[rows].Cells[3].Value);
@@ -381,6 +399,11 @@ namespace ClinicV2
         }
 
         private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBoxPrice_ValueChanged(object sender, EventArgs e)
         {
 
         }

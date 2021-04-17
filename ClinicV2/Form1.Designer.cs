@@ -41,7 +41,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.label4.Location = new System.Drawing.Point(332, 407);
+            this.label4.Location = new System.Drawing.Point(336, 411);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(103, 16);
             this.label4.TabIndex = 19;
@@ -74,9 +74,8 @@
             // 
             this.txtBoxPassword.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxPassword.Location = new System.Drawing.Point(235, 297);
-            this.txtBoxPassword.Multiline = true;
             this.txtBoxPassword.Name = "txtBoxPassword";
-            this.txtBoxPassword.Size = new System.Drawing.Size(204, 32);
+            this.txtBoxPassword.Size = new System.Drawing.Size(204, 27);
             this.txtBoxPassword.TabIndex = 16;
             this.txtBoxPassword.TextChanged += new System.EventHandler(this.txtBoxPassword_TextChanged);
             // 
@@ -84,9 +83,8 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(230, 220);
-            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(204, 32);
+            this.textBox1.Size = new System.Drawing.Size(204, 27);
             this.textBox1.TabIndex = 15;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -95,7 +93,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 28F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label1.Location = new System.Drawing.Point(106, 131);
+            this.label1.Location = new System.Drawing.Point(101, 138);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(497, 44);
             this.label1.TabIndex = 14;
@@ -103,11 +101,11 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button1.BackColor = System.Drawing.Color.LimeGreen;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(235, 349);
+            this.button1.Location = new System.Drawing.Point(236, 339);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(199, 39);
+            this.button1.Size = new System.Drawing.Size(199, 45);
             this.button1.TabIndex = 21;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = false;
