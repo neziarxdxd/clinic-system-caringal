@@ -28,7 +28,13 @@ namespace ClinicV2
             Dashboard dashboard = new Dashboard();
             dashboard.ShowDialog();
             **/
+
+
+            login();
             
+        }
+
+        public void login() {
             string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
             string query = "SELECT * FROM tbl_user WHERE name=@name AND password=@password";
 
@@ -51,7 +57,8 @@ namespace ClinicV2
                     dashboard.ShowDialog();
                     databaseConnection.Close();
                 }
-                else {
+                else
+                {
                     MessageBox.Show("Not found");
                 }
 
@@ -62,8 +69,6 @@ namespace ClinicV2
                 // Show any error message.
                 MessageBox.Show(ex.Message);
             }
-           
-            
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -94,6 +99,13 @@ namespace ClinicV2
         private void txtBoxPassword_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtBoxPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter){
+                login();
+            }
         }
     }
 }

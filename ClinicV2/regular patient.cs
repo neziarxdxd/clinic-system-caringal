@@ -254,42 +254,53 @@ namespace ClinicV2
 
         private void button5_Click(object sender, EventArgs e)
         {
-            
-            double totalPrice = 0.00;
-
-
-            bool isFound = false;
-            if (dataGridView1.Rows.Count > 0)
+            if ((txtBoxAddress.Text.Trim() == string.Empty) || (txtBoxName.Text.Trim() == string.Empty) ||
+                (txtBoxPrice.Value.ToString().Trim() == string.Empty) ||
+                (txtBoxQuantity.Value.ToString().Trim() == string.Empty) || (txtBoxQuantity.Value <=0) ||
+                (txtBoxPrice.Value <= 0))
             {
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                MessageBox.Show("You have left a field empty ");
+            }
+            else
+            {
+                double totalPrice = 0.00;
+
+
+                bool isFound = false;
+                if (dataGridView1.Rows.Count > 0)
                 {
-                    if (Convert.ToString(row.Cells[1].Value) == comboBox2.Text && Convert.ToString(row.Cells[2].Value) == txtBoxPrice.Value.ToString())
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
-                        row.Cells[0].Value = Convert.ToString(Convert.ToInt16(txtBoxQuantity.Value) + Convert.ToInt16(row.Cells[0].Value));
-                        isFound = true;
+                        if (Convert.ToString(row.Cells[1].Value) == comboBox2.Text && Convert.ToString(row.Cells[2].Value) == txtBoxPrice.Value.ToString())
+                        {
+                            row.Cells[0].Value = Convert.ToString(Convert.ToInt16(txtBoxQuantity.Value) + Convert.ToInt16(row.Cells[0].Value));
+                            isFound = true;
+                        }
+
+                    }
+                    if (!isFound)
+                    {
+                        dataGridView1.Rows.Add(txtBoxQuantity.Value.ToString(), comboBox2.Text, txtBoxPrice.Value.ToString());
                     }
 
                 }
-                if (!isFound)
+                else
                 {
                     dataGridView1.Rows.Add(txtBoxQuantity.Value.ToString(), comboBox2.Text, txtBoxPrice.Value.ToString());
                 }
 
-            }
-            else {
-                dataGridView1.Rows.Add(txtBoxQuantity.Value.ToString(), comboBox2.Text, txtBoxPrice.Value.ToString());
-            }
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    row.Cells[3].Value = Convert.ToDouble(row.Cells[0].Value) * Convert.ToInt16(row.Cells[2].Value);
+                }
 
-            foreach(DataGridViewRow row in dataGridView1.Rows){
-                row.Cells[3].Value = Convert.ToDouble(row.Cells[0].Value) * Convert.ToInt16(row.Cells[2].Value);
+                for (int rows = 0; rows < dataGridView1.Rows.Count; rows++)
+                {
+                    totalPrice = totalPrice + Convert.ToDouble(dataGridView1.Rows[rows].Cells[3].Value);
+                }
+                textBoxTotalPrice.Text = "PHP. " + totalPrice.ToString("N");
             }
-       
-           for (int rows = 0; rows < dataGridView1.Rows.Count; rows++)
-            {
-                totalPrice = totalPrice + Convert.ToDouble(dataGridView1.Rows[rows].Cells[3].Value);
-            }
-           textBoxTotalPrice.Text = "PHP. "+totalPrice.ToString("N");
-        
+            
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)

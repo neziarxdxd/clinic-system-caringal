@@ -78,6 +78,7 @@
             this.txtBoxPassword.Size = new System.Drawing.Size(204, 27);
             this.txtBoxPassword.TabIndex = 16;
             this.txtBoxPassword.TextChanged += new System.EventHandler(this.txtBoxPassword_TextChanged);
+            this.txtBoxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxPassword_KeyDown);
             // 
             // textBox1
             // 

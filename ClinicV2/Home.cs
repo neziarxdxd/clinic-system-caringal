@@ -19,7 +19,14 @@ namespace ClinicV2
 
         private void Home_Load(object sender, EventArgs e)
         {
+            timer1.Start();
+        }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DateTime dateTime = DateTime.Now;
+            this.labelTime.Text = "Time: "+(dateTime.ToString("hh:mm:ss tt"));
+            this.labelDate.Text = "Date: " + (dateTime.ToString("dddd, MMMM dd yyyy"));
         }
     }
 }
