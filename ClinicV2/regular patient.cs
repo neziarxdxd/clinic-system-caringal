@@ -267,7 +267,34 @@ namespace ClinicV2
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (comboBox1.SelectedIndex == -1)
+            {
+                string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
 
+                MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+
+                MySqlCommand command = databaseConnection.CreateCommand();
+                command.CommandText = "SELECT `service_fee` FROM `tbl_service` WHERE `service_name`=@serviceName";
+                command.Parameters.AddWithValue("@serviceName", comboBox2.Text);
+
+
+                databaseConnection.Open();
+                MySqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    txtBoxPrice.Value = Convert.ToDecimal(dataReader.GetString(0));
+                }
+                databaseConnection.Close();
+                
+            }
+            else
+            {
+                txtBoxPrice.Value = 0; 
+                
+                
+               
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

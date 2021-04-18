@@ -289,6 +289,11 @@
             // 
             this.txtBoxPrice.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxPrice.Location = new System.Drawing.Point(125, 89);
+            this.txtBoxPrice.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
             this.txtBoxPrice.Name = "txtBoxPrice";
             this.txtBoxPrice.Size = new System.Drawing.Size(232, 27);
             this.txtBoxPrice.TabIndex = 76;
