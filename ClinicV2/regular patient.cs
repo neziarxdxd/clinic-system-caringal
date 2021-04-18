@@ -17,7 +17,7 @@ namespace ClinicV2
 {
     public partial class regular_patient : UserControl
     {
-        int i = 0;
+        
 
         public regular_patient()
         {
@@ -47,7 +47,7 @@ namespace ClinicV2
             string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
             string queryDoctor = "SELECT * FROM tbl_doctor";
             string queryService = "SELECT * FROM tbl_service";
-
+            string querySecretary = "SELECT secretary_name FROM tbl_secretary";
 
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = new MySqlCommand(queryDoctor, databaseConnection);
@@ -67,7 +67,17 @@ namespace ClinicV2
             {
                 comboBox2.Items.Add(dataReader.GetString(2));
             }
-            
+            databaseConnection.Close();
+            commandDatabase = new MySqlCommand(querySecretary, databaseConnection);
+            databaseConnection.Open();
+            dataReader = commandDatabase.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                comboBoxPrepared.Items.Add(dataReader.GetString(0));
+            }
+            databaseConnection.Close();
+
 
 
 
@@ -167,6 +177,13 @@ namespace ClinicV2
             reportParameters.Add(new ReportParameter("parameterCustomer",txtBoxName.Text));
             reportParameters.Add(new ReportParameter("parameterDate", dateTime.ToString("dddd, dd MMMM yyyy")));
             reportParameters.Add(new ReportParameter("parameterAddress", txtBoxAddress.Text));
+            reportParameters.Add(new ReportParameter("parameterTotalPrice", textBoxTotalPrice.Text));
+            reportParameters.Add(new ReportParameter("parameterPhysician", comboBox1.Text));
+            reportParameters.Add(new ReportParameter("parameterPrepared", comboBoxPrepared.Text));
+            reportParameters.Add(new ReportParameter("parameterModeOfPayment", txtModeOfPayment.Text));
+
+
+
 
             List<Services> listServices = new List<Services>();
             listServices.Clear();
@@ -332,81 +349,9 @@ namespace ClinicV2
 
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
-            int width = 0;
-            int height = 0;
-            int x = 25;
-            int y = 100;
-            int rowheight = 0;
-            int columnwidth = 100;
-
-            StringFormat str = new StringFormat();
-            str.Alignment = StringAlignment.Near;
-            str.LineAlignment = StringAlignment.Center;
-            str.Trimming = StringTrimming.EllipsisCharacter;
-            Pen p = new Pen(Color.Black, 2.5f);
            
-            #region Draw Column 1
 
-            e.Graphics.FillRectangle(Brushes.LightGray, new Rectangle(x, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height));
-            e.Graphics.DrawRectangle(Pens.Black, x, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
-            e.Graphics.DrawString(dataGridView1.Columns[0].HeaderText, dataGridView1.Font, Brushes.Black, new RectangleF(25, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
-
-            #endregion
-
-            #region Draw column 2
-
-            e.Graphics.FillRectangle(Brushes.LightGray, new Rectangle(x + dataGridView1.Columns[0].Width, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height));
-            e.Graphics.DrawRectangle(Pens.Black, x + dataGridView1.Columns[0].Width, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
-            e.Graphics.DrawString(dataGridView1.Columns[1].HeaderText, dataGridView1.Font, Brushes.Black, new RectangleF(x + dataGridView1.Columns[0].Width, 100+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
             
-            e.Graphics.FillRectangle(Brushes.LightGray, new Rectangle(8*x + dataGridView1.Columns[0].Width, 100 + y, dataGridView1.Columns[0].Width+30, dataGridView1.Rows[0].Height));
-            e.Graphics.DrawRectangle(Pens.Black, 8*x + dataGridView1.Columns[0].Width, 100 + y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
-            e.Graphics.DrawString(dataGridView1.Columns[2].HeaderText, dataGridView1.Font, Brushes.Black, new RectangleF(8*x + dataGridView1.Columns[0].Width, 100 + y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
-            
-            width = 0 + dataGridView1.Columns[0].Width;
-            height = 100;
-            //variable i is declared at class level to preserve the value of i if e.hasmorepages is true
-            while (i < dataGridView1.Rows.Count)
-            {
-                if (height > e.MarginBounds.Height)
-                {
-                    height = 100;
-                    width = 100;
-                    e.HasMorePages = true;
-                    return;
-                }
-
-                // first column
-                
-                height += dataGridView1.Rows[i].Height;
-                
-                e.Graphics.DrawRectangle(Pens.Black, x, height+y, dataGridView1.Columns[0].Width, dataGridView1.Rows[0].Height);
-                e.Graphics.DrawString(dataGridView1.Rows[i].Cells[0].FormattedValue.ToString(), dataGridView1.Font, Brushes.Black, 
-                    new RectangleF(x, height+y, dataGridView1.Columns[0].Width, 
-                        dataGridView1.Rows[0].Height), str);
-                
-                // second column
-                e.Graphics.DrawRectangle(Pens.Black, x + dataGridView1.Columns[0].Width, height+y, dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height);
-              e.Graphics.DrawString(dataGridView1.Rows[i].Cells[1].FormattedValue.ToString(), 
-                    dataGridView1.Font, Brushes.Black, 
-                    new RectangleF(x + dataGridView1.Columns[0].Width, height+y, 
-                        dataGridView1.Columns[0].Width + columnwidth, dataGridView1.Rows[0].Height), str);
-
-
-              // third column
-            /**
-              e.Graphics.DrawRectangle(Pens.Black, 175 + dataGridView1.Columns[0].Width, height + y, dataGridView1.Columns[0].Width, dataGridView1.Rows[0].Height);
-              e.Graphics.DrawString(dataGridView1.Rows[i].Cells[1].FormattedValue.ToString(),
-                    dataGridView1.Font, Brushes.Black,
-                    new RectangleF(50 + dataGridView1.Columns[0].Width, height + y,
-                        dataGridView1.Columns[0].Width, dataGridView1.Rows[0].Height), str);
-             **/
-                width += dataGridView1.Columns[0].Width;
-                i++;
-            }
-
-
-            #endregion
         }
 
         private void printPreviewDialog1_Click(object sender, EventArgs e)
@@ -421,6 +366,11 @@ namespace ClinicV2
         }
 
         private void txtBoxPrice_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxPrepared_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

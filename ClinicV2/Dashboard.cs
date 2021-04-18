@@ -59,6 +59,7 @@ namespace ClinicV2
 
         private void button3_Click(object sender, EventArgs e)
         {
+            services_dashboard1.Hide();
             home1.Hide();
             regular_patient1.Show();
             regular_patient1.BringToFront();
@@ -72,6 +73,7 @@ namespace ClinicV2
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+            services_dashboard1.Hide();
             regular_patient1.Hide();
                
         }
@@ -88,6 +90,7 @@ namespace ClinicV2
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            services_dashboard1.Hide();
             regular_patient1.Hide();
             home1.Show();
             home1.BringToFront();
@@ -95,6 +98,7 @@ namespace ClinicV2
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            services_dashboard1.Hide();
             regular_patient1.Hide();
             home1.Show();
             home1.BringToFront();
@@ -102,7 +106,11 @@ namespace ClinicV2
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+           
+            home1.Hide();
+            regular_patient1.Hide();
+            services_dashboard1.Show();
+            services_dashboard1.BringToFront();
         }
 
         private void button5_Click(object sender, EventArgs e)
