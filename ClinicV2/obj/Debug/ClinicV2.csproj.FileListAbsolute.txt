@@ -39,4 +39,3 @@ C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Form2.resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\RdlCompile.cache
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\RdlCompile.compiled
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Services_dashboard.resources
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csprojResolveAssemblyReference.cache

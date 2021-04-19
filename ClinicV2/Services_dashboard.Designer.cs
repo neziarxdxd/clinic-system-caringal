@@ -36,9 +36,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -47,7 +44,10 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Service_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Full_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -87,6 +87,11 @@
             // 
             this.txtBoxPrice.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxPrice.Location = new System.Drawing.Point(128, 163);
+            this.txtBoxPrice.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
             this.txtBoxPrice.Name = "txtBoxPrice";
             this.txtBoxPrice.Size = new System.Drawing.Size(232, 27);
             this.txtBoxPrice.TabIndex = 78;
@@ -115,6 +120,7 @@
             this.button4.TabIndex = 80;
             this.button4.Text = "Remove ";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -135,31 +141,14 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Quantity,
-            this.unitprice,
-            this.Amount});
+            this.Service_Name,
+            this.Price,
+            this.Type});
             this.dataGridView1.Location = new System.Drawing.Point(412, 47);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(460, 238);
             this.dataGridView1.TabIndex = 81;
-            // 
-            // Quantity
-            // 
-            this.Quantity.FillWeight = 175F;
-            this.Quantity.HeaderText = "Name";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.Width = 200;
-            // 
-            // unitprice
-            // 
-            this.unitprice.HeaderText = "Price/Fee";
-            this.unitprice.Name = "unitprice";
-            // 
-            // Amount
-            // 
-            this.Amount.HeaderText = "Type";
-            this.Amount.Name = "Amount";
-            this.Amount.Width = 150;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // comboBoxType
             // 
@@ -190,7 +179,7 @@
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2});
+            this.Full_Name});
             this.dataGridView2.Location = new System.Drawing.Point(412, 340);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(460, 172);
@@ -258,12 +247,30 @@
             this.label6.Text = "SECRETARY ";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // dataGridViewTextBoxColumn2
+            // Service_Name
             // 
-            this.dataGridViewTextBoxColumn2.FillWeight = 175F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Full Name";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 500;
+            this.Service_Name.FillWeight = 175F;
+            this.Service_Name.HeaderText = "Name";
+            this.Service_Name.Name = "Service_Name";
+            this.Service_Name.Width = 200;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price/Fee";
+            this.Price.Name = "Price";
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            this.Type.Width = 150;
+            // 
+            // Full_Name
+            // 
+            this.Full_Name.FillWeight = 175F;
+            this.Full_Name.HeaderText = "Full Name";
+            this.Full_Name.Name = "Full_Name";
+            this.Full_Name.Width = 500;
             // 
             // Services_dashboard
             // 
@@ -314,9 +321,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitprice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Service_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Full_Name;
     }
 }

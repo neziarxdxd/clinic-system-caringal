@@ -28,31 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBoxPassword = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.label4.Location = new System.Drawing.Point(336, 411);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 16);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Forget password?";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label3.Location = new System.Drawing.Point(231, 275);
+            this.label3.Location = new System.Drawing.Point(240, 288);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 19);
             this.label3.TabIndex = 18;
@@ -63,7 +53,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label2.Location = new System.Drawing.Point(226, 198);
+            this.label2.Location = new System.Drawing.Point(235, 211);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 19);
             this.label2.TabIndex = 17;
@@ -73,7 +63,7 @@
             // txtBoxPassword
             // 
             this.txtBoxPassword.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxPassword.Location = new System.Drawing.Point(235, 297);
+            this.txtBoxPassword.Location = new System.Drawing.Point(244, 310);
             this.txtBoxPassword.Name = "txtBoxPassword";
             this.txtBoxPassword.Size = new System.Drawing.Size(204, 27);
             this.txtBoxPassword.TabIndex = 16;
@@ -83,7 +73,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(230, 220);
+            this.textBox1.Location = new System.Drawing.Point(239, 233);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(204, 27);
             this.textBox1.TabIndex = 15;
@@ -94,7 +84,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 28F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label1.Location = new System.Drawing.Point(101, 138);
+            this.label1.Location = new System.Drawing.Point(97, 154);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(497, 44);
             this.label1.TabIndex = 14;
@@ -104,7 +94,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.LimeGreen;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(236, 339);
+            this.button1.Location = new System.Drawing.Point(245, 352);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(199, 45);
             this.button1.TabIndex = 21;
@@ -112,13 +102,23 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ClinicV2.Properties.Resources._167523406_280099850360838_932368148773495862_n;
+            this.pictureBox1.Location = new System.Drawing.Point(290, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(111, 110);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 22;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 532);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBoxPassword);
@@ -127,6 +127,7 @@
             this.Name = "Form1";
             this.Text = "CARINGAL FAMILY CLINIC";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,13 +135,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBoxPassword;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
