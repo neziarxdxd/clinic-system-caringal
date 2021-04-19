@@ -614,7 +614,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>You may contact us:Telephone: </Value>
+                  <Value>You may contact us: </Value>
                   <Style>
                     <FontStyle>Normal</FontStyle>
                     <FontFamily>Century Gothic</FontFamily>
@@ -632,7 +632,40 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>(043) 300- 1167Mobile: 0975-898-1843 / 0961-119-4929</Value>
+                  <Value>Telephone:</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>Century Gothic</FontFamily>
+                    <FontSize>6pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <TextDecoration>None</TextDecoration>
+                    <Color>#000000</Color>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value> (043) 300- 1167 </Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>Century Gothic</FontFamily>
+                    <FontSize>6pt</FontSize>
+                    <FontWeight>Normal</FontWeight>
+                    <TextDecoration>None</TextDecoration>
+                    <Color>#000000</Color>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value>Mobile:</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>Century Gothic</FontFamily>
+                    <FontSize>6pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <TextDecoration>None</TextDecoration>
+                    <Color>#000000</Color>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value> 0975-898-1843 / 0961-119-4929</Value>
                   <Style>
                     <FontStyle>Normal</FontStyle>
                     <FontFamily>Century Gothic</FontFamily>

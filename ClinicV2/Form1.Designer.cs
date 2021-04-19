@@ -104,7 +104,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ClinicV2.Properties.Resources._167523406_280099850360838_932368148773495862_n;
+            this.pictureBox1.Image = global::ClinicV2.Properties.Resources.ffdfd;
             this.pictureBox1.Location = new System.Drawing.Point(290, 28);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(111, 110);

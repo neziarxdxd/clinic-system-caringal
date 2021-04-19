@@ -39,3 +39,8 @@ C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Form2.resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\RdlCompile.cache
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\RdlCompile.compiled
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Services_dashboard.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe.manifest
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.application
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csprojResolveAssemblyReference.cache
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.exe.manifest
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.application
