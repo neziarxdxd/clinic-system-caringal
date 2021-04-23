@@ -791,8 +791,6 @@
         </Border>
       </Style>
     </PageFooter>
-    <PageHeight>8.5in</PageHeight>
-    <PageWidth>5.5in</PageWidth>
     <LeftMargin>0.25in</LeftMargin>
     <RightMargin>0.25in</RightMargin>
     <TopMargin>0.25in</TopMargin>

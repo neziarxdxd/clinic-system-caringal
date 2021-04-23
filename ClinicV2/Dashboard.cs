@@ -62,7 +62,9 @@ namespace ClinicV2
             services_dashboard1.Hide();
             home1.Hide();
             regular_patient1.Show();
+            
             regular_patient1.BringToFront();
+            regular_patient1.RefreshList();
 
         }
 
@@ -101,6 +103,7 @@ namespace ClinicV2
             services_dashboard1.Hide();
             regular_patient1.Hide();
             home1.Show();
+            home1.Refresh();
             home1.BringToFront();
         }
 
@@ -110,6 +113,7 @@ namespace ClinicV2
             home1.Hide();
             regular_patient1.Hide();
             services_dashboard1.Show();
+            services_dashboard1.Refresh();
             services_dashboard1.BringToFront();
         }
 

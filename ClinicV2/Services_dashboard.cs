@@ -123,11 +123,7 @@ namespace ClinicV2
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = this.dataGridView2.Rows[e.RowIndex];
-               textBox1.Text = row.Cells["Full_Name"].Value.ToString();
-            }
+          
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -149,12 +145,40 @@ namespace ClinicV2
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex>=0){
-                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-                txtBoxName.Text = row.Cells["Service_Name"].Value.ToString();
-                txtBoxPrice.Value =Convert.ToDecimal(row.Cells["Price"].Value.ToString());
-                comboBoxType.Text = row.Cells["Type"].Value.ToString();
- 
+            
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                    txtBoxName.Text = row.Cells["Service_Name"].Value.ToString();
+                    txtBoxPrice.Value = Convert.ToDecimal(row.Cells["Price"].Value.ToString());
+                    comboBoxType.Text = row.Cells["Type"].Value.ToString();
+
+                }
+            }
+            catch (Exception error) {
+                MessageBox.Show("Empty");
+            }
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.dataGridView2.Rows[e.RowIndex];
+                    textBox1.Text = row.Cells["Full_Name"].Value.ToString();
+                }
+            }
+            catch (Exception erorrs) {
+                MessageBox.Show("Empty");
             }
         }
     }

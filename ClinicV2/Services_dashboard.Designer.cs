@@ -36,18 +36,18 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Service_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Full_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.Service_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Full_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -148,7 +148,26 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(460, 238);
             this.dataGridView1.TabIndex = 81;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Service_Name
+            // 
+            this.Service_Name.FillWeight = 175F;
+            this.Service_Name.HeaderText = "Name";
+            this.Service_Name.Name = "Service_Name";
+            this.Service_Name.Width = 200;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price/Fee";
+            this.Price.Name = "Price";
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            this.Type.Width = 150;
             // 
             // comboBoxType
             // 
@@ -184,7 +203,15 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(460, 172);
             this.dataGridView2.TabIndex = 91;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // Full_Name
+            // 
+            this.Full_Name.FillWeight = 175F;
+            this.Full_Name.HeaderText = "Full Name";
+            this.Full_Name.Name = "Full_Name";
+            this.Full_Name.Width = 500;
             // 
             // button1
             // 
@@ -246,31 +273,6 @@
             this.label6.TabIndex = 84;
             this.label6.Text = "SECRETARY ";
             this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // Service_Name
-            // 
-            this.Service_Name.FillWeight = 175F;
-            this.Service_Name.HeaderText = "Name";
-            this.Service_Name.Name = "Service_Name";
-            this.Service_Name.Width = 200;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price/Fee";
-            this.Price.Name = "Price";
-            // 
-            // Type
-            // 
-            this.Type.HeaderText = "Type";
-            this.Type.Name = "Type";
-            this.Type.Width = 150;
-            // 
-            // Full_Name
-            // 
-            this.Full_Name.FillWeight = 175F;
-            this.Full_Name.HeaderText = "Full Name";
-            this.Full_Name.Name = "Full_Name";
-            this.Full_Name.Width = 500;
             // 
             // Services_dashboard
             // 

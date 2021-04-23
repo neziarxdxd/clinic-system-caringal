@@ -17,12 +17,15 @@ namespace ClinicV2
 {
     public partial class regular_patient : UserControl
     {
-        
 
+        static string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+
+        MySqlConnection databaseConnection = new MySqlConnection(connectionString);
         public regular_patient()
         {
+            
             InitializeComponent();
-            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+          
         }
         DataTable table = new DataTable();
         private void label10_Click(object sender, EventArgs e)
@@ -44,30 +47,25 @@ namespace ClinicV2
         {
             
 
-            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+         
             string queryDoctor = "SELECT * FROM tbl_doctor";
-            string queryService = "SELECT * FROM tbl_service";
+            
             string querySecretary = "SELECT secretary_name FROM tbl_secretary";
-
-            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
-            MySqlCommand commandDatabase = new MySqlCommand(queryDoctor, databaseConnection);
+          
+            MySqlDataReader dataReader;
+            MySqlCommand commandDatabase;
+            
+            
+            commandDatabase = new MySqlCommand(queryDoctor, databaseConnection);                 
             databaseConnection.Open();
-            MySqlDataReader dataReader= commandDatabase.ExecuteReader();
-
+            dataReader = commandDatabase.ExecuteReader();
             while (dataReader.Read()) {
                 comboBox1.Items.Add(dataReader.GetString(1));            
             }
             databaseConnection.Close();
 
-            commandDatabase = new MySqlCommand(queryService, databaseConnection);
-            databaseConnection.Open();
-            dataReader = commandDatabase.ExecuteReader();
+            
 
-            while (dataReader.Read())
-            {
-                comboBox2.Items.Add(dataReader.GetString(2));
-            }
-            databaseConnection.Close();
             commandDatabase = new MySqlCommand(querySecretary, databaseConnection);
             databaseConnection.Open();
             dataReader = commandDatabase.ExecuteReader();
@@ -78,10 +76,27 @@ namespace ClinicV2
             }
             databaseConnection.Close();
 
+            RefreshList();
 
 
 
+        }
 
+
+        public void RefreshList() {
+            comboBox2.Items.Clear();
+            MySqlDataReader dataReader;
+            MySqlCommand commandDatabase;
+            string queryService = "SELECT * FROM tbl_service";
+            commandDatabase = new MySqlCommand(queryService, databaseConnection);
+            databaseConnection.Open();
+
+            dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+                comboBox2.Items.Add(dataReader.GetString(2));
+            }
+            databaseConnection.Close();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -190,8 +205,7 @@ namespace ClinicV2
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++) {
                 Services services = new Services
                 {
-                    nameOfService = dataGridView1.Rows[i].Cells[1].Value.ToString(),
-                    
+                    nameOfService = dataGridView1.Rows[i].Cells[1].Value.ToString(),                    
                     price = double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
                     quantity = int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString()),
                     total = double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString())
@@ -211,7 +225,7 @@ namespace ClinicV2
 
 
            // form.reportViewer1.LocalReport.DataSources;
-            Console.WriteLine("LORD help me");
+            // Console.WriteLine("LORD help me");
 
         }
 
@@ -267,12 +281,15 @@ namespace ClinicV2
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex == -1)
+            if (comboBox2.SelectedIndex == -1)
             {
-                string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
 
-                MySqlConnection databaseConnection = new MySqlConnection(connectionString);
-
+                txtBoxPrice.Value = 0; 
+               
+                
+            }
+            else
+            {
                 MySqlCommand command = databaseConnection.CreateCommand();
                 command.CommandText = "SELECT `service_fee` FROM `tbl_service` WHERE `service_name`=@serviceName";
                 command.Parameters.AddWithValue("@serviceName", comboBox2.Text);
@@ -286,11 +303,6 @@ namespace ClinicV2
                     txtBoxPrice.Value = Convert.ToDecimal(dataReader.GetString(0));
                 }
                 databaseConnection.Close();
-                
-            }
-            else
-            {
-                txtBoxPrice.Value = 0; 
                 
                 
                
@@ -338,12 +350,12 @@ namespace ClinicV2
                 {
                     dataGridView1.Rows.Add(txtBoxQuantity.Value.ToString(), comboBox2.Text, txtBoxPrice.Value.ToString());
                 }
-
+               // compute for total per row
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     row.Cells[3].Value = Convert.ToDouble(row.Cells[0].Value) * Convert.ToInt16(row.Cells[2].Value);
                 }
-
+                // compute for total 
                 for (int rows = 0; rows < dataGridView1.Rows.Count; rows++)
                 {
                     totalPrice = totalPrice + Convert.ToDouble(dataGridView1.Rows[rows].Cells[3].Value);
