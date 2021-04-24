@@ -229,6 +229,17 @@ namespace ClinicV2
 
         }
 
+        public void saveData() {
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);           
+            databaseConnection.Open();
+            MySqlCommand command = databaseConnection.CreateCommand();
+            command.CommandText = "INSERT INTO `tbl_service`(`doctor_id`, `service_name`, `service_fee`, `type`) VALUES (1,@serviceName,@price,@type)";
+            
+            command.ExecuteNonQuery();
+            databaseConnection.Close();
+           
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
 

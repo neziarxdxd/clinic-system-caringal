@@ -70,6 +70,8 @@
             this.txtModeOfPayment = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrice)).BeginInit();
@@ -126,7 +128,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(731, 512);
+            this.button1.Location = new System.Drawing.Point(735, 561);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 38);
             this.button1.TabIndex = 55;
@@ -141,7 +143,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(601, 512);
+            this.button2.Location = new System.Drawing.Point(605, 561);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(124, 38);
             this.button2.TabIndex = 56;
@@ -214,7 +216,7 @@
             this.Quantity,
             this.unitprice,
             this.Amount});
-            this.dataGridView1.Location = new System.Drawing.Point(470, 104);
+            this.dataGridView1.Location = new System.Drawing.Point(474, 153);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(396, 305);
             this.dataGridView1.TabIndex = 62;
@@ -381,7 +383,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(453, 439);
+            this.label5.Location = new System.Drawing.Point(457, 488);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 36);
             this.label5.TabIndex = 68;
@@ -444,7 +446,7 @@
             this.textBoxTotalPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTotalPrice.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxTotalPrice.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.textBoxTotalPrice.Location = new System.Drawing.Point(541, 434);
+            this.textBoxTotalPrice.Location = new System.Drawing.Point(545, 483);
             this.textBoxTotalPrice.Name = "textBoxTotalPrice";
             this.textBoxTotalPrice.ReadOnly = true;
             this.textBoxTotalPrice.Size = new System.Drawing.Size(325, 36);
@@ -529,10 +531,37 @@
             this.label15.TabIndex = 80;
             this.label15.Text = "Mode of Payment";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label16.Location = new System.Drawing.Point(614, 98);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(54, 21);
+            this.label16.TabIndex = 83;
+            this.label16.Text = "Type:";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.ItemHeight = 20;
+            this.comboBox3.Items.AddRange(new object[] {
+            "regular",
+            "walk-in"});
+            this.comboBox3.Location = new System.Drawing.Point(688, 91);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(164, 28);
+            this.comboBox3.TabIndex = 82;
+            // 
             // regular_patient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
@@ -617,5 +646,7 @@
         private System.Windows.Forms.TextBox txtModeOfPayment;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox comboBox3;
     }
 }
