@@ -229,12 +229,16 @@ namespace ClinicV2
 
         }
 
-        public void saveData() {
+        public void saveCustomerData() {
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);           
             databaseConnection.Open();
             MySqlCommand command = databaseConnection.CreateCommand();
-            command.CommandText = "INSERT INTO `tbl_service`(`doctor_id`, `service_name`, `service_fee`, `type`) VALUES (1,@serviceName,@price,@type)";
-            
+            command.CommandText = @"INSERT INTO `tbl_customer`(`customer_id`, `customer_name`, `customer_type`, `customer_address`)
+                                  VALUES (@customerID, @customerName, @customerType, @customerAddress)";
+            command.Parameters.AddWithValue("@customerID", txtBoxCustomerID.Text);
+            command.Parameters.AddWithValue("@customerName", txtBoxName.Text);
+            command.Parameters.AddWithValue("@customerType", comboBoxCustomerType.Text);
+            command.Parameters.AddWithValue("@customerAddress", txtBoxAddress.Text);
             command.ExecuteNonQuery();
             databaseConnection.Close();
            
