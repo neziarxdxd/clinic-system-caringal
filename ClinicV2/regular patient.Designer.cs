@@ -68,8 +68,6 @@
             this.comboBoxPrepared = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtModeOfPayment = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -512,25 +510,6 @@
             this.txtModeOfPayment.Size = new System.Drawing.Size(231, 28);
             this.txtModeOfPayment.TabIndex = 77;
             // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(201, 258);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(231, 28);
-            this.textBox1.TabIndex = 81;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(35, 261);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(160, 21);
-            this.label15.TabIndex = 80;
-            this.label15.Text = "Mode of Payment";
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -562,8 +541,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label16);
             this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.comboBoxPrepared);
             this.Controls.Add(this.txtModeOfPayment);
@@ -644,8 +621,6 @@
         private System.Windows.Forms.ComboBox comboBoxPrepared;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtModeOfPayment;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox comboBox3;
     }
