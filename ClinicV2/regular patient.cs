@@ -184,48 +184,21 @@ namespace ClinicV2
         {
 
         }
-        ReportDataSource rs = new ReportDataSource();
+       
         private void button2_Click(object sender, EventArgs e)
         {
-            DateTime dateTime = DateTime.Now;
-            ReportParameterCollection reportParameters = new ReportParameterCollection();
-            reportParameters.Add(new ReportParameter("parameterCustomer",txtBoxName.Text));
-            reportParameters.Add(new ReportParameter("parameterDate", dateTime.ToString("dddd, dd MMMM yyyy")));
-            reportParameters.Add(new ReportParameter("parameterAddress", txtBoxAddress.Text));
-            reportParameters.Add(new ReportParameter("parameterTotalPrice", textBoxTotalPrice.Text));
-            reportParameters.Add(new ReportParameter("parameterPhysician", comboBox1.Text));
-            reportParameters.Add(new ReportParameter("parameterPrepared", comboBoxPrepared.Text));
-            reportParameters.Add(new ReportParameter("parameterModeOfPayment", txtModeOfPayment.Text));
-
-
-
-
-            List<Services> listServices = new List<Services>();
-            listServices.Clear();
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++) {
-                Services services = new Services
-                {
-                    nameOfService = dataGridView1.Rows[i].Cells[1].Value.ToString(),                    
-                    price = double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
-                    quantity = int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString()),
-                    total = double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString())
-                    
-                };
-                listServices.Add(services);
+            saveCustomerData();
+            DialogResult dialogResult = MessageBox.Show("Do you want to print receipt? ", "Success Saved", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                printReceipt();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                
             }
            
-            rs.Name = "DataSet1";
-            rs.Value=listServices;
-            Form2 form = new Form2();
-            form.reportViewer1.LocalReport.DataSources.Clear();
-            form.reportViewer1.LocalReport.DataSources.Add(rs);
-            form.reportViewer1.LocalReport.SetParameters(reportParameters);
-            form.reportViewer1.LocalReport.ReportEmbeddedResource = "ClinicV2.Report1.rdlc";
-            form.ShowDialog();
-
-
-           // form.reportViewer1.LocalReport.DataSources;
-            // Console.WriteLine("LORD help me");
+           
 
         }
 
@@ -233,15 +206,52 @@ namespace ClinicV2
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);           
             databaseConnection.Open();
             MySqlCommand command = databaseConnection.CreateCommand();
-            command.CommandText = @"INSERT INTO `tbl_customer`(`customer_id`, `customer_name`, `customer_type`, `customer_address`)
-                                  VALUES (@customerID, @customerName, @customerType, @customerAddress)";
-            command.Parameters.AddWithValue("@customerID", txtBoxCustomerID.Text);
+            command.CommandText = @"INSERT INTO `tbl_customer`(`customer_name`, `customer_type`, `customer_address`)
+                                  VALUES (@customerName, @customerType, @customerAddress)";
+            //command.Parameters.AddWithValue("@customerID", txtBoxCustomerID.Text);
             command.Parameters.AddWithValue("@customerName", txtBoxName.Text);
             command.Parameters.AddWithValue("@customerType", comboBoxCustomerType.Text);
             command.Parameters.AddWithValue("@customerAddress", txtBoxAddress.Text);
             command.ExecuteNonQuery();
             databaseConnection.Close();
            
+        }
+
+        ReportDataSource rs = new ReportDataSource();
+        public void printReceipt() {
+            DateTime dateTime = DateTime.Now;
+            ReportParameterCollection reportParameters = new ReportParameterCollection();
+            reportParameters.Add(new ReportParameter("parameterCustomer", txtBoxName.Text));
+            reportParameters.Add(new ReportParameter("parameterDate", dateTime.ToString("dddd, dd MMMM yyyy")));
+            reportParameters.Add(new ReportParameter("parameterAddress", txtBoxAddress.Text));
+            reportParameters.Add(new ReportParameter("parameterTotalPrice", textBoxTotalPrice.Text));
+            reportParameters.Add(new ReportParameter("parameterPhysician", comboBox1.Text));
+            reportParameters.Add(new ReportParameter("parameterPrepared", comboBoxPrepared.Text));
+            reportParameters.Add(new ReportParameter("parameterModeOfPayment", txtModeOfPayment.Text));
+
+            List<Services> listServices = new List<Services>();
+            listServices.Clear();
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                Services services = new Services
+                {
+                    nameOfService = dataGridView1.Rows[i].Cells[1].Value.ToString(),
+                    price = double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
+                    quantity = int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString()),
+                    total = double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString())
+
+                };
+                listServices.Add(services);
+            }
+
+            rs.Name = "DataSet1";
+            rs.Value = listServices;
+            Form2 form = new Form2();
+            form.reportViewer1.LocalReport.DataSources.Clear();
+            form.reportViewer1.LocalReport.DataSources.Add(rs);
+            form.reportViewer1.LocalReport.SetParameters(reportParameters);
+            form.reportViewer1.LocalReport.ReportEmbeddedResource = "ClinicV2.Report1.rdlc";
+            form.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)

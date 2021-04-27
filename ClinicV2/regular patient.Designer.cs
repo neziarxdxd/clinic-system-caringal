@@ -129,7 +129,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(735, 561);
+            this.button1.Location = new System.Drawing.Point(757, 565);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 38);
             this.button1.TabIndex = 55;
@@ -144,7 +144,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(605, 561);
+            this.button2.Location = new System.Drawing.Point(627, 565);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(124, 38);
             this.button2.TabIndex = 56;
