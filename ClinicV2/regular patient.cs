@@ -45,9 +45,10 @@ namespace ClinicV2
 
         private void regular_patient_Load(object sender, EventArgs e)
         {
-            
 
-         
+
+            setInvoiceNumber();
+            setCustomerNumber();
             string queryDoctor = "SELECT * FROM tbl_doctor";
             
             string querySecretary = "SELECT secretary_name FROM tbl_secretary";
@@ -78,7 +79,7 @@ namespace ClinicV2
             databaseConnection.Close();
 
             refreshListServices();
-            setInvoiceNumber();
+           
 
 
 
@@ -96,23 +97,55 @@ namespace ClinicV2
             dataReader = commandDatabase.ExecuteReader();
             while (dataReader.Read())
             {
+                Console.WriteLine(dataReader.GetString(2));
                 comboBox2.Items.Add(dataReader.GetString(2));
             }
             databaseConnection.Close();
         }
 
-        public void setInvoiceNumber() {
+        public void setInvoiceNumber()
+        {
             txtBoxInvoiceID.Clear();
             MySqlCommand commandDatabase;
-            string queryService = "SELECT max(invoice_number) FROM tbl_invoice";
-            commandDatabase = new MySqlCommand(queryService, databaseConnection);
+            MySqlDataReader dataReader;
+            string queryMax = "SELECT max(invoice_number)+1 FROM tbl_invoice";
+            commandDatabase = new MySqlCommand(queryMax, databaseConnection);
             databaseConnection.Open();
-            Int32 invoiceNumber= ((Int32?)commandDatabase.ExecuteScalar()) ?? 0;
-            invoiceNumber = invoiceNumber + 1;
-            txtBoxInvoiceID.Text = invoiceNumber.ToString();
+            dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+                Console.WriteLine(dataReader.GetString(0));
+                txtBoxInvoiceID.Text= dataReader.GetString(0);
+            }
+
             databaseConnection.Close();
-        
+
         }
+
+
+        public void setCustomerNumber()
+        {
+            txtBoxCustomerID.Clear();
+            MySqlCommand commandDatabase;
+            MySqlDataReader dataReader;
+            string queryMax = "SELECT max(customer_id)+1 FROM tbl_customer";
+            commandDatabase = new MySqlCommand(queryMax, databaseConnection);
+            databaseConnection.Open();
+            dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+                Console.WriteLine(dataReader.GetString(0));
+                txtBoxCustomerID.Text = dataReader.GetString(0);
+            }
+
+            databaseConnection.Close();
+
+        }
+
+
+        
+
+        
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -224,7 +257,11 @@ namespace ClinicV2
             MySqlCommand command = databaseConnection.CreateCommand();
             command.CommandText =@"INSERT INTO `tbl_invoice`(`custome_name`, `prepared_by`, `mode_of_payment`) 
                                     VALUES (@customerName, @preparedBy, @modePayment)";
-        
+            command.Parameters.AddWithValue("@customerName", txtBoxName.Text);
+            command.Parameters.AddWithValue("@preparedBy", comboBoxPrepared.Text);
+            command.Parameters.AddWithValue("@modePayment", txtBoxModeOfPayment.Text);
+            command.ExecuteNonQuery();
+            databaseConnection.Close();
         }
 
         public void saveCustomerData() {
@@ -252,7 +289,7 @@ namespace ClinicV2
             reportParameters.Add(new ReportParameter("parameterTotalPrice", textBoxTotalPrice.Text));
             reportParameters.Add(new ReportParameter("parameterPhysician", comboBox1.Text));
             reportParameters.Add(new ReportParameter("parameterPrepared", comboBoxPrepared.Text));
-            reportParameters.Add(new ReportParameter("parameterModeOfPayment", txtModeOfPayment.Text));
+            reportParameters.Add(new ReportParameter("parameterModeOfPayment", txtBoxModeOfPayment.Text));
 
             List<Services> listServices = new List<Services>();
             listServices.Clear();
@@ -467,6 +504,11 @@ namespace ClinicV2
         private void txtBoxInvoiceID_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
