@@ -397,6 +397,7 @@
             this.txtBoxInvoiceID.Name = "txtBoxInvoiceID";
             this.txtBoxInvoiceID.Size = new System.Drawing.Size(167, 28);
             this.txtBoxInvoiceID.TabIndex = 71;
+            this.txtBoxInvoiceID.TextChanged += new System.EventHandler(this.txtBoxInvoiceID_TextChanged);
             // 
             // label12
             // 

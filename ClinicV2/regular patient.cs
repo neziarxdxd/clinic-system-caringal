@@ -74,16 +74,18 @@ namespace ClinicV2
             {
                 comboBoxPrepared.Items.Add(dataReader.GetString(0));
             }
+
             databaseConnection.Close();
 
-            RefreshList();
+            refreshListServices();
+            setInvoiceNumber();
 
 
 
         }
 
 
-        public void RefreshList() {
+        public void refreshListServices() {
             comboBox2.Items.Clear();
             MySqlDataReader dataReader;
             MySqlCommand commandDatabase;
@@ -97,6 +99,19 @@ namespace ClinicV2
                 comboBox2.Items.Add(dataReader.GetString(2));
             }
             databaseConnection.Close();
+        }
+
+        public void setInvoiceNumber() {
+            txtBoxInvoiceID.Clear();
+            MySqlCommand commandDatabase;
+            string queryService = "SELECT max(invoice_number) FROM tbl_invoice";
+            commandDatabase = new MySqlCommand(queryService, databaseConnection);
+            databaseConnection.Open();
+            Int32 invoiceNumber= ((Int32?)commandDatabase.ExecuteScalar()) ?? 0;
+            invoiceNumber = invoiceNumber + 1;
+            txtBoxInvoiceID.Text = invoiceNumber.ToString();
+            databaseConnection.Close();
+        
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -200,6 +215,16 @@ namespace ClinicV2
            
            
 
+        }
+
+
+        public void saveInvoiceTransaction() {
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            databaseConnection.Open();
+            MySqlCommand command = databaseConnection.CreateCommand();
+            command.CommandText =@"INSERT INTO `tbl_invoice`(`custome_name`, `prepared_by`, `mode_of_payment`) 
+                                    VALUES (@customerName, @preparedBy, @modePayment)";
+        
         }
 
         public void saveCustomerData() {
@@ -435,6 +460,11 @@ namespace ClinicV2
         }
 
         private void comboBoxPrepared_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBoxInvoiceID_TextChanged(object sender, EventArgs e)
         {
 
         }

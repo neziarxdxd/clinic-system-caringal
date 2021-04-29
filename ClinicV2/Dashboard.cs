@@ -64,7 +64,7 @@ namespace ClinicV2
             regular_patient1.Show();
             
             regular_patient1.BringToFront();
-            regular_patient1.RefreshList();
+            regular_patient1.refreshListServices();
 
         }
 
