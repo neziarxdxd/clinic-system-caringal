@@ -236,18 +236,23 @@ namespace ClinicV2
         private void button2_Click(object sender, EventArgs e)
         {
             saveCustomerData();
+            saveInvoiceTransaction();
+            printingConfirmation();
+            setInvoiceNumber();
+            setCustomerNumber();
+           
+           
+
+        }
+
+        private void printingConfirmation()
+        {
             DialogResult dialogResult = MessageBox.Show("Do you want to print receipt? ", "Success Saved", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 printReceipt();
             }
-            else if (dialogResult == DialogResult.No)
-            {
-                
-            }
-           
-           
-
+            
         }
 
 
@@ -403,10 +408,7 @@ namespace ClinicV2
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if ((txtBoxAddress.Text.Trim() == string.Empty) || (txtBoxName.Text.Trim() == string.Empty) ||
-                (txtBoxPrice.Value.ToString().Trim() == string.Empty) ||
-                (txtBoxQuantity.Value.ToString().Trim() == string.Empty) || (txtBoxQuantity.Value <=0) ||
-                (txtBoxPrice.Value <= 0))
+            if (isCustomerComplete())
             {
                 MessageBox.Show("You have left a field empty ");
             }
@@ -450,6 +452,14 @@ namespace ClinicV2
                 textBoxTotalPrice.Text = "PHP. " + totalPrice.ToString("N");
             }
             
+        }
+
+        private bool isCustomerComplete()
+        {
+            return (txtBoxAddress.Text.Trim() == string.Empty) || (txtBoxName.Text.Trim() == string.Empty) ||
+                            (txtBoxPrice.Value.ToString().Trim() == string.Empty) ||
+                            (txtBoxQuantity.Value.ToString().Trim() == string.Empty) || (txtBoxQuantity.Value <= 0) ||
+                            (txtBoxPrice.Value <= 0);
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
