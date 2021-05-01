@@ -237,6 +237,7 @@ namespace ClinicV2
         {
             saveCustomerData();
             saveInvoiceTransaction();
+            insertDataListOfService();
             printingConfirmation();
             setInvoiceNumber();
             setCustomerNumber();
@@ -284,6 +285,34 @@ namespace ClinicV2
            
         }
 
+        public void insertDataListOfService() {
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            databaseConnection.Open();
+            
+            
+
+
+            
+            List<Services> listServices = getListOfServices();
+            foreach (var service in listServices){
+                MySqlCommand command = databaseConnection.CreateCommand();
+                command.CommandText = @"INSERT INTO `tbl_list_service`(`service_name`, `invoice_number`, `doctor_name`, `price`, `quantity`,`total`)
+                                        VALUES (@serviceName, @invoiceNumber, @doctor, @price, @quantity, @total)";
+                //command.Parameters.AddWithValue("@customerID", txtBoxCustomerID.Text);
+                command.Parameters.AddWithValue("@serviceName",service.nameOfService );
+                command.Parameters.AddWithValue("@invoiceNumber",txtBoxInvoiceID.Text);
+                command.Parameters.AddWithValue("@doctor", comboBox1.Text);
+                command.Parameters.AddWithValue("@price", service.price);
+                command.Parameters.AddWithValue("@quantity", service.quantity);
+                command.Parameters.AddWithValue("@total", service.total);
+
+                command.ExecuteNonQuery();
+            }
+            databaseConnection.Close();
+            
+
+        }
+
         ReportDataSource rs = new ReportDataSource();
         public void printReceipt() {
             DateTime dateTime = DateTime.Now;
@@ -296,6 +325,20 @@ namespace ClinicV2
             reportParameters.Add(new ReportParameter("parameterPrepared", comboBoxPrepared.Text));
             reportParameters.Add(new ReportParameter("parameterModeOfPayment", txtBoxModeOfPayment.Text));
 
+            List<Services> listServices = getListOfServices();
+
+            rs.Name = "DataSet1";
+            rs.Value = listServices;
+            Form2 form = new Form2();
+            form.reportViewer1.LocalReport.DataSources.Clear();
+            form.reportViewer1.LocalReport.DataSources.Add(rs);
+            form.reportViewer1.LocalReport.SetParameters(reportParameters);
+            form.reportViewer1.LocalReport.ReportEmbeddedResource = "ClinicV2.Report1.rdlc";
+            form.ShowDialog();
+        }
+
+        private List<Services> getListOfServices()
+        {
             List<Services> listServices = new List<Services>();
             listServices.Clear();
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
@@ -310,15 +353,7 @@ namespace ClinicV2
                 };
                 listServices.Add(services);
             }
-
-            rs.Name = "DataSet1";
-            rs.Value = listServices;
-            Form2 form = new Form2();
-            form.reportViewer1.LocalReport.DataSources.Clear();
-            form.reportViewer1.LocalReport.DataSources.Add(rs);
-            form.reportViewer1.LocalReport.SetParameters(reportParameters);
-            form.reportViewer1.LocalReport.ReportEmbeddedResource = "ClinicV2.Report1.rdlc";
-            form.ShowDialog();
+            return listServices;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -392,6 +427,7 @@ namespace ClinicV2
 
                 while (dataReader.Read())
                 {
+                    txtBoxQuantity.Value = 1;
                     txtBoxPrice.Value = Convert.ToDecimal(dataReader.GetString(0));
                 }
                 databaseConnection.Close();
