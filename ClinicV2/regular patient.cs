@@ -287,8 +287,7 @@ namespace ClinicV2
 
         public void insertDataListOfService() {
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
-            databaseConnection.Open();
-            
+            databaseConnection.Open();          
             
 
 
