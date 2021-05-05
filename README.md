@@ -1,5 +1,10 @@
 # test
 
+QUERIES:
+```
+SELECT tbl_list_service.service_name, tbl_service.type from tbl_list_service inner join tbl_service on 
+tbl_list_service.service_name = tbl_service.service_name where tbl_service.type="Medicine"
+```
 
 excess code 
 
