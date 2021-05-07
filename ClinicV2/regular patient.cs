@@ -241,8 +241,17 @@ namespace ClinicV2
             printingConfirmation();
             setInvoiceNumber();
             setCustomerNumber();
+            resetAllData();
            
            
+
+        }
+        public void resetAllData(){
+            txtBoxName.Clear();
+            txtBoxAddress.Clear();
+            txtBoxModeOfPayment.Clear();
+            
+            dataGridView1.Rows.Clear();
 
         }
 

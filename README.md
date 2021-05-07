@@ -6,6 +6,10 @@ SELECT tbl_list_service.service_name, tbl_service.type from tbl_list_service inn
 tbl_list_service.service_name = tbl_service.service_name where tbl_service.type="Medicine"
 ```
 
+```
+SELECT service_name,SUM(price*quantity) totalOfAll FROM `tbl_list_service` WHERE doctor_name="Dr. Diosdado Emmanuel S. Caringal" group by service_name
+```
+
 excess code 
 
 
