@@ -127,6 +127,12 @@
     <Compile Include="regular patient.Designer.cs">
       <DependentUpon>regular patient.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportDashboard.Designer.cs">
+      <DependentUpon>ReportDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services.cs" />
     <Compile Include="Services_dashboard.cs">
       <SubType>UserControl</SubType>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="Report2.rdlc" />
+    <EmbeddedResource Include="ReportDashboard.resx">
+      <DependentUpon>ReportDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Services_dashboard.resx">
       <DependentUpon>Services_dashboard.cs</DependentUpon>
     </EmbeddedResource>
