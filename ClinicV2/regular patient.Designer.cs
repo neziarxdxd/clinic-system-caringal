@@ -73,7 +73,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txtBoxCustomerID = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrice)).BeginInit();
@@ -570,21 +569,10 @@
             this.label17.TabIndex = 84;
             this.label17.Text = "Customer ID:";
             // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(487, 565);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 86;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // regular_patient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button6);
             this.Controls.Add(this.txtBoxCustomerID);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
@@ -675,6 +663,5 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtBoxCustomerID;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Button button6;
     }
 }

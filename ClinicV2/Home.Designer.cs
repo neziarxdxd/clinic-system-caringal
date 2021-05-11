@@ -258,9 +258,10 @@
             this.button9.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
             this.button9.Size = new System.Drawing.Size(295, 102);
             this.button9.TabIndex = 31;
-            this.button9.Text = "TOTAL SALES";
+            this.button9.Text = "TOTAL SALES TODAY";
             this.button9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button8
             // 

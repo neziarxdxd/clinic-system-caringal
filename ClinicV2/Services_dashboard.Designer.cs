@@ -177,7 +177,8 @@
             this.comboBoxType.ItemHeight = 20;
             this.comboBoxType.Items.AddRange(new object[] {
             "Medicine",
-            "Service"});
+            "Service",
+            "Lab"});
             this.comboBoxType.Location = new System.Drawing.Point(128, 196);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(232, 28);

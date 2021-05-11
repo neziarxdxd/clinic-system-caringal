@@ -28,5 +28,10 @@ namespace ClinicV2
             this.labelTime.Text = "Time: "+(dateTime.ToString("hh:mm:ss tt"));
             this.labelDate.Text = "Date: " + (dateTime.ToString("dddd, MMMM dd yyyy"));
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -159,11 +159,11 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Location = new System.Drawing.Point(28, 29);
+            this.label10.Location = new System.Drawing.Point(30, 19);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(142, 36);
+            this.label10.Size = new System.Drawing.Size(283, 36);
             this.label10.TabIndex = 78;
-            this.label10.Text = "INVOICE ";
+            this.label10.Text = "LIST OF CUSTOMERS";
             // 
             // dataGridView1
             // 
