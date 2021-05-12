@@ -69,6 +69,7 @@
             this.dataGridReport.Name = "dataGridReport";
             this.dataGridReport.Size = new System.Drawing.Size(339, 185);
             this.dataGridReport.TabIndex = 0;
+            this.dataGridReport.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridReport_CellContentClick);
             // 
             // ServiceCol
             // 

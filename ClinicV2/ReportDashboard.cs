@@ -37,9 +37,18 @@ namespace ClinicV2
             MySqlCommand commandDatabase = new MySqlCommand(queryServices, databaseConnection);
             databaseConnection.Open();
             MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+         dataGridReport.Rows.Add(dataReader.GetString(0));
+            }
 
             // code here dataview
             databaseConnection.Close();
+        }
+
+        private void dataGridReport_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
         
 
