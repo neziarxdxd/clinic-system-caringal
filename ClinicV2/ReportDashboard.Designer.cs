@@ -39,14 +39,14 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.comboBoxTypeService = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGridType = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,7 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSalesDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridType)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridReport
@@ -146,13 +146,18 @@
             this.comboBox1.TabIndex = 4;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // comboBox6
+            // comboBoxTypeService
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(27, 342);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(232, 21);
-            this.comboBox6.TabIndex = 11;
+            this.comboBoxTypeService.FormattingEnabled = true;
+            this.comboBoxTypeService.Items.AddRange(new object[] {
+            "Service",
+            "Medicine",
+            "Lab"});
+            this.comboBoxTypeService.Location = new System.Drawing.Point(27, 342);
+            this.comboBoxTypeService.Name = "comboBoxTypeService";
+            this.comboBoxTypeService.Size = new System.Drawing.Size(232, 21);
+            this.comboBoxTypeService.TabIndex = 11;
+            this.comboBoxTypeService.SelectedIndexChanged += new System.EventHandler(this.comboBoxTypeService_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -201,17 +206,17 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Total Sales per Services";
             // 
-            // dataGridView3
+            // dataGridType
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridType.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9});
-            this.dataGridView3.Location = new System.Drawing.Point(27, 378);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(339, 185);
-            this.dataGridView3.TabIndex = 7;
+            this.dataGridType.Location = new System.Drawing.Point(27, 378);
+            this.dataGridType.Name = "dataGridType";
+            this.dataGridType.Size = new System.Drawing.Size(339, 185);
+            this.dataGridType.TabIndex = 7;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -252,11 +257,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.comboBox6);
+            this.Controls.Add(this.comboBoxTypeService);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dataGridView3);
+            this.Controls.Add(this.dataGridType);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataSalesDate);
@@ -268,7 +273,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSalesDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridType)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,14 +292,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox comboBoxTypeService;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dataGridType;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;

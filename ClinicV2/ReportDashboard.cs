@@ -79,6 +79,32 @@ namespace ClinicV2
             databaseConnection.Close();
         }
 
+        public void getByService()
+        {
+
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+           dataGridType.Rows.Clear();
+           dataGridType.Refresh();
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = databaseConnection.CreateCommand();
+            databaseConnection.Open();
+            commandDatabase.CommandText = @"SELECT tbl_list_service.service_name,SUM(total) 
+                                            from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where 
+                                            tbl_service.type=@type group by service_name";
+            commandDatabase.Parameters.AddWithValue("@type", todayDay);
+            
+            
+
+            MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+                dataGridType.Rows.Add(dataReader.GetString(0), dataReader.GetString(2), dataReader.GetString(1));
+            }
+
+            // code here dataview
+            databaseConnection.Close();
+        }
+
         private void dataGridReport_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -110,6 +136,11 @@ namespace ClinicV2
         private void button1_Click(object sender, EventArgs e)
         {
             getByDate();
+        }
+
+        private void comboBoxTypeService_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
         
 
