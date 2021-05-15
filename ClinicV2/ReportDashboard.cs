@@ -69,7 +69,10 @@ namespace ClinicV2
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            Console.WriteLine(dateTimePicker1.Text);
+            string month = dateTimePicker1.Value.ToString("MM");
+            string day = dateTimePicker1.Value.ToString("DD");
+            string year= dateTimePicker1.Value.ToString("YYYY");
+            
         }
         
 
