@@ -14,6 +14,10 @@ namespace ClinicV2
     public partial class reportDashboard : UserControl
     {
         string doctorName;
+        static DateTime thisDay = DateTime.Today;
+        string todayDay = thisDay.ToString("MM");
+        string todayMonth = thisDay.ToString("dd");
+        string todayYear = thisDay.ToString("yyyy");
         public reportDashboard()
         {
             InitializeComponent();
@@ -47,6 +51,34 @@ namespace ClinicV2
             databaseConnection.Close();
         }
 
+        public void getByDate()
+        {
+
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+            dataSalesDate.Rows.Clear();
+            dataSalesDate.Refresh();
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = databaseConnection.CreateCommand();
+            databaseConnection.Open();
+            commandDatabase.CommandText = @"SELECT tbl_list_service.service_name,SUM(total) as total_sale,sum(quantity) as total_quantity 
+                                           from tbl_list_service 
+                                           inner join tbl_service on tbl_list_service.service_name= tbl_service.service_name 
+                                           where MONTH(date)=@month and DAY(date)=@day and YEAR(date)=@year 
+                                           group by service_name";
+            commandDatabase.Parameters.AddWithValue("@day", todayDay);
+            commandDatabase.Parameters.AddWithValue("@month", todayMonth);
+            commandDatabase.Parameters.AddWithValue("@year", todayYear);
+
+            MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+                dataSalesDate.Rows.Add(dataReader.GetString(0), dataReader.GetString(2), dataReader.GetString(1));
+            }
+
+            // code here dataview
+            databaseConnection.Close();
+        }
+
         private void dataGridReport_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -69,10 +101,15 @@ namespace ClinicV2
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            string month = dateTimePicker1.Value.ToString("MM");
-            string day = dateTimePicker1.Value.ToString("DD");
-            string year= dateTimePicker1.Value.ToString("YYYY");
+            todayMonth = dateTimePicker1.Value.ToString("MM");
+            todayDay = dateTimePicker1.Value.ToString("dd");
+            todayYear = dateTimePicker1.Value.ToString("yyyy");
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            getByDate();
         }
         
 
