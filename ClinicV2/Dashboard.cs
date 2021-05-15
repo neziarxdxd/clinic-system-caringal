@@ -77,6 +77,7 @@ namespace ClinicV2
         {
             services_dashboard1.Hide();
             regular_patient1.Hide();
+            reportDashboard1.Hide();
                
         }
 
@@ -94,6 +95,7 @@ namespace ClinicV2
         {
             services_dashboard1.Hide();
             regular_patient1.Hide();
+            reportDashboard1.Hide();
             home1.Show();
             home1.BringToFront();
         }
@@ -102,6 +104,7 @@ namespace ClinicV2
         {
             services_dashboard1.Hide();
             regular_patient1.Hide();
+            reportDashboard1.Hide();
             home1.Show();
             home1.Refresh();
             home1.BringToFront();
@@ -112,12 +115,33 @@ namespace ClinicV2
            
             home1.Hide();
             regular_patient1.Hide();
+            reportDashboard1.Hide();
             services_dashboard1.Show();
             services_dashboard1.Refresh();
             services_dashboard1.BringToFront();
         }
 
         private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            home1.Hide();
+            regular_patient1.Hide();          
+            services_dashboard1.Hide();
+            reportDashboard1.Show();
+            reportDashboard1.Refresh();
+            reportDashboard1.BringToFront();
+        }
+
+        private void reportDashboard1_Load(object sender, EventArgs e)
         {
 
         }

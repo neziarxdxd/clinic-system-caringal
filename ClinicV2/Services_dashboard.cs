@@ -182,6 +182,11 @@ namespace ClinicV2
             }
         }
 
+        private void comboBoxType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         
     }
 }

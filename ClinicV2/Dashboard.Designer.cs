@@ -36,9 +36,10 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.services_dashboard1 = new ClinicV2.Services_dashboard();
             this.regular_patient1 = new ClinicV2.regular_patient();
             this.home1 = new ClinicV2.Home();
-            this.services_dashboard1 = new ClinicV2.Services_dashboard();
+            this.reportDashboard1 = new ClinicV2.reportDashboard();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +58,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(213, 653);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button3
             // 
@@ -77,6 +79,7 @@
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // button4
             // 
@@ -202,6 +205,14 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // services_dashboard1
+            // 
+            this.services_dashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.services_dashboard1.Location = new System.Drawing.Point(213, 0);
+            this.services_dashboard1.Name = "services_dashboard1";
+            this.services_dashboard1.Size = new System.Drawing.Size(909, 653);
+            this.services_dashboard1.TabIndex = 3;
+            // 
             // regular_patient1
             // 
             this.regular_patient1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -220,19 +231,21 @@
             this.home1.TabIndex = 1;
             this.home1.Load += new System.EventHandler(this.home1_Load);
             // 
-            // services_dashboard1
+            // reportDashboard1
             // 
-            this.services_dashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.services_dashboard1.Location = new System.Drawing.Point(213, 0);
-            this.services_dashboard1.Name = "services_dashboard1";
-            this.services_dashboard1.Size = new System.Drawing.Size(909, 653);
-            this.services_dashboard1.TabIndex = 3;
+            this.reportDashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportDashboard1.Location = new System.Drawing.Point(213, 0);
+            this.reportDashboard1.Name = "reportDashboard1";
+            this.reportDashboard1.Size = new System.Drawing.Size(909, 653);
+            this.reportDashboard1.TabIndex = 4;
+            this.reportDashboard1.Load += new System.EventHandler(this.reportDashboard1_Load);
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1122, 653);
+            this.Controls.Add(this.reportDashboard1);
             this.Controls.Add(this.services_dashboard1);
             this.Controls.Add(this.regular_patient1);
             this.Controls.Add(this.home1);
@@ -258,5 +271,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private Services_dashboard services_dashboard1;
+        private reportDashboard reportDashboard1;
     }
 }
