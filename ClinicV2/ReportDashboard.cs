@@ -18,14 +18,17 @@ namespace ClinicV2
         string todayDay = thisDay.ToString("MM");
         string todayMonth = thisDay.ToString("dd");
         string todayYear = thisDay.ToString("yyyy");
+        string typeString;
+        
         public reportDashboard()
         {
+            
             InitializeComponent();
         }
 
         private void ReportDashboard_Load(object sender, EventArgs e)
         {
-           
+            getGrandTotal();
         }
 
         public void getDoctorData()
@@ -88,10 +91,10 @@ namespace ClinicV2
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = databaseConnection.CreateCommand();
             databaseConnection.Open();
-            commandDatabase.CommandText = @"SELECT tbl_list_service.service_name,SUM(total) 
+            commandDatabase.CommandText = @"SELECT tbl_list_service.service_name,SUM(total) as total_sale,sum(quantity) as total_quantity
                                             from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where 
                                             tbl_service.type=@type group by service_name";
-            commandDatabase.Parameters.AddWithValue("@type", todayDay);
+            commandDatabase.Parameters.AddWithValue("@type", typeString);
             
             
 
@@ -104,6 +107,32 @@ namespace ClinicV2
             // code here dataview
             databaseConnection.Close();
         }
+
+        public void getGrandTotal()
+        {
+
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+            dataGridView2.Rows.Clear();
+            dataGridView2.Refresh();
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = databaseConnection.CreateCommand();
+            databaseConnection.Open();
+            commandDatabase.CommandText = @"SELECT tbl_list_service.service_name,SUM(total) as total_sale,sum(quantity) as total_quantity
+                                            from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name group by service_name";
+            
+
+
+
+            MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+                dataGridView2.Rows.Add(dataReader.GetString(0), dataReader.GetString(2), dataReader.GetString(1));
+            }
+
+            // code here dataview
+            databaseConnection.Close();
+        }
+
 
         private void dataGridReport_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -140,7 +169,16 @@ namespace ClinicV2
 
         private void comboBoxTypeService_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (comboBoxTypeService.SelectedIndex == -1)
+            {
+                
+               
+            }
+            else
+            {
+                typeString= comboBoxTypeService.Text;
+                getByService();
+            }
         }
         
 

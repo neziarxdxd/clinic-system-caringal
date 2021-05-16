@@ -148,6 +148,7 @@
             // 
             // comboBoxTypeService
             // 
+            this.comboBoxTypeService.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTypeService.FormattingEnabled = true;
             this.comboBoxTypeService.Items.AddRange(new object[] {
             "Service",
