@@ -93,6 +93,7 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataReportAdd.cs" />
     <Compile Include="DGVPrinter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -105,6 +106,12 @@
     </Compile>
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPrinting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPrinting.Designer.cs">
+      <DependentUpon>FormPrinting.cs</DependentUpon>
     </Compile>
     <Compile Include="Home.cs">
       <SubType>UserControl</SubType>
@@ -133,6 +140,7 @@
     <Compile Include="reportDashboard.Designer.cs">
       <DependentUpon>reportDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportDataClass.cs" />
     <Compile Include="Services.cs" />
     <Compile Include="Services_dashboard.cs">
       <SubType>UserControl</SubType>
@@ -151,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrinting.resx">
+      <DependentUpon>FormPrinting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
@@ -173,14 +184,47 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="Report2.rdlc" />
+    <EmbeddedResource Include="ReportSales.rdlc" />
     <EmbeddedResource Include="reportDashboard.resx">
       <DependentUpon>reportDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Services_dashboard.resx">
       <DependentUpon>Services_dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="ClinicV2_TemporaryKey.pfx" />
+    <None Include="Properties\DataSources\ClientDetails.datasource" />
+    <None Include="Properties\DataSources\ClinicV2.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\ClinicV2.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\Dashboard.datasource" />
+    <None Include="Properties\DataSources\DGVPrinterHelper.DGVCellDrawingEventArgs.datasource" />
+    <None Include="Properties\DataSources\DGVPrinterHelper.DGVPrinter+Alignment.datasource" />
+    <None Include="Properties\DataSources\DGVPrinterHelper.DGVPrinter+ColumnWidthSetting.datasource" />
+    <None Include="Properties\DataSources\DGVPrinterHelper.DGVPrinter+ImbeddedImage.datasource" />
+    <None Include="Properties\DataSources\DGVPrinterHelper.DGVPrinter+Location.datasource" />
+    <None Include="Properties\DataSources\DGVPrinterHelper.DGVPrinter+PrintDialogSettingsClass.datasource" />
+    <None Include="Properties\DataSources\DGVPrinterHelper.DGVPrinter+PrintLocation.datasource" />
+    <None Include="Properties\DataSources\DGVPrinterHelper.DGVPrinter+rowdata.datasource" />
+    <None Include="Properties\DataSources\DGVPrinterHelper.DGVPrinter+RowHeightSetting.datasource" />
+    <None Include="Properties\DataSources\DGVPrinterHelper.DGVPrinter+SizeType.datasource" />
+    <None Include="Properties\DataSources\DGVPrinterHelper.DGVPrinter.datasource" />
+    <None Include="Properties\DataSources\DGVPrinterHelper.Extensions.datasource" />
+    <None Include="Properties\DataSources\DGVPrinterHelper.LogManager+Categories.datasource" />
+    <None Include="Properties\DataSources\DGVPrinterHelper.LogManager.datasource" />
+    <None Include="Properties\DataSources\DGVPrinterHelper.LogWriter.datasource" />
+    <None Include="Properties\DataSources\DoctorEden.datasource" />
+    <None Include="Properties\DataSources\DoctorEmm.datasource" />
+    <None Include="Properties\DataSources\Form1.datasource" />
+    <None Include="Properties\DataSources\Form2.datasource" />
+    <None Include="Properties\DataSources\Home.datasource" />
+    <None Include="Properties\DataSources\ListOfCustomer.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\regular_patient.datasource" />
+    <None Include="Properties\DataSources\reportDashboard.datasource" />
+    <None Include="Properties\DataSources\ReportDataClass.datasource" />
+    <None Include="Properties\DataSources\ServiceName.datasource" />
     <None Include="Properties\DataSources\Services.datasource" />
+    <None Include="Properties\DataSources\Services_dashboard.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

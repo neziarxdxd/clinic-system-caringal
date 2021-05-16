@@ -10,17 +10,6 @@ c:\users\my-pc\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug
 c:\users\my-pc\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Dashboard.resources
 C:\Users\MY-PC\Documents\Visual Studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Home.resources
 C:\Users\MY-PC\documents\visual studio 2012\Projects\ClinicV2\ClinicV2\obj\Debug\ClinicV2.regular_patient.resources
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe.config
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.exe
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.pdb
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.pdb
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Dashboard.resources
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Form1.resources
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Home.resources
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Properties.Resources.resources
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.regular_patient.resources
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csproj.GenerateResource.Cache
 C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\bin\Debug\ClinicV2.exe.config
 C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\ClinicV2.exe
 C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\ClinicV2.pdb
@@ -35,15 +24,27 @@ C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\ClinicV2.regular_patien
 C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\ClinicV2.csproj.GenerateResource.Cache
 C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\RdlCompile.cache
 C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\RdlCompile.compiled
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Form2.resources
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\RdlCompile.cache
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\RdlCompile.compiled
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Services_dashboard.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe.config
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe.manifest
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.application
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.pdb
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.ClientDetails.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Dashboard.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Form1.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Form2.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.FormPrinting.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Home.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.ListOfCustomer.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Properties.Resources.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.regular_patient.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.reportDashboard.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Services_dashboard.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csproj.GenerateResource.Cache
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\RdlCompile.cache
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\RdlCompile.compiled
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.exe.manifest
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.application
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.ListOfCustomer.resources
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.ClientDetails.resources
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.ReportDashboard.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.exe
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.pdb
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csprojResolveAssemblyReference.cache

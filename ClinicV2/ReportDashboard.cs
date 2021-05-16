@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Microsoft.Reporting.WinForms;
 
 namespace ClinicV2
 {
@@ -29,6 +30,130 @@ namespace ClinicV2
         private void ReportDashboard_Load(object sender, EventArgs e)
         {
             getGrandTotal();
+        }
+
+        private List<ServiceName> getGenerateService()
+        {
+
+
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+            List<ServiceName> listServiceName = new List<ServiceName>();
+            listServiceName.Clear();
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = databaseConnection.CreateCommand();
+            databaseConnection.Open();
+            commandDatabase.CommandText = @"SELECT tbl_list_service.service_name,SUM(total) as total_sale,sum(quantity) as total_quantity
+                                            from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where 
+                                            tbl_service.type='Service' group by service_name";
+            
+
+
+
+            MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+                ServiceName serviceName = new ServiceName
+                {
+                    quantityService = dataReader.GetString(2),
+                    serviceNameService = dataReader.GetString(0),
+                    totalService = dataReader.GetString(1)
+                };
+                listServiceName.Add(serviceName);
+                
+            }
+
+            // code here dataview
+            databaseConnection.Close();
+            return listServiceName;
+        }
+
+
+        private List<DoctorEmm> getGenerteDoctorEmmanuelReport()
+        {
+
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+            List<DoctorEmm> doctorEmmanuelList = new List<DoctorEmm>();
+            doctorEmmanuelList.Clear();
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = databaseConnection.CreateCommand();
+            databaseConnection.Open();
+            commandDatabase.CommandText = @"SELECT tbl_list_service.service_name,SUM(total) as total_sale,sum(quantity) as total_quantity 
+                                    from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name 
+                                    where tbl_service.type='Service' and doctor_name='Dr. Diosdado Emmanuel S. Caringal' group by service_name";
+            
+            MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+                DoctorEmm doctorEmm = new DoctorEmm { 
+                quantityDoctorEmm  =dataReader.GetString(2),
+                serviceNameDoctorEmm = dataReader.GetString(0),
+                totalDoctorEmm = dataReader.GetString(1)
+                };
+                doctorEmmanuelList.Add(doctorEmm);
+            }
+
+            // code here dataview
+            databaseConnection.Close();
+
+            return doctorEmmanuelList;
+        }
+
+        private List<DoctorEden> getGenerteDoctorEdenReport()
+        {
+
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+            List<DoctorEden> doctorEden = new List<DoctorEden>();
+            doctorEden.Clear();
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = databaseConnection.CreateCommand();
+            databaseConnection.Open();
+            commandDatabase.CommandText = @"SELECT tbl_list_service.service_name,SUM(total) as total_sale,sum(quantity) as total_quantity 
+                                    from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name 
+                                    where tbl_service.type='Service' and doctor_name='Dra. Eden Caringal' group by service_name";
+
+            MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+                DoctorEden doctorEmm = new DoctorEden
+                {
+                    quantityDoctorEden= dataReader.GetString(2),
+                    serviceNameDoctorEden = dataReader.GetString(0),
+                    totalDoctorEden= dataReader.GetString(1)
+                };
+                doctorEden.Add(doctorEmm);
+            }
+
+            // code here dataview
+            databaseConnection.Close();
+
+            return doctorEden;
+        }
+
+        ReportDataSource doctorEmmDataSource = new ReportDataSource();
+        ReportDataSource doctorEddenDataSource = new ReportDataSource();
+        ReportDataSource serviceDataSource = new ReportDataSource();
+        public void printGenerate() {
+            ReportParameterCollection reportParameters = new ReportParameterCollection();
+            List<DoctorEmm> listDoctorEmm = getGenerteDoctorEmmanuelReport();
+            List<DoctorEden> listdoctorEden = getGenerteDoctorEdenReport();
+            List<ServiceName> listService = getGenerateService();
+            doctorEmmDataSource.Name = "DataSet1";
+            doctorEmmDataSource.Value = listDoctorEmm;
+            doctorEddenDataSource.Name = "DataSet2";
+            doctorEddenDataSource.Value = listdoctorEden;
+            serviceDataSource.Name = "DataSet3";
+            serviceDataSource.Value = listService;
+            FormPrinting form = new FormPrinting();
+            form.reportViewerGeneratePrint.LocalReport.DataSources.Clear();
+            form.reportViewerGeneratePrint.LocalReport.DataSources.Add(doctorEddenDataSource);
+            form.reportViewerGeneratePrint.LocalReport.DataSources.Add(doctorEmmDataSource);
+            form.reportViewerGeneratePrint.LocalReport.DataSources.Add(serviceDataSource);  
+            form.reportViewerGeneratePrint.LocalReport.ReportEmbeddedResource = "ClinicV2.ReportSales.rdlc";
+            form.ShowDialog();
+            
+
+
+        
         }
 
         public void getDoctorData()
@@ -179,6 +304,37 @@ namespace ClinicV2
                 typeString= comboBoxTypeService.Text;
                 getByService();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            printGenerate();
+        }
+        ReportDataSource rs = new ReportDataSource();
+        public void printReceipt()
+        {
+            DateTime dateTime = DateTime.Now;
+            /**
+            ReportParameterCollection reportParameters = new ReportParameterCollection();
+            reportParameters.Add(new ReportParameter("parameterCustomer", txtBoxName.Text));
+            reportParameters.Add(new ReportParameter("parameterDate", dateTime.ToString("dddd, dd MMMM yyyy")));
+            reportParameters.Add(new ReportParameter("parameterAddress", txtBoxAddress.Text));
+            reportParameters.Add(new ReportParameter("parameterTotalPrice", textBoxTotalPrice.Text));
+            reportParameters.Add(new ReportParameter("parameterPhysician", comboBox1.Text));
+            reportParameters.Add(new ReportParameter("parameterPrepared", comboBoxPrepared.Text));
+            reportParameters.Add(new ReportParameter("parameterModeOfPayment", txtBoxModeOfPayment.Text));
+
+            List<Services> listServices = getListOfServices();
+    
+            rs.Name = "DataSet1";
+            rs.Value = listServices;
+            Form2 form = new Form2();
+            form.reportViewer1.LocalReport.DataSources.Clear();
+            form.reportViewer1.LocalReport.DataSources.Add(rs);
+            form.reportViewer1.LocalReport.SetParameters(reportParameters);
+            form.reportViewer1.LocalReport.ReportEmbeddedResource = "ClinicV2.Report1.rdlc";
+            form.ShowDialog();
+                     **/
         }
         
 
