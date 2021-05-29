@@ -51,4 +51,14 @@ namespace ClinicV2
         public string quantityGrand { get; set; }
         public string totalGrand { get; set; }
     }
+
+    class Weekly {
+        public string weekNth{ get; set; }       
+        public string totalGrand { get; set; }
+ 
+    }
+    class Monthly {
+        public string monthNth { get; set; }
+        public string totalGrand { get; set; }
+    }
 }

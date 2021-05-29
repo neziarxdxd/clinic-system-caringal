@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\MY-PC\Desktop\dfd\</PublishUrl>
+    <PublishUrl>C:\Users\MY-PC\Desktop\Second Released\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,9 +23,9 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>Clinic System</ProductName>
-    <PublisherName>thecodecampph</PublisherName>
+    <PublisherName>Caringal Family</PublisherName>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationRevision>11</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -216,8 +216,12 @@
     <None Include="Properties\DataSources\DoctorEmm.datasource" />
     <None Include="Properties\DataSources\Form1.datasource" />
     <None Include="Properties\DataSources\Form2.datasource" />
+    <None Include="Properties\DataSources\GrandTotal.datasource" />
     <None Include="Properties\DataSources\Home.datasource" />
+    <None Include="Properties\DataSources\Lab.datasource" />
     <None Include="Properties\DataSources\ListOfCustomer.datasource" />
+    <None Include="Properties\DataSources\Medicine.datasource" />
+    <None Include="Properties\DataSources\Monthly.datasource" />
     <None Include="Properties\DataSources\Program.datasource" />
     <None Include="Properties\DataSources\regular_patient.datasource" />
     <None Include="Properties\DataSources\reportDashboard.datasource" />
@@ -225,6 +229,7 @@
     <None Include="Properties\DataSources\ServiceName.datasource" />
     <None Include="Properties\DataSources\Services.datasource" />
     <None Include="Properties\DataSources\Services_dashboard.datasource" />
+    <None Include="Properties\DataSources\Weekly.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

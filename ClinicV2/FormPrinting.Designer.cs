@@ -40,6 +40,7 @@
             // 
             // reportViewerGeneratePrint
             // 
+            this.reportViewerGeneratePrint.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "DataSet1";
             reportDataSource1.Value = this.DoctorEmmBindingSource;
             reportDataSource2.Name = "DataSet2";
@@ -47,9 +48,9 @@
             this.reportViewerGeneratePrint.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewerGeneratePrint.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewerGeneratePrint.LocalReport.ReportEmbeddedResource = "ClinicV2.ReportSales.rdlc";
-            this.reportViewerGeneratePrint.Location = new System.Drawing.Point(24, 12);
+            this.reportViewerGeneratePrint.Location = new System.Drawing.Point(0, 0);
             this.reportViewerGeneratePrint.Name = "reportViewerGeneratePrint";
-            this.reportViewerGeneratePrint.Size = new System.Drawing.Size(751, 288);
+            this.reportViewerGeneratePrint.Size = new System.Drawing.Size(810, 324);
             this.reportViewerGeneratePrint.TabIndex = 0;
             this.reportViewerGeneratePrint.Load += new System.EventHandler(this.reportViewer1_Load);
             // 

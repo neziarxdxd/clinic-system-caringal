@@ -178,9 +178,9 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.dataGridView2.Location = new System.Drawing.Point(407, 353);
+            this.dataGridView2.Location = new System.Drawing.Point(407, 378);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(342, 210);
+            this.dataGridView2.Size = new System.Drawing.Size(342, 185);
             this.dataGridView2.TabIndex = 9;
             // 
             // dataGridViewTextBoxColumn4
@@ -237,7 +237,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(417, 61);
+            this.dateTimePicker1.Location = new System.Drawing.Point(406, 62);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 12;
@@ -245,22 +245,25 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(633, 58);
+            this.button1.Location = new System.Drawing.Point(612, 59);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(116, 23);
             this.button1.TabIndex = 13;
-            this.button1.Text = "button1";
+            this.button1.Text = "show day sale";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(557, 569);
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(161)))), ((int)(((byte)(140)))));
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(498, 581);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(173, 39);
+            this.button2.Size = new System.Drawing.Size(251, 56);
             this.button2.TabIndex = 14;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Text = "PRINT REPORT";
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // reportDashboard
@@ -281,7 +284,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridReport);
             this.Name = "reportDashboard";
-            this.Size = new System.Drawing.Size(918, 640);
+            this.Size = new System.Drawing.Size(918, 661);
             this.Load += new System.EventHandler(this.ReportDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSalesDate)).EndInit();

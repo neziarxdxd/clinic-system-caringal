@@ -123,7 +123,8 @@ namespace ClinicV2
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Goodbye");
+            Application.Exit();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

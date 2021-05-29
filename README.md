@@ -25,3 +25,7 @@ SELECT tbl_list_service.service_name,SUM(total) from tbl_list_service inner join
 SELECT * FROM `tbl_list_service` WHERE month(date) = 05 and day(date) = 02
 ```
 
+```
+SELECT tbl_list_service.service_name,SUM(total), month(date) from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name group by month(date)
+```
+

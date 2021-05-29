@@ -32,6 +32,176 @@ namespace ClinicV2
             getGrandTotal();
         }
 
+        private List<Monthly> generateMonthly()
+        {
+
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+            List<Monthly> listMonth = new List<Monthly>();
+            listMonth.Clear();
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = databaseConnection.CreateCommand();
+            databaseConnection.Open();
+            commandDatabase.CommandText = @"SELECT monthname(date),SUM(total), month(date) from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name group by month(date)";
+
+
+
+
+            MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+                Monthly lab = new Monthly
+                {
+                    monthNth = dataReader.GetString(0),
+                    totalGrand = dataReader.GetString(1),
+
+                };
+                listMonth.Add(lab);
+
+            }
+
+            // code here dataview
+            databaseConnection.Close();
+            return listMonth;
+        }
+
+        private List<Weekly> generateWeekly()
+        {
+
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+            List<Weekly> listWeek = new List<Weekly>();
+            listWeek.Clear();
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = databaseConnection.CreateCommand();
+            databaseConnection.Open();
+            commandDatabase.CommandText = @"SELECT CONCAT('Week #',week(date) ),SUM(total), monthname(date) from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name group by week(date)";
+
+
+
+
+            MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+                Weekly lab = new Weekly
+                {
+                    weekNth = dataReader.GetString(0),
+                    totalGrand = dataReader.GetString(1),
+                    
+                };
+                listWeek.Add(lab);
+
+            }
+
+            // code here dataview
+            databaseConnection.Close();
+            return listWeek;
+        }
+
+        private List<GrandTotal> generateGetGrandTotal()
+        {
+
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+            List<GrandTotal> listGrandTotal = new List<GrandTotal>();
+            listGrandTotal.Clear();
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = databaseConnection.CreateCommand();
+            databaseConnection.Open();
+            commandDatabase.CommandText = @"SELECT tbl_list_service.service_name,SUM(total) as total_sale,sum(quantity) as total_quantity
+                                            from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name group by service_name";
+
+
+
+
+            MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+                GrandTotal lab = new GrandTotal
+                {
+                    quantityGrand = dataReader.GetString(2),
+                    serviceNameGrand = dataReader.GetString(0),
+                    totalGrand = dataReader.GetString(1)
+                };
+                listGrandTotal.Add(lab);
+
+            }
+
+            // code here dataview
+            databaseConnection.Close();
+            return listGrandTotal;
+        }
+
+
+        private List<Lab> getGenerateLab()
+        {
+
+
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+            List<Lab> listLab = new List<Lab>();
+            listLab.Clear();
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = databaseConnection.CreateCommand();
+            databaseConnection.Open();
+            commandDatabase.CommandText = @"SELECT tbl_list_service.service_name,SUM(total) as total_sale,sum(quantity) as total_quantity
+                                            from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where 
+                                            tbl_service.type='Lab' group by service_name";
+
+
+
+
+            MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+                Lab lab = new Lab
+                {
+                    quantityLab = dataReader.GetString(2),
+                    serviceNameLab = dataReader.GetString(0),
+                    totalLab = dataReader.GetString(1)
+                };
+                listLab.Add(lab);
+
+            }
+
+            // code here dataview
+            databaseConnection.Close();
+            return listLab;
+        }
+
+
+
+        private List<Medicine> getGenerateMedicine()
+        {
+
+
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+            List<Medicine> listMedicine = new List<Medicine>();
+            listMedicine.Clear();
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = databaseConnection.CreateCommand();
+            databaseConnection.Open();
+            commandDatabase.CommandText = @"SELECT tbl_list_service.service_name,SUM(total) as total_sale,sum(quantity) as total_quantity
+                                            from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where 
+                                            tbl_service.type='Medicine' group by service_name";
+
+
+
+
+            MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+                Medicine medicine = new Medicine
+                {
+                    quantityMedicine = dataReader.GetString(2),
+                    serviceNameMedicine = dataReader.GetString(0),
+                    totalMedicine = dataReader.GetString(1)
+                };
+                listMedicine.Add(medicine);
+
+            }
+
+            // code here dataview
+            databaseConnection.Close();
+            return listMedicine;
+        }
+
         private List<ServiceName> getGenerateService()
         {
 
@@ -132,22 +302,58 @@ namespace ClinicV2
         ReportDataSource doctorEmmDataSource = new ReportDataSource();
         ReportDataSource doctorEddenDataSource = new ReportDataSource();
         ReportDataSource serviceDataSource = new ReportDataSource();
+        ReportDataSource medecineDataSource = new ReportDataSource();
+        ReportDataSource labDataSource = new ReportDataSource();
+        ReportDataSource grandTotalDataSource = new ReportDataSource();
+        ReportDataSource weekDataSource = new ReportDataSource();
+        ReportDataSource monthDataSource = new ReportDataSource();
         public void printGenerate() {
             ReportParameterCollection reportParameters = new ReportParameterCollection();
             List<DoctorEmm> listDoctorEmm = getGenerteDoctorEmmanuelReport();
             List<DoctorEden> listdoctorEden = getGenerteDoctorEdenReport();
             List<ServiceName> listService = getGenerateService();
+            List<Medicine> listMedicine = getGenerateMedicine();
+            List<Lab> listLab = getGenerateLab();
+            List<GrandTotal> listGrandTotal = generateGetGrandTotal();
+            List<Weekly> listWeekTotal = generateWeekly();
+            List<Monthly> listMonthTotal = generateMonthly();
+                       
+
             doctorEmmDataSource.Name = "DataSet1";
             doctorEmmDataSource.Value = listDoctorEmm;
             doctorEddenDataSource.Name = "DataSet2";
             doctorEddenDataSource.Value = listdoctorEden;
             serviceDataSource.Name = "DataSet3";
             serviceDataSource.Value = listService;
+
+            medecineDataSource.Name = "DataSet4";
+            medecineDataSource.Value = listMedicine;
+
+            labDataSource.Name = "DataSet5";
+            labDataSource.Value = listLab;
+
+            monthDataSource.Name = "DataSet7";
+            monthDataSource.Value = listMonthTotal;
+
+            grandTotalDataSource.Name = "DataSet6";
+            grandTotalDataSource.Value = listGrandTotal;
+
+
+            weekDataSource.Name = "DataSet8";
+            weekDataSource.Value = listWeekTotal;
+
+
+
             FormPrinting form = new FormPrinting();
             form.reportViewerGeneratePrint.LocalReport.DataSources.Clear();
             form.reportViewerGeneratePrint.LocalReport.DataSources.Add(doctorEddenDataSource);
             form.reportViewerGeneratePrint.LocalReport.DataSources.Add(doctorEmmDataSource);
-            form.reportViewerGeneratePrint.LocalReport.DataSources.Add(serviceDataSource);  
+            form.reportViewerGeneratePrint.LocalReport.DataSources.Add(serviceDataSource);
+            form.reportViewerGeneratePrint.LocalReport.DataSources.Add(medecineDataSource);
+            form.reportViewerGeneratePrint.LocalReport.DataSources.Add(labDataSource);
+            form.reportViewerGeneratePrint.LocalReport.DataSources.Add(grandTotalDataSource);
+            form.reportViewerGeneratePrint.LocalReport.DataSources.Add(weekDataSource);
+            form.reportViewerGeneratePrint.LocalReport.DataSources.Add(monthDataSource);
             form.reportViewerGeneratePrint.LocalReport.ReportEmbeddedResource = "ClinicV2.ReportSales.rdlc";
             form.ShowDialog();
             
