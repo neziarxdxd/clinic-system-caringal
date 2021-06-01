@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace ClinicV2
 {
@@ -32,6 +33,34 @@ namespace ClinicV2
         private void button9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void getSummaryReport() {
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+            
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = databaseConnection.CreateCommand();
+            databaseConnection.Open();
+            commandDatabase.CommandText = @"SELECT SUM(price) FROM tbl_list_service WHERE DATE(`date`) = CURDATE()";
+
+
+
+
+            MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+                dataReader.GetString(0);
+            }
         }
     }
 }

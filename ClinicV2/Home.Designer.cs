@@ -217,6 +217,7 @@
             this.label3.Size = new System.Drawing.Size(45, 32);
             this.label3.TabIndex = 34;
             this.label3.Text = "15";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -245,6 +246,7 @@
             this.button10.Text = "REGULAR PATIENTS";
             this.button10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button9
             // 

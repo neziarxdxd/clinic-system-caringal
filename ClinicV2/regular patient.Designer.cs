@@ -168,7 +168,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(686, 619);
+            this.button2.Location = new System.Drawing.Point(680, 619);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(124, 38);
             this.button2.TabIndex = 56;
@@ -292,9 +292,9 @@
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Location = new System.Drawing.Point(24, 419);
+            this.panel1.Location = new System.Drawing.Point(39, 419);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(371, 184);
+            this.panel1.Size = new System.Drawing.Size(329, 184);
             this.panel1.TabIndex = 67;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
@@ -308,7 +308,7 @@
             0,
             0});
             this.txtBoxPrice.Name = "txtBoxPrice";
-            this.txtBoxPrice.Size = new System.Drawing.Size(232, 27);
+            this.txtBoxPrice.Size = new System.Drawing.Size(200, 27);
             this.txtBoxPrice.TabIndex = 76;
             this.txtBoxPrice.ValueChanged += new System.EventHandler(this.txtBoxPrice_ValueChanged);
             // 
@@ -322,7 +322,7 @@
             0,
             0});
             this.txtBoxQuantity.Name = "txtBoxQuantity";
-            this.txtBoxQuantity.Size = new System.Drawing.Size(232, 27);
+            this.txtBoxQuantity.Size = new System.Drawing.Size(200, 27);
             this.txtBoxQuantity.TabIndex = 75;
             // 
             // label11
@@ -344,7 +344,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(235, 131);
+            this.button4.Location = new System.Drawing.Point(159, 131);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(124, 38);
             this.button4.TabIndex = 71;
@@ -359,7 +359,7 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(102, 131);
+            this.button5.Location = new System.Drawing.Point(16, 131);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(124, 38);
             this.button5.TabIndex = 70;
@@ -399,7 +399,7 @@
             this.comboBox2.ItemHeight = 20;
             this.comboBox2.Location = new System.Drawing.Point(113, 16);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(232, 28);
+            this.comboBox2.Size = new System.Drawing.Size(200, 28);
             this.comboBox2.TabIndex = 72;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
@@ -408,7 +408,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(34, 621);
+            this.label5.Location = new System.Drawing.Point(46, 621);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 36);
             this.label5.TabIndex = 68;
@@ -472,7 +472,7 @@
             this.textBoxTotalPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTotalPrice.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxTotalPrice.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.textBoxTotalPrice.Location = new System.Drawing.Point(545, 483);
+            this.textBoxTotalPrice.Location = new System.Drawing.Point(149, 621);
             this.textBoxTotalPrice.Name = "textBoxTotalPrice";
             this.textBoxTotalPrice.ReadOnly = true;
             this.textBoxTotalPrice.Size = new System.Drawing.Size(325, 36);
@@ -605,9 +605,9 @@
             this.panel2.Controls.Add(this.label19);
             this.panel2.Controls.Add(this.label20);
             this.panel2.Controls.Add(this.comboBox3);
-            this.panel2.Location = new System.Drawing.Point(401, 419);
+            this.panel2.Location = new System.Drawing.Point(385, 419);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(371, 184);
+            this.panel2.Size = new System.Drawing.Size(358, 184);
             this.panel2.TabIndex = 77;
             // 
             // numericUpDown1
@@ -654,7 +654,7 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(235, 131);
+            this.button6.Location = new System.Drawing.Point(199, 131);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(124, 38);
             this.button6.TabIndex = 71;
@@ -668,7 +668,7 @@
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(102, 131);
+            this.button7.Location = new System.Drawing.Point(60, 131);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(124, 38);
             this.button7.TabIndex = 70;
@@ -693,9 +693,9 @@
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label20.Location = new System.Drawing.Point(12, 23);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(70, 21);
+            this.label20.Size = new System.Drawing.Size(88, 21);
             this.label20.TabIndex = 70;
-            this.label20.Text = "Service";
+            this.label20.Text = "Medicine";
             // 
             // comboBox3
             // 
@@ -720,7 +720,7 @@
             this.panel3.Controls.Add(this.label22);
             this.panel3.Controls.Add(this.label23);
             this.panel3.Controls.Add(this.comboBox4);
-            this.panel3.Location = new System.Drawing.Point(778, 419);
+            this.panel3.Location = new System.Drawing.Point(749, 419);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(371, 184);
             this.panel3.TabIndex = 78;
@@ -806,11 +806,11 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label23.Location = new System.Drawing.Point(12, 23);
+            this.label23.Location = new System.Drawing.Point(12, 18);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(70, 21);
+            this.label23.Size = new System.Drawing.Size(42, 21);
             this.label23.TabIndex = 70;
-            this.label23.Text = "Service";
+            this.label23.Text = "Lab";
             // 
             // comboBox4
             // 
@@ -861,7 +861,7 @@
             this.Controls.Add(this.label10);
             this.Name = "regular_patient";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Size = new System.Drawing.Size(1229, 679);
+            this.Size = new System.Drawing.Size(1146, 679);
             this.Load += new System.EventHandler(this.regular_patient_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
