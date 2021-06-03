@@ -240,6 +240,8 @@ namespace ClinicV2
             insertDataListOfService();
             printingConfirmation();
             setInvoiceNumber();
+            Home c = new Home();
+            c.getSummaryReport();
             setCustomerNumber();
             resetAllData();
            

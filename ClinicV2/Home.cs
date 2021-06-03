@@ -21,6 +21,7 @@ namespace ClinicV2
         private void Home_Load(object sender, EventArgs e)
         {
             timer1.Start();
+            getSummaryReport();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -46,8 +47,9 @@ namespace ClinicV2
         }
 
         public void getSummaryReport() {
+            Console.WriteLine("hehe");
             string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
-            
+            label4.Text = "";
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = databaseConnection.CreateCommand();
             databaseConnection.Open();
@@ -59,8 +61,22 @@ namespace ClinicV2
             MySqlDataReader dataReader = commandDatabase.ExecuteReader();
             while (dataReader.Read())
             {
-                dataReader.GetString(0);
+                try  { 
+                    label4.Text=dataReader.GetString(0);
+                    
+                }
+                catch (Exception e)
+                {
+                    label4.Text = "0"; 
+                }
             }
+            label4.Update();
+            databaseConnection.Close();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

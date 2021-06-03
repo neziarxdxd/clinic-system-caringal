@@ -62,7 +62,7 @@ namespace ClinicV2
             services_dashboard1.Hide();
             home1.Hide();
             regular_patient1.Show();
-            
+            home1.getSummaryReport();
             regular_patient1.BringToFront();
             regular_patient1.refreshListServices();
 
@@ -97,6 +97,7 @@ namespace ClinicV2
             regular_patient1.Hide();
             reportDashboard1.Hide();
             home1.Show();
+            home1.getSummaryReport();
             home1.BringToFront();
         }
 
