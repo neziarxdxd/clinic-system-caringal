@@ -58,9 +58,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtBoxInvoiceID = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.textBoxTotalPrice = new System.Windows.Forms.TextBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
@@ -91,6 +89,7 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.searchBarComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrice)).BeginInit();
@@ -434,14 +433,6 @@
             this.label12.TabIndex = 70;
             this.label12.Text = "Invoice ID:";
             // 
-            // textBox6
-            // 
-            this.textBox6.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(133, 60);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(220, 28);
-            this.textBox6.TabIndex = 73;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -452,20 +443,6 @@
             this.label13.Size = new System.Drawing.Size(72, 21);
             this.label13.TabIndex = 72;
             this.label13.Text = "Search:";
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(363, 58);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(65, 28);
-            this.button3.TabIndex = 74;
-            this.button3.Text = "Search";
-            this.button3.UseVisualStyleBackColor = false;
             // 
             // textBoxTotalPrice
             // 
@@ -823,10 +800,22 @@
             this.comboBox4.Size = new System.Drawing.Size(232, 28);
             this.comboBox4.TabIndex = 72;
             // 
+            // searchBarComboBox
+            // 
+            this.searchBarComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.searchBarComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchBarComboBox.FormattingEnabled = true;
+            this.searchBarComboBox.Location = new System.Drawing.Point(112, 63);
+            this.searchBarComboBox.Name = "searchBarComboBox";
+            this.searchBarComboBox.Size = new System.Drawing.Size(245, 28);
+            this.searchBarComboBox.TabIndex = 86;
+            this.searchBarComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
+            // 
             // regular_patient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.searchBarComboBox);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.txtBoxCustomerID);
@@ -838,8 +827,6 @@
             this.Controls.Add(this.txtBoxModeOfPayment);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxTotalPrice);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtBoxInvoiceID);
             this.Controls.Add(this.label15);
@@ -906,9 +893,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox txtBoxInvoiceID;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBoxTotalPrice;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
@@ -945,5 +930,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox searchBarComboBox;
     }
 }

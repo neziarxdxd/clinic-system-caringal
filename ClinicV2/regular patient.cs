@@ -79,6 +79,7 @@ namespace ClinicV2
             databaseConnection.Close();
 
             refreshListServices();
+            refreshCustomer();
            
 
 
@@ -99,6 +100,26 @@ namespace ClinicV2
             {
                 Console.WriteLine(dataReader.GetString(2));
                 comboBox2.Items.Add(dataReader.GetString(2));
+            }
+            databaseConnection.Close();
+        }
+
+        public void refreshCustomer()
+        {
+            searchBarComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            searchBarComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+            searchBarComboBox.Items.Clear();
+            MySqlDataReader dataReader;
+            MySqlCommand commandDatabase;
+            string queryService = "SELECT * FROM `tbl_customer";
+            commandDatabase = new MySqlCommand(queryService, databaseConnection);
+            databaseConnection.Open();
+
+            dataReader = commandDatabase.ExecuteReader();
+            while (dataReader.Read())
+            {
+               
+                searchBarComboBox.Items.Add(dataReader.GetString(2));
             }
             databaseConnection.Close();
         }
@@ -565,6 +586,40 @@ namespace ClinicV2
         private void button6_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (searchBarComboBox.SelectedIndex == -1)
+            {
+
+                
+
+
+            }
+            else
+            {
+                MySqlCommand command = databaseConnection.CreateCommand();
+                command.CommandText = "SELECT * FROM `tbl_customer` WHERE `customer_name`=@nameCustomer";
+                command.Parameters.AddWithValue("@nameCustomer", searchBarComboBox.Text);
+
+
+                databaseConnection.Open();
+                MySqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+
+                   txtBoxCustomerID.Text = dataReader.GetString(0);
+                   txtBoxName.Text = dataReader.GetString(2);
+                   txtBoxAddress.Text = dataReader.GetString(4);
+
+                }
+                databaseConnection.Close();
+
+
+
+            }
         }
     }
 }
