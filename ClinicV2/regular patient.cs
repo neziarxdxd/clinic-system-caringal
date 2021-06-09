@@ -98,8 +98,18 @@ namespace ClinicV2
             dataReader = commandDatabase.ExecuteReader();
             while (dataReader.Read())
             {
-                Console.WriteLine(dataReader.GetString(2));
-                comboBox2.Items.Add(dataReader.GetString(2));
+                if (dataReader.GetString(4).Equals("Medicine")) {
+                    medicinecomboBox3.Items.Add(dataReader.GetString(2));
+                }
+                else if (dataReader.GetString(4).Equals("Lab"))
+                {
+                    labcomboBox4.Items.Add(dataReader.GetString(2));
+                }
+                else
+                {
+                    Console.WriteLine(dataReader.GetString(2));
+                    comboBox2.Items.Add(dataReader.GetString(2));
+                }
             }
             databaseConnection.Close();
         }
@@ -475,6 +485,13 @@ namespace ClinicV2
 
         private void button5_Click(object sender, EventArgs e)
         {
+            buttonforService();
+            
+        }
+
+       
+        private void buttonforService()
+        {
             if (isCustomerComplete())
             {
                 MessageBox.Show("You have left a field empty ");
@@ -506,7 +523,7 @@ namespace ClinicV2
                 {
                     dataGridView1.Rows.Add(txtBoxQuantity.Value.ToString(), comboBox2.Text, txtBoxPrice.Value.ToString());
                 }
-               // compute for total per row
+                // compute for total per row
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     row.Cells[3].Value = Convert.ToDouble(row.Cells[0].Value) * Convert.ToInt16(row.Cells[2].Value);
@@ -518,7 +535,102 @@ namespace ClinicV2
                 }
                 textBoxTotalPrice.Text = "PHP. " + totalPrice.ToString("N");
             }
-            
+        }
+
+        private void buttonForLab()
+        {
+            if ((labtextboxQuantity.Value.ToString().Trim() == string.Empty) || (labtextboxQuantity.Value <= 0) ||
+                            (labtextboxFee.Value <= 0))
+            {
+                MessageBox.Show("You have left a field empty ");
+            }
+            else
+            {
+                double totalPrice = 0.00;
+
+
+                bool isFound = false;
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (Convert.ToString(row.Cells[1].Value) == labcomboBox4.Text && Convert.ToString(row.Cells[2].Value) == labtextboxFee.Value.ToString())
+                        {
+                            row.Cells[0].Value = Convert.ToString(Convert.ToInt16(labtextboxQuantity.Value) + Convert.ToInt16(row.Cells[0].Value));
+                            isFound = true;
+                        }
+
+                    }
+                    if (!isFound)
+                    {
+                        dataGridView1.Rows.Add(labtextboxQuantity.Value.ToString(), labcomboBox4.Text, labtextboxFee.Value.ToString());
+                    }
+
+                }
+                else
+                {
+                    dataGridView1.Rows.Add(labtextboxQuantity.Value.ToString(), labcomboBox4.Text, labtextboxFee.Value.ToString());
+                }
+                // compute for total per row
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    row.Cells[3].Value = Convert.ToDouble(row.Cells[0].Value) * Convert.ToInt16(row.Cells[2].Value);
+                }
+                // compute for total 
+                for (int rows = 0; rows < dataGridView1.Rows.Count; rows++)
+                {
+                    totalPrice = totalPrice + Convert.ToDouble(dataGridView1.Rows[rows].Cells[3].Value);
+                }
+                textBoxTotalPrice.Text = "PHP. " + totalPrice.ToString("N");
+            }
+        }
+
+        private void buttonForMedicine()
+        {
+            if ((medicinetextboxQuantity.Value.ToString().Trim() == string.Empty) || (medicinetextboxQuantity.Value <= 0) ||
+                            (medicinetextboxFee.Value <= 0))
+            {
+                MessageBox.Show("You have left a field empty ");
+            }
+            else
+            {
+                double totalPrice = 0.00;
+
+
+                bool isFound = false;
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (Convert.ToString(row.Cells[1].Value) == medicinecomboBox3.Text && Convert.ToString(row.Cells[2].Value) == medicinetextboxFee.Value.ToString())
+                        {
+                            row.Cells[0].Value = Convert.ToString(Convert.ToInt16(medicinetextboxQuantity.Value) + Convert.ToInt16(row.Cells[0].Value));
+                            isFound = true;
+                        }
+
+                    }
+                    if (!isFound)
+                    {
+                        dataGridView1.Rows.Add(medicinetextboxQuantity.Value.ToString(), medicinecomboBox3.Text, medicinetextboxFee.Value.ToString());
+                    }
+
+                }
+                else
+                {
+                    dataGridView1.Rows.Add(medicinetextboxQuantity.Value.ToString(), medicinecomboBox3.Text, medicinetextboxFee.Value.ToString());
+                }
+                // compute for total per row
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    row.Cells[3].Value = Convert.ToDouble(row.Cells[0].Value) * Convert.ToInt16(row.Cells[2].Value);
+                }
+                // compute for total 
+                for (int rows = 0; rows < dataGridView1.Rows.Count; rows++)
+                {
+                    totalPrice = totalPrice + Convert.ToDouble(dataGridView1.Rows[rows].Cells[3].Value);
+                }
+                textBoxTotalPrice.Text = "PHP. " + totalPrice.ToString("N");
+            }
         }
 
         private bool isCustomerComplete()
@@ -620,6 +732,74 @@ namespace ClinicV2
 
 
             }
+        }
+
+        private void medicinecomboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (medicinecomboBox3.SelectedIndex == -1)
+            {
+
+                medicinetextboxFee.Value = 0;
+
+
+            }
+            else
+            {
+                MySqlCommand command = databaseConnection.CreateCommand();
+                command.CommandText = "SELECT `service_fee` FROM `tbl_service` WHERE `service_name`=@serviceName";
+                command.Parameters.AddWithValue("@serviceName", medicinecomboBox3.Text);
+
+
+                databaseConnection.Open();
+                MySqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    medicinetextboxQuantity.Value = 1;
+                    medicinetextboxFee.Value = Convert.ToDecimal(dataReader.GetString(0));
+                }
+                databaseConnection.Close();
+
+
+
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            buttonForMedicine();
+        }
+
+        private void labcomboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (labcomboBox4.SelectedIndex == -1)
+            {
+
+                labtextboxFee.Value = 0;
+
+
+            }
+            else
+            {
+                MySqlCommand command = databaseConnection.CreateCommand();
+                command.CommandText = "SELECT `service_fee` FROM `tbl_service` WHERE `service_name`=@serviceName";
+                command.Parameters.AddWithValue("@serviceName", labcomboBox4.Text);
+
+
+                databaseConnection.Open();
+                MySqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    labtextboxQuantity.Value = 1;
+                    labtextboxFee.Value = Convert.ToDecimal(dataReader.GetString(0));
+                }
+                databaseConnection.Close();
+
+
+
+            }
+
         }
     }
 }

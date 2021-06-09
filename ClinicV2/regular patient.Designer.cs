@@ -72,34 +72,34 @@
             this.txtBoxCustomerID = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.medicinetextboxFee = new System.Windows.Forms.NumericUpDown();
+            this.medicinetextboxQuantity = new System.Windows.Forms.NumericUpDown();
             this.label18 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.medicinecomboBox3 = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.labtextboxFee = new System.Windows.Forms.NumericUpDown();
+            this.labtextboxQuantity = new System.Windows.Forms.NumericUpDown();
             this.label21 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.labcomboBox4 = new System.Windows.Forms.ComboBox();
             this.searchBarComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxQuantity)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.medicinetextboxFee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.medicinetextboxQuantity)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labtextboxFee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labtextboxQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // label10
@@ -574,44 +574,44 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.numericUpDown1);
-            this.panel2.Controls.Add(this.numericUpDown2);
+            this.panel2.Controls.Add(this.medicinetextboxFee);
+            this.panel2.Controls.Add(this.medicinetextboxQuantity);
             this.panel2.Controls.Add(this.label18);
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.button7);
             this.panel2.Controls.Add(this.label19);
             this.panel2.Controls.Add(this.label20);
-            this.panel2.Controls.Add(this.comboBox3);
+            this.panel2.Controls.Add(this.medicinecomboBox3);
             this.panel2.Location = new System.Drawing.Point(385, 419);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(358, 184);
             this.panel2.TabIndex = 77;
             // 
-            // numericUpDown1
+            // medicinetextboxFee
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(113, 89);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.medicinetextboxFee.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.medicinetextboxFee.Location = new System.Drawing.Point(113, 89);
+            this.medicinetextboxFee.Maximum = new decimal(new int[] {
             100000000,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(232, 27);
-            this.numericUpDown1.TabIndex = 76;
+            this.medicinetextboxFee.Name = "medicinetextboxFee";
+            this.medicinetextboxFee.Size = new System.Drawing.Size(232, 27);
+            this.medicinetextboxFee.TabIndex = 76;
             // 
-            // numericUpDown2
+            // medicinetextboxQuantity
             // 
-            this.numericUpDown2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown2.Location = new System.Drawing.Point(113, 56);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.medicinetextboxQuantity.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.medicinetextboxQuantity.Location = new System.Drawing.Point(113, 56);
+            this.medicinetextboxQuantity.Maximum = new decimal(new int[] {
             2000000,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(232, 27);
-            this.numericUpDown2.TabIndex = 75;
+            this.medicinetextboxQuantity.Name = "medicinetextboxQuantity";
+            this.medicinetextboxQuantity.Size = new System.Drawing.Size(232, 27);
+            this.medicinetextboxQuantity.TabIndex = 75;
             // 
             // label18
             // 
@@ -651,6 +651,7 @@
             this.button7.TabIndex = 70;
             this.button7.Text = "Add";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label19
             // 
@@ -674,59 +675,60 @@
             this.label20.TabIndex = 70;
             this.label20.Text = "Medicine";
             // 
-            // comboBox3
+            // medicinecomboBox3
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.ItemHeight = 20;
-            this.comboBox3.Location = new System.Drawing.Point(113, 16);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(232, 28);
-            this.comboBox3.TabIndex = 72;
+            this.medicinecomboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.medicinecomboBox3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.medicinecomboBox3.FormattingEnabled = true;
+            this.medicinecomboBox3.ItemHeight = 20;
+            this.medicinecomboBox3.Location = new System.Drawing.Point(113, 16);
+            this.medicinecomboBox3.Name = "medicinecomboBox3";
+            this.medicinecomboBox3.Size = new System.Drawing.Size(232, 28);
+            this.medicinecomboBox3.TabIndex = 72;
+            this.medicinecomboBox3.SelectedIndexChanged += new System.EventHandler(this.medicinecomboBox3_SelectedIndexChanged);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.numericUpDown3);
-            this.panel3.Controls.Add(this.numericUpDown4);
+            this.panel3.Controls.Add(this.labtextboxFee);
+            this.panel3.Controls.Add(this.labtextboxQuantity);
             this.panel3.Controls.Add(this.label21);
             this.panel3.Controls.Add(this.button8);
             this.panel3.Controls.Add(this.button9);
             this.panel3.Controls.Add(this.label22);
             this.panel3.Controls.Add(this.label23);
-            this.panel3.Controls.Add(this.comboBox4);
+            this.panel3.Controls.Add(this.labcomboBox4);
             this.panel3.Location = new System.Drawing.Point(749, 419);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(371, 184);
             this.panel3.TabIndex = 78;
             // 
-            // numericUpDown3
+            // labtextboxFee
             // 
-            this.numericUpDown3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown3.Location = new System.Drawing.Point(113, 89);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.labtextboxFee.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labtextboxFee.Location = new System.Drawing.Point(113, 89);
+            this.labtextboxFee.Maximum = new decimal(new int[] {
             100000000,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(232, 27);
-            this.numericUpDown3.TabIndex = 76;
+            this.labtextboxFee.Name = "labtextboxFee";
+            this.labtextboxFee.Size = new System.Drawing.Size(232, 27);
+            this.labtextboxFee.TabIndex = 76;
             // 
-            // numericUpDown4
+            // labtextboxQuantity
             // 
-            this.numericUpDown4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown4.Location = new System.Drawing.Point(113, 56);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.labtextboxQuantity.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labtextboxQuantity.Location = new System.Drawing.Point(113, 56);
+            this.labtextboxQuantity.Maximum = new decimal(new int[] {
             2000000,
             0,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(232, 27);
-            this.numericUpDown4.TabIndex = 75;
+            this.labtextboxQuantity.Name = "labtextboxQuantity";
+            this.labtextboxQuantity.Size = new System.Drawing.Size(232, 27);
+            this.labtextboxQuantity.TabIndex = 75;
             // 
             // label21
             // 
@@ -789,16 +791,17 @@
             this.label23.TabIndex = 70;
             this.label23.Text = "Lab";
             // 
-            // comboBox4
+            // labcomboBox4
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.ItemHeight = 20;
-            this.comboBox4.Location = new System.Drawing.Point(113, 16);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(232, 28);
-            this.comboBox4.TabIndex = 72;
+            this.labcomboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.labcomboBox4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labcomboBox4.FormattingEnabled = true;
+            this.labcomboBox4.ItemHeight = 20;
+            this.labcomboBox4.Location = new System.Drawing.Point(113, 16);
+            this.labcomboBox4.Name = "labcomboBox4";
+            this.labcomboBox4.Size = new System.Drawing.Size(232, 28);
+            this.labcomboBox4.TabIndex = 72;
+            this.labcomboBox4.SelectedIndexChanged += new System.EventHandler(this.labcomboBox4_SelectedIndexChanged);
             // 
             // searchBarComboBox
             // 
@@ -857,12 +860,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxQuantity)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.medicinetextboxFee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.medicinetextboxQuantity)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labtextboxFee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labtextboxQuantity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -913,23 +916,23 @@
         private System.Windows.Forms.TextBox txtBoxCustomerID;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown medicinetextboxFee;
+        private System.Windows.Forms.NumericUpDown medicinetextboxQuantity;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox medicinecomboBox3;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown labtextboxFee;
+        private System.Windows.Forms.NumericUpDown labtextboxQuantity;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox labcomboBox4;
         private System.Windows.Forms.ComboBox searchBarComboBox;
     }
 }
