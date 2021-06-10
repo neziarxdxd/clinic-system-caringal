@@ -89,6 +89,8 @@ namespace ClinicV2
 
         public void refreshListServices() {
             comboBox2.Items.Clear();
+            medicinecomboBox3.Items.Clear();
+            labcomboBox4.Items.Clear();
             MySqlDataReader dataReader;
             MySqlCommand commandDatabase;
             string queryService = "SELECT * FROM tbl_service";
@@ -800,6 +802,11 @@ namespace ClinicV2
 
             }
 
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            buttonForLab();
         }
     }
 }

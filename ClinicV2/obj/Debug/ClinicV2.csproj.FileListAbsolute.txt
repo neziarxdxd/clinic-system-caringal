@@ -29,6 +29,7 @@ C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe.manifest
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.application
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.pdb
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csproj.ResolveComReference.cache
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.ClientDetails.resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Dashboard.resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Form1.resources
@@ -47,4 +48,3 @@ C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.exe.manifest
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.application
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.exe
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.pdb
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csprojResolveAssemblyReference.cache

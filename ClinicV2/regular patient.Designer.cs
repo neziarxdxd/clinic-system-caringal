@@ -768,6 +768,7 @@
             this.button9.TabIndex = 70;
             this.button9.Text = "Add";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // label22
             // 

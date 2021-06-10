@@ -53,7 +53,7 @@ namespace ClinicV2
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = databaseConnection.CreateCommand();
             databaseConnection.Open();
-            commandDatabase.CommandText = @"SELECT SUM(price) FROM tbl_list_service WHERE DATE(`date`) = CURDATE()";
+            commandDatabase.CommandText = @"SELECT SUM(total) FROM tbl_list_service WHERE DATE(`date`) = CURDATE()";
 
 
 
