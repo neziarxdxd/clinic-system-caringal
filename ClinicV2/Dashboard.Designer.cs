@@ -29,22 +29,25 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.reportDashboard1 = new ClinicV2.reportDashboard();
+            this.services_dashboard1 = new ClinicV2.Services_dashboard();
+            this.regular_patient1 = new ClinicV2.regular_patient();
+            this.home1 = new ClinicV2.Home();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btnPayment = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.services_dashboard1 = new ClinicV2.Services_dashboard();
-            this.regular_patient1 = new ClinicV2.regular_patient();
-            this.home1 = new ClinicV2.Home();
-            this.reportDashboard1 = new ClinicV2.reportDashboard();
+            this.reportExcel1 = new ClinicV2.reportExcel();
+            this.buttonPaneExcel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(46)))), ((int)(((byte)(60)))));
+            this.panel1.Controls.Add(this.buttonPaneExcel);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.btnPayment);
@@ -57,6 +60,61 @@
             this.panel1.Size = new System.Drawing.Size(213, 653);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(46)))), ((int)(((byte)(60)))));
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(213, 87);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "DASHBOARD";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // reportDashboard1
+            // 
+            this.reportDashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportDashboard1.Location = new System.Drawing.Point(213, 0);
+            this.reportDashboard1.Name = "reportDashboard1";
+            this.reportDashboard1.Size = new System.Drawing.Size(909, 653);
+            this.reportDashboard1.TabIndex = 4;
+            this.reportDashboard1.Load += new System.EventHandler(this.reportDashboard1_Load);
+            // 
+            // services_dashboard1
+            // 
+            this.services_dashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.services_dashboard1.Location = new System.Drawing.Point(213, 0);
+            this.services_dashboard1.Name = "services_dashboard1";
+            this.services_dashboard1.Size = new System.Drawing.Size(909, 653);
+            this.services_dashboard1.TabIndex = 3;
+            // 
+            // regular_patient1
+            // 
+            this.regular_patient1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.regular_patient1.Location = new System.Drawing.Point(213, 0);
+            this.regular_patient1.Name = "regular_patient1";
+            this.regular_patient1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.regular_patient1.Size = new System.Drawing.Size(909, 653);
+            this.regular_patient1.TabIndex = 2;
+            // 
+            // home1
+            // 
+            this.home1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.home1.Location = new System.Drawing.Point(213, 0);
+            this.home1.Name = "home1";
+            this.home1.Size = new System.Drawing.Size(909, 653);
+            this.home1.TabIndex = 1;
+            this.home1.Load += new System.EventHandler(this.home1_Load);
             // 
             // button3
             // 
@@ -163,66 +221,41 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // button1
+            // reportExcel1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(46)))), ((int)(((byte)(60)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(213, 87);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "DASHBOARD";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.reportExcel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportExcel1.Location = new System.Drawing.Point(213, 0);
+            this.reportExcel1.Name = "reportExcel1";
+            this.reportExcel1.Size = new System.Drawing.Size(909, 653);
+            this.reportExcel1.TabIndex = 5;
             // 
-            // services_dashboard1
+            // buttonPaneExcel
             // 
-            this.services_dashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.services_dashboard1.Location = new System.Drawing.Point(213, 0);
-            this.services_dashboard1.Name = "services_dashboard1";
-            this.services_dashboard1.Size = new System.Drawing.Size(909, 653);
-            this.services_dashboard1.TabIndex = 3;
-            // 
-            // regular_patient1
-            // 
-            this.regular_patient1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.regular_patient1.Location = new System.Drawing.Point(213, 0);
-            this.regular_patient1.Name = "regular_patient1";
-            this.regular_patient1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.regular_patient1.Size = new System.Drawing.Size(909, 653);
-            this.regular_patient1.TabIndex = 2;
-            // 
-            // home1
-            // 
-            this.home1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.home1.Location = new System.Drawing.Point(213, 0);
-            this.home1.Name = "home1";
-            this.home1.Size = new System.Drawing.Size(909, 653);
-            this.home1.TabIndex = 1;
-            this.home1.Load += new System.EventHandler(this.home1_Load);
-            // 
-            // reportDashboard1
-            // 
-            this.reportDashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportDashboard1.Location = new System.Drawing.Point(213, 0);
-            this.reportDashboard1.Name = "reportDashboard1";
-            this.reportDashboard1.Size = new System.Drawing.Size(909, 653);
-            this.reportDashboard1.TabIndex = 4;
-            this.reportDashboard1.Load += new System.EventHandler(this.reportDashboard1_Load);
+            this.buttonPaneExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(46)))), ((int)(((byte)(60)))));
+            this.buttonPaneExcel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonPaneExcel.FlatAppearance.BorderSize = 0;
+            this.buttonPaneExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPaneExcel.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPaneExcel.ForeColor = System.Drawing.Color.White;
+            this.buttonPaneExcel.Image = global::ClinicV2.Properties.Resources.report;
+            this.buttonPaneExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonPaneExcel.Location = new System.Drawing.Point(0, 303);
+            this.buttonPaneExcel.Name = "buttonPaneExcel";
+            this.buttonPaneExcel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.buttonPaneExcel.Size = new System.Drawing.Size(213, 54);
+            this.buttonPaneExcel.TabIndex = 12;
+            this.buttonPaneExcel.Text = "  Download Report";
+            this.buttonPaneExcel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonPaneExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonPaneExcel.UseVisualStyleBackColor = false;
+            this.buttonPaneExcel.Click += new System.EventHandler(this.buttonPaneExcel_Click);
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1122, 653);
+            this.Controls.Add(this.reportExcel1);
             this.Controls.Add(this.reportDashboard1);
             this.Controls.Add(this.services_dashboard1);
             this.Controls.Add(this.regular_patient1);
@@ -249,5 +282,7 @@
         private System.Windows.Forms.Button button3;
         private Services_dashboard services_dashboard1;
         private reportDashboard reportDashboard1;
+        private System.Windows.Forms.Button buttonPaneExcel;
+        private reportExcel reportExcel1;
     }
 }

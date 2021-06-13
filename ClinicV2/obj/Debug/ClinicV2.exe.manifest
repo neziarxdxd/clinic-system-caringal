@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClinicV2.exe" size="1022464">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClinicV2.exe" size="1029632">
       <assemblyIdentity name="ClinicV2" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>tLL3mK221zd0fBwC7/l5eXVMCdGvYbyfAJaykcba7Bs=</dsig:DigestValue>
+        <dsig:DigestValue>sPWlHNTYt11jSqXwSUjc2bQDO6rX8j73Wu7+bBeEJVc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

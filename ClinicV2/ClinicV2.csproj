@@ -140,7 +140,19 @@
     <Compile Include="reportDashboard.Designer.cs">
       <DependentUpon>reportDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportDashboardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportDashboardControl.Designer.cs">
+      <DependentUpon>ReportDashboardControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportDataClass.cs" />
+    <Compile Include="reportExcel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="reportExcel.Designer.cs">
+      <DependentUpon>reportExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services.cs" />
     <Compile Include="Services_dashboard.cs">
       <SubType>UserControl</SubType>
@@ -184,6 +196,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="Report2.rdlc" />
+    <EmbeddedResource Include="ReportDashboardControl.resx">
+      <DependentUpon>ReportDashboardControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportExcel.resx">
+      <DependentUpon>reportExcel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportSales.rdlc" />
     <EmbeddedResource Include="reportDashboard.resx">
       <DependentUpon>reportDashboard.cs</DependentUpon>

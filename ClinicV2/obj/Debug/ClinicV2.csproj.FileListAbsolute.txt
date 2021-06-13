@@ -39,6 +39,7 @@ C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Home.resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.ListOfCustomer.resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Properties.Resources.resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.regular_patient.resources
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.reportExcel.resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.reportDashboard.resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Services_dashboard.resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csproj.GenerateResource.Cache
@@ -49,3 +50,4 @@ C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.application
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.exe
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.pdb
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csprojResolveAssemblyReference.cache
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.ReportDashboardControl.resources

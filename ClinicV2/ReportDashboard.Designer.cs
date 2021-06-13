@@ -119,6 +119,7 @@
             this.dataSalesDate.Name = "dataSalesDate";
             this.dataSalesDate.Size = new System.Drawing.Size(342, 185);
             this.dataSalesDate.TabIndex = 2;
+            this.dataSalesDate.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataSalesDate_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 

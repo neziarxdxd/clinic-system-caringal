@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Microsoft.Reporting.WinForms;
-using Excel = Microsoft.Office.Interop.Excel; 
+
 
 namespace ClinicV2
 {
@@ -546,38 +546,12 @@ namespace ClinicV2
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+            
+        }
 
-            if (xlApp == null)
-            {
-                MessageBox.Show("Excel is not properly installed!!");
-                return;
-            }
+        private void dataSalesDate_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
-
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            object misValue = System.Reflection.Missing.Value;
-
-            xlWorkBook = xlApp.Workbooks.Add(misValue);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-            xlWorkSheet.Cells[1, 1] = "ID";
-            xlWorkSheet.Cells[1, 2] = "Name";
-            xlWorkSheet.Cells[2, 1] = "1";
-            xlWorkSheet.Cells[2, 2] = "One";
-            xlWorkSheet.Cells[3, 1] = "2";
-            xlWorkSheet.Cells[3, 2] = "Two";
-
-
-
-            xlWorkBook.SaveAs("d:\\csharp-Excel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            xlWorkBook.Close(true, misValue, misValue);
-            xlApp.Quit();
-
-
-
-            MessageBox.Show("Excel file created , you can find the file d:\\csharp-Excel.xls");
         }
         
 

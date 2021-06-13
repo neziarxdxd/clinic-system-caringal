@@ -2,7 +2,12 @@
 
 
 restuar@ateneo.edu
+QUERIES (new)
 
+```
+SELECT product_code, SUM(qty) TotalSales FROM sales_order GROUP BY product_code
+
+```
 
 
 QUERIES:

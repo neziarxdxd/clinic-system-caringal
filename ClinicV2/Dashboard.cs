@@ -61,6 +61,7 @@ namespace ClinicV2
         {
             services_dashboard1.Hide();
             home1.Hide();
+            reportExcel1.Hide();
             regular_patient1.Show();
             home1.getSummaryReport();
             regular_patient1.BringToFront();
@@ -76,6 +77,7 @@ namespace ClinicV2
         private void Dashboard_Load(object sender, EventArgs e)
         {
             services_dashboard1.Hide();
+            reportExcel1.Hide();
             regular_patient1.Hide();
             reportDashboard1.Hide();
                
@@ -96,6 +98,7 @@ namespace ClinicV2
             services_dashboard1.Hide();
             regular_patient1.Hide();
             reportDashboard1.Hide();
+            reportExcel1.Hide();
             home1.Show();
             home1.getSummaryReport();
             home1.BringToFront();
@@ -106,6 +109,7 @@ namespace ClinicV2
             services_dashboard1.Hide();
             regular_patient1.Hide();
             reportDashboard1.Hide();
+            reportExcel1.Hide();
             home1.Show();
             home1.Refresh();
             home1.BringToFront();
@@ -116,6 +120,7 @@ namespace ClinicV2
            
             home1.Hide();
             regular_patient1.Hide();
+            reportExcel1.Hide();
             reportDashboard1.Hide();
             services_dashboard1.Show();
             services_dashboard1.Refresh();
@@ -136,6 +141,7 @@ namespace ClinicV2
         private void button3_Click_1(object sender, EventArgs e)
         {
             home1.Hide();
+            reportExcel1.Hide();
             regular_patient1.Hide();          
             services_dashboard1.Hide();
             reportDashboard1.Show();
@@ -146,6 +152,17 @@ namespace ClinicV2
         private void reportDashboard1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonPaneExcel_Click(object sender, EventArgs e)
+        {
+            home1.Hide();            
+            regular_patient1.Hide();
+            services_dashboard1.Hide();
+            reportDashboard1.Hide();
+            reportExcel1.Show();
+            reportExcel1.Refresh();
+            reportExcel1.BringToFront();
         }
     }
 }
