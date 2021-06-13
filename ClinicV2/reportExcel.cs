@@ -46,7 +46,7 @@ namespace ClinicV2
         }
 
         Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
-        Excel.Workbook xlWorkBook;        
+                
         object misValue = System.Reflection.Missing.Value;
 
         public void getGrandTotal()
@@ -56,8 +56,8 @@ namespace ClinicV2
             {
                 MessageBox.Show("Excel is not properly installed!!");
                 return;
-            }                 
-           
+            }
+            Excel.Workbook xlWorkBook;
 
             xlWorkBook = xlApp.Workbooks.Add(misValue);
 
@@ -108,15 +108,17 @@ namespace ClinicV2
                 return;
             }
 
-
+            Excel.Workbook xlWorkBook;
             xlWorkBook = xlApp.Workbooks.Add(misValue);
-            for (int month = 1; month < 3; month++ )
+            for (int month = 11; month >=0; month-- )
             {
                 var xlSheets = xlWorkBook.Sheets as Excel.Sheets;
 
                 var xlWorkSheet = (Excel.Worksheet)xlSheets.Add(xlSheets[1], Type.Missing, Type.Missing, Type.Missing);
-                xlWorkSheet.Name = "newsheet" + month;
-
+                string[] monthString = { "Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" };
+            
+                xlWorkSheet.Name = monthString[month] + " 2020 ";
+               
                 // xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
                 string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
@@ -126,8 +128,8 @@ namespace ClinicV2
                 MySqlConnection databaseConnection = new MySqlConnection(connectionString);
                 MySqlCommand commandDatabase = databaseConnection.CreateCommand();
                 databaseConnection.Open();
-                commandDatabase.CommandText = @"SELECT date,tbl_service.service_name, price,quantity,total from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where tbl_service.type='Medicine'";
-
+                commandDatabase.CommandText = @"SELECT date,tbl_service.service_name, price,quantity,total from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where tbl_service.type='Medicine' and month(date) =@monthSpec ORDER by date";
+                commandDatabase.Parameters.AddWithValue("@monthSpec", (month+1));
 
                 xlWorkSheet.Cells[1, 1] = "Date and Time";
                 xlWorkSheet.Cells[1, 2] = "Name";
@@ -147,6 +149,7 @@ namespace ClinicV2
                     y++;
                 }
                 databaseConnection.Close();
+             
             }
 
             // code here dataview
@@ -157,16 +160,129 @@ namespace ClinicV2
             
         }
 
-        public void iterationMonths() {
+        private void button2_Click(object sender, EventArgs e)
+        {
 
-            for (int i = 4; i < 6; i++) {
-                
+
+
+            if (xlApp == null)
+            {
+                MessageBox.Show("Excel is not properly installed!!");
+                return;
             }
-            xlWorkBook.SaveAs("d:\\csharp-Excel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+
+            Excel.Workbook xlWorkBook;
+            xlWorkBook = xlApp.Workbooks.Add(misValue);
+            for (int month = 11; month >= 0; month--)
+            {
+                var xlSheets = xlWorkBook.Sheets as Excel.Sheets;
+
+                var xlWorkSheet = (Excel.Worksheet)xlSheets.Add(xlSheets[1], Type.Missing, Type.Missing, Type.Missing);
+                string[] monthString = { "Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" };
+
+                xlWorkSheet.Name = monthString[month] + " 2020 ";
+
+                // xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+                xlWorkSheet.Columns[1].ColumnWidth = 30;
+                xlWorkSheet.Columns[2].ColumnWidth = 25;
+
+                MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+                MySqlCommand commandDatabase = databaseConnection.CreateCommand();
+                databaseConnection.Open();
+                commandDatabase.CommandText = @"SELECT date,tbl_service.service_name, price,quantity,total from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where tbl_service.type='Lab' and month(date)=@monthSpec ORDER by date";
+                commandDatabase.Parameters.AddWithValue("@monthSpec", (month + 1));
+
+                xlWorkSheet.Cells[1, 1] = "Date and Time";
+                xlWorkSheet.Cells[1, 2] = "Service Name";
+                xlWorkSheet.Cells[1, 3] = "Price";
+                xlWorkSheet.Cells[1, 4] = "Quantity";
+                xlWorkSheet.Cells[1, 5] = "Total";
+
+                MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+                int y = 2;
+                while (dataReader.Read())
+                {
+                    xlWorkSheet.Cells[y, 1] = dataReader.GetString(0);
+                    xlWorkSheet.Cells[y, 2] = dataReader.GetString(1);
+                    xlWorkSheet.Cells[y, 3] = dataReader.GetString(2);
+                    xlWorkSheet.Cells[y, 4] = dataReader.GetString(3);
+                    xlWorkSheet.Cells[y, 5] = dataReader.GetString(4);
+                    y++;
+                }
+                databaseConnection.Close();
+
+            }
+
+            // code here dataview
+            xlWorkBook.SaveAs("d:\\Laboratory-Excel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             xlWorkBook.Close(true, misValue, misValue);
             xlApp.Quit();
-           
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            if (xlApp == null)
+            {
+                MessageBox.Show("Excel is not properly installed!!");
+                return;
+            }
+
+            Excel.Workbook xlWorkBook;
+            xlWorkBook = xlApp.Workbooks.Add(misValue);
+            for (int month = 11; month >= 0; month--)
+            {
+                var xlSheets = xlWorkBook.Sheets as Excel.Sheets;
+
+                var xlWorkSheet = (Excel.Worksheet)xlSheets.Add(xlSheets[1], Type.Missing, Type.Missing, Type.Missing);
+                string[] monthString = { "Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" };
+
+                xlWorkSheet.Name = monthString[month] + " 2020 ";
+
+                // xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+                xlWorkSheet.Columns[1].ColumnWidth = 30;
+                xlWorkSheet.Columns[2].ColumnWidth = 25;
+
+                MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+                MySqlCommand commandDatabase = databaseConnection.CreateCommand();
+                databaseConnection.Open();
+                commandDatabase.CommandText = @"SELECT date,tbl_service.service_name, price,quantity,total from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where tbl_service.type='service' and month(date)=@monthSpec ORDER by date";
+                commandDatabase.Parameters.AddWithValue("@monthSpec", (month + 1));
+
+                xlWorkSheet.Cells[1, 1] = "Date and Time";
+                xlWorkSheet.Cells[1, 2] = "Service Name";
+                xlWorkSheet.Cells[1, 3] = "Price";
+                xlWorkSheet.Cells[1, 4] = "Quantity";
+                xlWorkSheet.Cells[1, 5] = "Total";
+
+                MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+                int y = 2;
+                while (dataReader.Read())
+                {
+                    xlWorkSheet.Cells[y, 1] = dataReader.GetString(0);
+                    xlWorkSheet.Cells[y, 2] = dataReader.GetString(1);
+                    xlWorkSheet.Cells[y, 3] = dataReader.GetString(2);
+                    xlWorkSheet.Cells[y, 4] = dataReader.GetString(3);
+                    xlWorkSheet.Cells[y, 5] = dataReader.GetString(4);
+                    y++;
+                }
+                databaseConnection.Close();
+
+            }
+
+            // code here dataview
+            xlWorkBook.SaveAs("d:\\Services-Excel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
+        }
+
+
+
+       
 
 
        

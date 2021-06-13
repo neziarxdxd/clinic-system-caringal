@@ -24,6 +24,12 @@ C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\ClinicV2.regular_patien
 C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\ClinicV2.csproj.GenerateResource.Cache
 C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\RdlCompile.cache
 C:\Users\MY-PC\Desktop\New folder (6)\ClinicV2\obj\Debug\RdlCompile.compiled
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe.config
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe.manifest
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.application
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.pdb
+C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csprojResolveAssemblyReference.cache
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csproj.ResolveComReference.cache
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.ClientDetails.resources
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Dashboard.resources
@@ -41,12 +47,6 @@ C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.Services_dashboard.r
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csproj.GenerateResource.Cache
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\RdlCompile.cache
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\RdlCompile.compiled
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe.config
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe.manifest
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.application
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.exe
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\bin\Debug\ClinicV2.pdb
-C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.csprojResolveAssemblyReference.cache
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.exe.manifest
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.application
 C:\Users\MY-PC\Desktop\ClinicV2\ClinicV2\obj\Debug\ClinicV2.exe
