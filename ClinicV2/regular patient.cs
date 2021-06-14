@@ -275,6 +275,10 @@ namespace ClinicV2
             setInvoiceNumber();
             Home c = new Home();
             c.getSummaryReport();
+            c.getTotalByLabNow();
+            c.getTotalByMedicineNow();
+            c.getGrandTotalReport();
+            c.getTotalCustomer();
             setCustomerNumber();
             resetAllData();
            
@@ -284,9 +288,14 @@ namespace ClinicV2
         public void resetAllData(){
             txtBoxName.Clear();
             txtBoxAddress.Clear();
-            txtBoxModeOfPayment.Clear();
-            
+            txtBoxModeOfPayment.Clear();            
             dataGridView1.Rows.Clear();
+            comboBox1.SelectedIndex = -1;
+            comboBox2.SelectedIndex = -1;
+            labcomboBox4.SelectedIndex = -1;
+            medicinecomboBox3.SelectedIndex = -1;
+
+
 
         }
 

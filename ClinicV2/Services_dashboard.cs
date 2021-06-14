@@ -62,13 +62,14 @@ namespace ClinicV2
         private void Services_dashboard_Load(object sender, EventArgs e)
         {
             refreshTable();
+            refreshMedicineTable();
             refreshTableSecretary();
         }
 
         public void refreshTable() {
             dataGridView1.Rows.Clear();
             string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
-            string queryServices = "SELECT * FROM tbl_service";
+            string queryServices = "SELECT * FROM tbl_service where type='service' or type='Lab'";
 
 
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
@@ -183,6 +184,47 @@ namespace ClinicV2
         }
 
         private void comboBoxType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+            string queryServices = "SELECT * FROM tbl_service";
+
+
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = new MySqlCommand(queryServices, databaseConnection);
+            databaseConnection.Open();
+            MySqlCommand command = databaseConnection.CreateCommand();
+            command.CommandText = "INSERT INTO `tbl_service`(`doctor_id`, `service_name`, `service_fee`, `type`) VALUES (1,@serviceName,@price,'medicine')";
+            command.Parameters.AddWithValue("@serviceName", txtBoxName.Text);
+            command.Parameters.AddWithValue("@price", txtBoxPrice.Value);            
+            command.ExecuteNonQuery();
+            databaseConnection.Close();
+            refreshMedicineTable();
+        }
+
+        public void refreshMedicineTable() {
+            dataGridView3.Rows.Clear();
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+            string queryServices = "SELECT * FROM tbl_service where type='medicine'";
+
+
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = new MySqlCommand(queryServices, databaseConnection);
+            databaseConnection.Open();
+            MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                dataGridView3.Rows.Add(dataReader.GetString(2), dataReader.GetString(3), dataReader.GetString(4));
+            }
+            databaseConnection.Close();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

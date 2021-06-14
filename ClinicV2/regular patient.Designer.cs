@@ -534,7 +534,8 @@
             this.comboBoxCustomerType.ItemHeight = 20;
             this.comboBoxCustomerType.Items.AddRange(new object[] {
             "regular",
-            "walk-in"});
+            "walk-in",
+            "senior"});
             this.comboBoxCustomerType.Location = new System.Drawing.Point(688, 103);
             this.comboBoxCustomerType.Name = "comboBoxCustomerType";
             this.comboBoxCustomerType.Size = new System.Drawing.Size(164, 28);

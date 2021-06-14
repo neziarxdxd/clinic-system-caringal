@@ -14,6 +14,7 @@ namespace ClinicV2
     {
         public Dashboard()
         {
+            
             InitializeComponent();
         }
 
@@ -163,6 +164,11 @@ namespace ClinicV2
             reportExcel1.Show();
             reportExcel1.Refresh();
             reportExcel1.BringToFront();
+        }
+
+        private void reportExcel1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
