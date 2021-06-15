@@ -51,7 +51,6 @@ namespace ClinicV2
             setCustomerNumber();
             string queryDoctor = "SELECT * FROM tbl_doctor";
             
-            string querySecretary = "SELECT secretary_name FROM tbl_secretary";
           
             MySqlDataReader dataReader;
             MySqlCommand commandDatabase;
@@ -65,16 +64,7 @@ namespace ClinicV2
             }
             databaseConnection.Close();
 
-            
-
-            commandDatabase = new MySqlCommand(querySecretary, databaseConnection);
-            databaseConnection.Open();
-            dataReader = commandDatabase.ExecuteReader();
-
-            while (dataReader.Read())
-            {
-                comboBoxPrepared.Items.Add(dataReader.GetString(0));
-            }
+            NewMethod(ref dataReader, ref commandDatabase);
 
             databaseConnection.Close();
 
@@ -84,6 +74,20 @@ namespace ClinicV2
 
 
 
+        }
+
+        private void NewMethod(ref MySqlDataReader dataReader, ref MySqlCommand commandDatabase)
+        {
+            
+            string querySecretary = "SELECT secretary_name FROM tbl_secretary";
+            commandDatabase = new MySqlCommand(querySecretary, databaseConnection);
+            databaseConnection.Open();
+            dataReader = commandDatabase.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                comboBoxPrepared.Items.Add(dataReader.GetString(0));
+            }
         }
 
 
@@ -100,7 +104,7 @@ namespace ClinicV2
             dataReader = commandDatabase.ExecuteReader();
             while (dataReader.Read())
             {
-                if (dataReader.GetString(4).Equals("Medicine")) {
+                if (dataReader.GetString(4).Equals("medicine")) {
                     medicinecomboBox3.Items.Add(dataReader.GetString(2));
                 }
                 else if (dataReader.GetString(4).Equals("Lab"))
@@ -147,8 +151,12 @@ namespace ClinicV2
             dataReader = commandDatabase.ExecuteReader();
             while (dataReader.Read())
             {
-                Console.WriteLine(dataReader.GetString(0));
-                txtBoxInvoiceID.Text= dataReader.GetString(0);
+                try{
+                    txtBoxInvoiceID.Text = (dataReader.GetString(0));
+                }catch(Exception e){ 
+                    
+                    txtBoxInvoiceID.Text = "2000000";
+                }
             }
 
             databaseConnection.Close();
@@ -167,8 +175,14 @@ namespace ClinicV2
             dataReader = commandDatabase.ExecuteReader();
             while (dataReader.Read())
             {
-                Console.WriteLine(dataReader.GetString(0));
-                txtBoxCustomerID.Text = dataReader.GetString(0);
+                try
+                {
+                    Console.WriteLine(dataReader.GetString(0));
+                    txtBoxCustomerID.Text = dataReader.GetString(0);
+                }
+                catch (Exception d) {
+                    txtBoxCustomerID.Text = "500000";
+                }
             }
 
             databaseConnection.Close();
@@ -274,11 +288,15 @@ namespace ClinicV2
             printingConfirmation();
             setInvoiceNumber();
             Home c = new Home();
+            Home d = new Home();
+            Home ex = new Home();
+            Home f = new Home();
+            Home g = new Home();
             c.getSummaryReport();
-            c.getTotalByLabNow();
-            c.getTotalByMedicineNow();
-            c.getGrandTotalReport();
-            c.getTotalCustomer();
+            d.getTotalByLabNow();
+            ex.getTotalByMedicineNow();
+            f.getGrandTotalReport();
+            g.getTotalCustomer();
             setCustomerNumber();
             resetAllData();
            
@@ -816,6 +834,28 @@ namespace ClinicV2
         private void button9_Click(object sender, EventArgs e)
         {
             buttonForLab();
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 0 &&
+            this.dataGridView1.SelectedRows[0].Index !=
+            this.dataGridView1.Rows.Count - 1)
+            {
+                this.dataGridView1.Rows.RemoveAt(
+                    this.dataGridView1.SelectedRows[0].Index);
+            }
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 0 &&
+            this.dataGridView1.SelectedRows[0].Index !=
+            this.dataGridView1.Rows.Count - 1)
+            {
+                this.dataGridView1.Rows.RemoveAt(
+                    this.dataGridView1.SelectedRows[0].Index);
+            }
         }
     }
 }

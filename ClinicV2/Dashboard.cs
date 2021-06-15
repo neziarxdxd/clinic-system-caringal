@@ -107,12 +107,21 @@ namespace ClinicV2
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            
             services_dashboard1.Hide();
             regular_patient1.Hide();
             reportDashboard1.Hide();
             reportExcel1.Hide();
             home1.Show();
             home1.Refresh();
+            home1.getSummaryReport();
+            home1.getTotalByLabNow();
+            home1.getTotalByMedicineNow();
+            home1.getGrandTotalReport();
+            home1.getTotalCustomer();
+
+
+
             home1.BringToFront();
         }
 

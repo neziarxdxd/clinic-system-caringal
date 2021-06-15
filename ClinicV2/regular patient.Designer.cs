@@ -638,6 +638,7 @@
             this.button6.TabIndex = 71;
             this.button6.Text = "Remove ";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click_1);
             // 
             // button7
             // 
@@ -755,6 +756,7 @@
             this.button8.TabIndex = 71;
             this.button8.Text = "Remove ";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
             // button9
             // 

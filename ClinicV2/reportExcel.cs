@@ -20,30 +20,12 @@ namespace ClinicV2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            // TODO: Create SQL queries
-            // TODO: SQL queries to Excel
-            /**
-            xlWorkSheet.Cells[1, 1] = "ID";
-            xlWorkSheet.Cells[1, 2] = "Name";
-            xlWorkSheet.Cells[2, 1] = "1";
-            xlWorkSheet.Cells[2, 2] = "One";
-            xlWorkSheet.Cells[3, 1] = "2";
-            xlWorkSheet.Cells[3, 2] = "Two";
-            **/
-
-
-
-
-
-
-
-
-
             getSpecificMonth();
            
 
         }
+
+       
 
         
         public void getGrandTotal()
@@ -156,8 +138,9 @@ namespace ClinicV2
              
             }
 
+             String timeString = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
             // code here dataview
-            xlWorkBook.SaveAs("d:\\csharp-Excel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            xlWorkBook.SaveAs("d:\\Medicine"+timeString+"-Excel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             xlWorkBook.Close(true, misValue, misValue);
             xlApp.Quit();
             
@@ -221,9 +204,9 @@ namespace ClinicV2
                 databaseConnection.Close();
 
             }
-
+            String timeString = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
             // code here dataview
-            xlWorkBook.SaveAs("d:\\Laboratory-Excel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            xlWorkBook.SaveAs("d:\\Laboratory"+timeString+"-Excel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             xlWorkBook.Close(true, misValue, misValue);
             xlApp.Quit();
         }
@@ -331,7 +314,9 @@ namespace ClinicV2
 
 
             // code here dataview
-            xlWorkBook.SaveAs("d:\\Services-Excel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+             String timeString = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+            xlWorkBook.SaveAs("d:\\Services"+timeString+"-Excel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            MessageBox.Show("Excel file created , you can find the file C:");
             xlWorkBook.Close(true, misValue, misValue);
             xlApp.Quit();
         }

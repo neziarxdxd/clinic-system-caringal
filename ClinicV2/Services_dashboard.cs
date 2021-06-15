@@ -199,8 +199,8 @@ namespace ClinicV2
             databaseConnection.Open();
             MySqlCommand command = databaseConnection.CreateCommand();
             command.CommandText = "INSERT INTO `tbl_service`(`doctor_id`, `service_name`, `service_fee`, `type`) VALUES (1,@serviceName,@price,'medicine')";
-            command.Parameters.AddWithValue("@serviceName", txtBoxName.Text);
-            command.Parameters.AddWithValue("@price", txtBoxPrice.Value);            
+            command.Parameters.AddWithValue("@serviceName", medicinetextBox2.Text);
+            command.Parameters.AddWithValue("@price", medicinenumericUpDown1.Value);            
             command.ExecuteNonQuery();
             databaseConnection.Close();
             refreshMedicineTable();
@@ -227,6 +227,47 @@ namespace ClinicV2
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.dataGridView3.Rows[e.RowIndex];
+                    medicinetextBox2.Text = row.Cells["med_name"].Value.ToString();
+                    medicinenumericUpDown1.Value = Convert.ToDecimal(row.Cells["med_fee"].Value.ToString());
+                    
+
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Empty");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
+            string queryServices = "SELECT * FROM tbl_service";
+
+
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = new MySqlCommand(queryServices, databaseConnection);
+            databaseConnection.Open();
+            MySqlCommand command = databaseConnection.CreateCommand();
+            command.CommandText = "DELETE FROM `tbl_service` WHERE `service_name`=(@serviceName)";
+            command.Parameters.AddWithValue("@serviceName", medicinetextBox2.Text);
+            command.ExecuteNonQuery();
+            databaseConnection.Close();
+            refreshMedicineTable();
         }
 
         
