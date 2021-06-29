@@ -127,7 +127,7 @@ namespace ClinicV2
             searchBarComboBox.Items.Clear();
             MySqlDataReader dataReader;
             MySqlCommand commandDatabase;
-            string queryService = "SELECT * FROM `tbl_customer";
+            string queryService = "SELECT * FROM `tbl_customer`";
             commandDatabase = new MySqlCommand(queryService, databaseConnection);
             databaseConnection.Open();
 
@@ -388,7 +388,7 @@ namespace ClinicV2
             DateTime dateTime = DateTime.Now;
             ReportParameterCollection reportParameters = new ReportParameterCollection();
             reportParameters.Add(new ReportParameter("parameterCustomer", txtBoxName.Text));
-            reportParameters.Add(new ReportParameter("parameterDate", dateTime.ToString("dddd, dd MMMM yyyy")));
+            reportParameters.Add(new ReportParameter("parameterDate", dateTime.ToString("dddd, dd MMMM yyyy h:mm tt")));
             reportParameters.Add(new ReportParameter("parameterAddress", txtBoxAddress.Text));
             reportParameters.Add(new ReportParameter("parameterTotalPrice", textBoxTotalPrice.Text));
             reportParameters.Add(new ReportParameter("parameterPhysician", comboBox1.Text));
