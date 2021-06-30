@@ -190,6 +190,12 @@ namespace ClinicV2
 
         private void button6_Click(object sender, EventArgs e)
         {
+            if(listServices.Contains(medicinetextBox2.Text.ToString())){}
+            addtoDatabaseMedicine();
+        }
+
+        private void addtoDatabaseMedicine()
+        {
             string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
             string queryServices = "SELECT * FROM tbl_service";
 
@@ -198,19 +204,28 @@ namespace ClinicV2
             MySqlCommand commandDatabase = new MySqlCommand(queryServices, databaseConnection);
             databaseConnection.Open();
             MySqlCommand command = databaseConnection.CreateCommand();
-            command.CommandText = "INSERT INTO `tbl_service`(`doctor_id`, `service_name`, `service_fee`, `type`) VALUES (1,@serviceName,@price,'medicine')";
+            
+            command.CommandText ="INSERT INTO tbl_service (doctor_id, service_name,service_fee,type) SELECT * FROM (SELECT 1, @serviceName, @price,'medicine') AS tmp WHERE NOT EXISTS ( SELECT service_name FROM tbl_service WHERE service_name = @serviceName ) LIMIT 1";
             command.Parameters.AddWithValue("@serviceName", medicinetextBox2.Text);
-            command.Parameters.AddWithValue("@price", medicinenumericUpDown1.Value);            
-            command.ExecuteNonQuery();
+            command.Parameters.AddWithValue("@price", medicinenumericUpDown1.Value);
+            int result = command.ExecuteNonQuery();
+            itExist(result);
             databaseConnection.Close();
             refreshMedicineTable();
         }
 
+        private static void itExist(int result)
+        {
+            if (result <= 0)
+            {
+                MessageBox.Show("It's already exist in database");
+            }
+        }
+        List <String>listServices = new List<String>();
         public void refreshMedicineTable() {
             dataGridView3.Rows.Clear();
             string connectionString = "datasource=127.0.0.1;port=3306;username=root;password='';database=clinic_database;";
             string queryServices = "SELECT * FROM tbl_service where type='medicine'";
-
 
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = new MySqlCommand(queryServices, databaseConnection);
@@ -219,7 +234,10 @@ namespace ClinicV2
 
             while (dataReader.Read())
             {
+
                 dataGridView3.Rows.Add(dataReader.GetString(2), dataReader.GetString(3), dataReader.GetString(4));
+                
+                listServices.Add(dataReader.GetString(2));
             }
             databaseConnection.Close();
         }

@@ -104,10 +104,10 @@ namespace ClinicV2
             dataReader = commandDatabase.ExecuteReader();
             while (dataReader.Read())
             {
-                if (dataReader.GetString(4).Equals("medicine")) {
+                if (dataReader.GetString(4).ToLower().Equals("medicine")) {
                     medicinecomboBox3.Items.Add(dataReader.GetString(2));
                 }
-                else if (dataReader.GetString(4).Equals("Lab"))
+                else if (dataReader.GetString(4).ToLower().Equals("lab"))
                 {
                     labcomboBox4.Items.Add(dataReader.GetString(2));
                 }
@@ -312,6 +312,10 @@ namespace ClinicV2
             comboBox2.SelectedIndex = -1;
             labcomboBox4.SelectedIndex = -1;
             medicinecomboBox3.SelectedIndex = -1;
+            searchBarComboBox.SelectedIndex = -1;
+            setCustomerNumber();
+            refreshCustomer();
+            textBoxTotalPrice.Text = "";
 
 
 
@@ -428,7 +432,7 @@ namespace ClinicV2
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            resetAllData();
         }
 
         private void textBox3_TextChanged_1(object sender, EventArgs e)
@@ -654,12 +658,18 @@ namespace ClinicV2
                     row.Cells[3].Value = Convert.ToDouble(row.Cells[0].Value) * Convert.ToInt16(row.Cells[2].Value);
                 }
                 // compute for total 
-                for (int rows = 0; rows < dataGridView1.Rows.Count; rows++)
-                {
-                    totalPrice = totalPrice + Convert.ToDouble(dataGridView1.Rows[rows].Cells[3].Value);
-                }
-                textBoxTotalPrice.Text = "PHP. " + totalPrice.ToString("N");
+                totalPrice = computeForTotal(totalPrice);
             }
+        }
+
+        private double computeForTotal(double totalPrice)
+        {
+            for (int rows = 0; rows < dataGridView1.Rows.Count; rows++)
+            {
+                totalPrice = totalPrice + Convert.ToDouble(dataGridView1.Rows[rows].Cells[3].Value);
+            }
+            textBoxTotalPrice.Text = "PHP. " + totalPrice.ToString("N");
+            return totalPrice;
         }
 
         private bool isCustomerComplete()
@@ -731,6 +741,7 @@ namespace ClinicV2
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //WORKING
             if (searchBarComboBox.SelectedIndex == -1)
             {
 
@@ -739,7 +750,9 @@ namespace ClinicV2
 
             }
             else
+
             {
+               double totalPrice = 0;
                 MySqlCommand command = databaseConnection.CreateCommand();
                 command.CommandText = "SELECT * FROM `tbl_customer` WHERE `customer_name`=@nameCustomer";
                 command.Parameters.AddWithValue("@nameCustomer", searchBarComboBox.Text);
@@ -747,20 +760,75 @@ namespace ClinicV2
 
                 databaseConnection.Open();
                 MySqlDataReader dataReader = command.ExecuteReader();
-
+                string y = "";
                 while (dataReader.Read())
                 {
 
                    txtBoxCustomerID.Text = dataReader.GetString(0);
                    txtBoxName.Text = dataReader.GetString(2);
                    txtBoxAddress.Text = dataReader.GetString(4);
-
+                    
                 }
+               
                 databaseConnection.Close();
+               string x  =  getLatestInvoiceCustomer(txtBoxName.Text.ToString());
+                populateCustomer(x);
+                totalPrice = computeForTotal(totalPrice);
 
 
 
             }
+        }
+        // WORKING-2
+        public String getLatestInvoiceCustomer(String nameCustomer) {
+            
+            MySqlCommand command = databaseConnection.CreateCommand();
+            command.CommandText = "SELECT max(invoice_number) FROM `tbl_invoice` WHERE custome_name=@nameCustomer";
+            command.Parameters.AddWithValue("@nameCustomer", nameCustomer);
+            String nameCustomerReturn="";
+
+            databaseConnection.Open();
+            MySqlDataReader dataReader = command.ExecuteReader();
+
+            try
+            {
+                while (dataReader.Read())
+                {
+
+                    nameCustomerReturn = dataReader.GetString(0);
+
+                }
+
+            }
+            catch (Exception) {
+                MessageBox.Show("This Customer has no record");
+            }
+            databaseConnection.Close();
+
+            return nameCustomerReturn;
+
+        }
+
+        public void populateCustomer(String invoiceNumber) {
+
+            dataGridView1.Rows.Clear();
+            MySqlCommand command = databaseConnection.CreateCommand();
+            command.CommandText = "SELECT * FROM tbl_list_service where invoice_number=@invoiceNumber";
+            command.Parameters.AddWithValue("@invoiceNumber", invoiceNumber);
+            
+
+            databaseConnection.Open();
+            MySqlDataReader dataReader = command.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                // WORKING - 3
+                dataGridView1.Rows.Add(dataReader.GetString(6),dataReader.GetString(1),dataReader.GetString(4),dataReader.GetString(7));
+
+            }
+            databaseConnection.Close();
+        
+        
         }
 
         private void medicinecomboBox3_SelectedIndexChanged(object sender, EventArgs e)
