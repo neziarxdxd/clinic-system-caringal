@@ -41,6 +41,10 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBoxPrice = new System.Windows.Forms.NumericUpDown();
@@ -50,7 +54,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.serviceComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtBoxInvoiceID = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -86,10 +90,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.labcomboBox4 = new System.Windows.Forms.ComboBox();
             this.searchBarComboBox = new System.Windows.Forms.ComboBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrice)).BeginInit();
@@ -246,6 +246,30 @@
             this.dataGridView1.TabIndex = 62;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 200F;
+            this.Column1.HeaderText = "Quantity";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 75;
+            // 
+            // Quantity
+            // 
+            this.Quantity.FillWeight = 175F;
+            this.Quantity.HeaderText = "Service/Medicine";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Width = 200;
+            // 
+            // unitprice
+            // 
+            this.unitprice.HeaderText = "Price/Fee";
+            this.unitprice.Name = "unitprice";
+            // 
+            // Amount
+            // 
+            this.Amount.HeaderText = "Amount";
+            this.Amount.Name = "Amount";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -267,7 +291,7 @@
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.serviceComboBox);
             this.panel1.Location = new System.Drawing.Point(39, 419);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(329, 184);
@@ -367,17 +391,17 @@
             this.label9.Text = "Service";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
-            // comboBox2
+            // serviceComboBox
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.ItemHeight = 20;
-            this.comboBox2.Location = new System.Drawing.Point(113, 16);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(200, 28);
-            this.comboBox2.TabIndex = 72;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.serviceComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.serviceComboBox.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serviceComboBox.FormattingEnabled = true;
+            this.serviceComboBox.ItemHeight = 20;
+            this.serviceComboBox.Location = new System.Drawing.Point(113, 16);
+            this.serviceComboBox.Name = "serviceComboBox";
+            this.serviceComboBox.Size = new System.Drawing.Size(200, 28);
+            this.serviceComboBox.TabIndex = 72;
+            this.serviceComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -656,7 +680,8 @@
             // 
             // medicinecomboBox3
             // 
-            this.medicinecomboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.medicinecomboBox3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.medicinecomboBox3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.medicinecomboBox3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.medicinecomboBox3.FormattingEnabled = true;
             this.medicinecomboBox3.ItemHeight = 20;
@@ -774,7 +799,8 @@
             // 
             // labcomboBox4
             // 
-            this.labcomboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.labcomboBox4.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.labcomboBox4.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.labcomboBox4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labcomboBox4.FormattingEnabled = true;
             this.labcomboBox4.ItemHeight = 20;
@@ -794,30 +820,6 @@
             this.searchBarComboBox.Size = new System.Drawing.Size(245, 28);
             this.searchBarComboBox.TabIndex = 86;
             this.searchBarComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
-            // 
-            // Column1
-            // 
-            this.Column1.FillWeight = 200F;
-            this.Column1.HeaderText = "Quantity";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 75;
-            // 
-            // Quantity
-            // 
-            this.Quantity.FillWeight = 175F;
-            this.Quantity.HeaderText = "Service/Medicine";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.Width = 200;
-            // 
-            // unitprice
-            // 
-            this.unitprice.HeaderText = "Price/Fee";
-            this.unitprice.Name = "unitprice";
-            // 
-            // Amount
-            // 
-            this.Amount.HeaderText = "Amount";
-            this.Amount.Name = "Amount";
             // 
             // regular_patient
             // 
@@ -894,7 +896,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox serviceComboBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button4;

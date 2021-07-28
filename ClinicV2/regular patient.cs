@@ -92,7 +92,7 @@ namespace ClinicV2
 
 
         public void refreshListServices() {
-            comboBox2.Items.Clear();
+            serviceComboBox.Items.Clear();
             medicinecomboBox3.Items.Clear();
             labcomboBox4.Items.Clear();
             MySqlDataReader dataReader;
@@ -114,7 +114,7 @@ namespace ClinicV2
                 else
                 {
                     Console.WriteLine(dataReader.GetString(2));
-                    comboBox2.Items.Add(dataReader.GetString(2));
+                    serviceComboBox.Items.Add(dataReader.GetString(2));
                 }
             }
             databaseConnection.Close();
@@ -125,6 +125,17 @@ namespace ClinicV2
             searchBarComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             searchBarComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
             searchBarComboBox.Items.Clear();
+
+
+            medicinecomboBox3.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            medicinecomboBox3.AutoCompleteSource = AutoCompleteSource.ListItems;
+            medicinecomboBox3.Items.Clear();
+
+            labcomboBox4.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            labcomboBox4.AutoCompleteSource = AutoCompleteSource.ListItems;
+            labcomboBox4.Items.Clear();
+
+
             MySqlDataReader dataReader;
             MySqlCommand commandDatabase;
             string queryService = "SELECT * FROM `tbl_customer`";
@@ -309,7 +320,7 @@ namespace ClinicV2
             txtBoxModeOfPayment.Clear();            
             dataGridView1.Rows.Clear();
             comboBox1.SelectedIndex = -1;
-            comboBox2.SelectedIndex = -1;
+            serviceComboBox.SelectedIndex = -1;
             labcomboBox4.SelectedIndex = -1;
             medicinecomboBox3.SelectedIndex = -1;
             searchBarComboBox.SelectedIndex = -1;
@@ -482,7 +493,7 @@ namespace ClinicV2
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox2.SelectedIndex == -1)
+            if (serviceComboBox.SelectedIndex == -1)
             {
 
                 txtBoxPrice.Value = 0; 
@@ -493,7 +504,7 @@ namespace ClinicV2
             {
                 MySqlCommand command = databaseConnection.CreateCommand();
                 command.CommandText = "SELECT `service_fee` FROM `tbl_service` WHERE `service_name`=@serviceName";
-                command.Parameters.AddWithValue("@serviceName", comboBox2.Text);
+                command.Parameters.AddWithValue("@serviceName", serviceComboBox.Text);
 
 
                 databaseConnection.Open();
@@ -539,7 +550,7 @@ namespace ClinicV2
                 {
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
-                        if (Convert.ToString(row.Cells[1].Value) == comboBox2.Text && Convert.ToString(row.Cells[2].Value) == txtBoxPrice.Value.ToString())
+                        if (Convert.ToString(row.Cells[1].Value) == serviceComboBox.Text && Convert.ToString(row.Cells[2].Value) == txtBoxPrice.Value.ToString())
                         {
                             row.Cells[0].Value = Convert.ToString(Convert.ToInt16(txtBoxQuantity.Value) + Convert.ToInt16(row.Cells[0].Value));
                             isFound = true;
@@ -548,13 +559,13 @@ namespace ClinicV2
                     }
                     if (!isFound)
                     {
-                        dataGridView1.Rows.Add(txtBoxQuantity.Value.ToString(), comboBox2.Text, txtBoxPrice.Value.ToString());
+                        dataGridView1.Rows.Add(txtBoxQuantity.Value.ToString(), serviceComboBox.Text, txtBoxPrice.Value.ToString());
                     }
 
                 }
                 else
                 {
-                    dataGridView1.Rows.Add(txtBoxQuantity.Value.ToString(), comboBox2.Text, txtBoxPrice.Value.ToString());
+                    dataGridView1.Rows.Add(txtBoxQuantity.Value.ToString(), serviceComboBox.Text, txtBoxPrice.Value.ToString());
                 }
                 // compute for total per row
                 foreach (DataGridViewRow row in dataGridView1.Rows)
