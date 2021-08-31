@@ -397,6 +397,7 @@ namespace ClinicV2
 
             }
 
+            // today report for 
             for (int month = 1; month <=1; month++)
             {
                 var xlSheets = xlWorkBook.Sheets as Excel.Sheets;
@@ -452,6 +453,11 @@ namespace ClinicV2
         }
 
         private void reportExcel_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
         {
 
         }

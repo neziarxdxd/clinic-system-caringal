@@ -203,9 +203,9 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label3.Location = new System.Drawing.Point(33, 185);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 21);
+            this.label3.Size = new System.Drawing.Size(50, 21);
             this.label3.TabIndex = 58;
-            this.label3.Text = "Address:";
+            this.label3.Text = "Age:";
             this.label3.Click += new System.EventHandler(this.label3_Click_1);
             // 
             // comboBox1
