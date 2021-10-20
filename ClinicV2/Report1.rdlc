@@ -397,7 +397,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>2.53051in</Height>
+    <Height>2.02009in</Height>
     <Style>
       <Border>
         <Style>None</Style>
@@ -407,7 +407,7 @@
   <Width>4.58208in</Width>
   <Page>
     <PageHeader>
-      <Height>1.77627in</Height>
+      <Height>1.97419in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -514,7 +514,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>1.00817in</Top>
+          <Top>0.99428in</Top>
           <Left>0.19039in</Left>
           <Height>0.25in</Height>
           <Width>2.70143in</Width>
@@ -559,7 +559,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>1.42484in</Top>
+          <Top>1.67484in</Top>
           <Left>0.16265in</Left>
           <Height>0.25in</Height>
           <Width>2.72917in</Width>
@@ -687,6 +687,42 @@
           <Height>0.50239in</Height>
           <Width>3.11231in</Width>
           <ZIndex>5</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="parameterInvoiceID">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Invoice ID:</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value>=Parameters!parameterInvoiceID.Value</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>parameterInvoiceID</rd:DefaultName>
+          <Top>1.43873in</Top>
+          <Left>0.16265in</Left>
+          <Height>0.25in</Height>
+          <Width>2.22917in</Width>
+          <ZIndex>6</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -876,6 +912,12 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="parameterModeOfPayment">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="parameterInvoiceID">
       <DataType>String</DataType>
       <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>

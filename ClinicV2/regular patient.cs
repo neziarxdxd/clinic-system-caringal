@@ -409,7 +409,7 @@ namespace ClinicV2
             reportParameters.Add(new ReportParameter("parameterPhysician", comboBox1.Text));
             reportParameters.Add(new ReportParameter("parameterPrepared", comboBoxPrepared.Text));
             reportParameters.Add(new ReportParameter("parameterModeOfPayment", txtBoxModeOfPayment.Text));
-
+            reportParameters.Add(new ReportParameter("parameterInvoiceID",txtBoxInvoiceID.Text));
             List<Services> listServices = getListOfServices();
 
             rs.Name = "DataSet1";
