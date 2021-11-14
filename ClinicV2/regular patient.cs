@@ -76,8 +76,20 @@ namespace ClinicV2
 
         }
 
-        private void deleteInvoiceTransaction() { 
-        
+        private void deleteInvoiceTransaction() {
+            // TODO: DELETE SQL 
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            databaseConnection.Open();
+            MySqlCommand command = databaseConnection.CreateCommand();
+            command.CommandText = @"DELETE FROM `tbl_list_service` WHERE `invoice_number` = @invoice_number";
+            command.Parameters.AddWithValue("@invoice_number", txtBoxInvoiceID.Text);
+            command.ExecuteNonQuery();
+            databaseConnection.Close();
+
+        }
+
+        private bool checkIfInvoiceExist() {
+            return true;
         }
 
         private void NewMethod(ref MySqlDataReader dataReader, ref MySqlCommand commandDatabase)
