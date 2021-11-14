@@ -76,6 +76,22 @@ namespace ClinicV2
 
         }
 
+        private void deleteInvoiceTransaction() {
+            // TODO: DELETE SQL 
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            databaseConnection.Open();
+            MySqlCommand command = databaseConnection.CreateCommand();
+            command.CommandText = @"DELETE FROM `tbl_list_service` WHERE `invoice_number` = @invoice_number";
+            command.Parameters.AddWithValue("@invoice_number", txtBoxInvoiceID.Text);
+            command.ExecuteNonQuery();
+            databaseConnection.Close();
+
+        }
+
+        private bool checkIfInvoiceExist() {
+            return true;
+        }
+
         private void NewMethod(ref MySqlDataReader dataReader, ref MySqlCommand commandDatabase)
         {
             
@@ -293,6 +309,7 @@ namespace ClinicV2
        
         private void button2_Click(object sender, EventArgs e)
         {
+
             saveCustomerData();
             saveInvoiceTransaction();
             insertDataListOfService();
@@ -314,6 +331,12 @@ namespace ClinicV2
            
 
         }
+
+        public void isInvoiceIDExist() { 
+        
+
+        }
+
         public void resetAllData(){
             txtBoxName.Clear();
             txtBoxAddress.Clear();
@@ -542,9 +565,6 @@ namespace ClinicV2
             }
             else
             {
-                double totalPrice = 0.00;
-
-
                 bool isFound = false;
                 if (dataGridView1.Rows.Count > 0)
                 {
@@ -567,18 +587,24 @@ namespace ClinicV2
                 {
                     dataGridView1.Rows.Add(txtBoxQuantity.Value.ToString(), serviceComboBox.Text, txtBoxPrice.Value.ToString());
                 }
-                // compute for total per row
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    row.Cells[3].Value = Convert.ToDouble(row.Cells[0].Value) * Convert.ToInt16(row.Cells[2].Value);
-                }
-                // compute for total 
-                for (int rows = 0; rows < dataGridView1.Rows.Count; rows++)
-                {
-                    totalPrice = totalPrice + Convert.ToDouble(dataGridView1.Rows[rows].Cells[3].Value);
-                }
-                textBoxTotalPrice.Text = "PHP. " + totalPrice.ToString("N");
+                reloadPriceBox();
             }
+        }
+
+        private void reloadPriceBox() {
+            double totalPrice = 0.00;
+            
+            // compute for total per row
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                row.Cells[3].Value = Convert.ToDouble(row.Cells[0].Value) * Convert.ToInt16(row.Cells[2].Value);
+            }
+            // compute for total 
+            for (int rows = 0; rows < dataGridView1.Rows.Count; rows++)
+            {
+                totalPrice = totalPrice + Convert.ToDouble(dataGridView1.Rows[rows].Cells[3].Value);
+            }
+            textBoxTotalPrice.Text = "PHP. " + totalPrice.ToString("N");
         }
 
         private void buttonForLab()
@@ -709,6 +735,7 @@ namespace ClinicV2
             {
                 this.dataGridView1.Rows.RemoveAt(
                     this.dataGridView1.SelectedRows[0].Index);
+                reloadPriceBox();
             }
         }
 
@@ -923,6 +950,8 @@ namespace ClinicV2
             {
                 this.dataGridView1.Rows.RemoveAt(
                     this.dataGridView1.SelectedRows[0].Index);
+                reloadPriceBox();
+
             }
         }
 
@@ -934,6 +963,9 @@ namespace ClinicV2
             {
                 this.dataGridView1.Rows.RemoveAt(
                     this.dataGridView1.SelectedRows[0].Index);
+
+                reloadPriceBox();
+
             }
         }
     }
