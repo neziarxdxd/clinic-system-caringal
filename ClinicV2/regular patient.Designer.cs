@@ -90,6 +90,8 @@
             this.label23 = new System.Windows.Forms.Label();
             this.labcomboBox4 = new System.Windows.Forms.ComboBox();
             this.searchBarComboBox = new System.Windows.Forms.ComboBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrice)).BeginInit();
@@ -821,10 +823,42 @@
             this.searchBarComboBox.TabIndex = 86;
             this.searchBarComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
             // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.ForeColor = System.Drawing.Color.White;
+            this.button10.Location = new System.Drawing.Point(861, 65);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(93, 30);
+            this.button10.TabIndex = 77;
+            this.button10.Text = "Set Invoice";
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.ForeColor = System.Drawing.Color.White;
+            this.button11.Location = new System.Drawing.Point(960, 65);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(93, 30);
+            this.button11.TabIndex = 88;
+            this.button11.Text = "Reset";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // regular_patient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.button10);
             this.Controls.Add(this.searchBarComboBox);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -941,5 +975,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitprice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
     }
 }
