@@ -89,7 +89,20 @@ namespace ClinicV2
         }
 
         private bool checkIfInvoiceExist() {
-            return true;
+            MySqlCommand command = databaseConnection.CreateCommand();
+            databaseConnection.Open();
+           
+            command.CommandText  = @"SELECT * FROM tbl_list_service where invoice_number=@invoice_number LIMIT 1";
+            command.Parameters.AddWithValue("@invoice_number", txtBoxInvoiceID.Text);
+            MySqlDataReader dataReader = command.ExecuteReader();
+            int countRow = 0;
+            while(dataReader.Read()){
+                countRow++;
+                Console.WriteLine(countRow);
+            }
+            databaseConnection.Close();
+            return countRow>0;       
+           
         }
 
         private void NewMethod(ref MySqlDataReader dataReader, ref MySqlCommand commandDatabase)
@@ -142,7 +155,7 @@ namespace ClinicV2
             searchBarComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
             searchBarComboBox.Items.Clear();
 
-
+           /**
             medicinecomboBox3.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             medicinecomboBox3.AutoCompleteSource = AutoCompleteSource.ListItems;
             medicinecomboBox3.Items.Clear();
@@ -150,7 +163,7 @@ namespace ClinicV2
             labcomboBox4.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             labcomboBox4.AutoCompleteSource = AutoCompleteSource.ListItems;
             labcomboBox4.Items.Clear();
-
+            **/
 
             MySqlDataReader dataReader;
             MySqlCommand commandDatabase;
@@ -310,6 +323,40 @@ namespace ClinicV2
         private void button2_Click(object sender, EventArgs e)
         {
 
+
+            if(checkIfInvoiceExist())
+            {
+                DialogResult dialogResult = MessageBox.Show("Do you want to update the transaction?", "Success Saved", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    deleteInvoiceTransaction();
+                    insertDataListOfService();
+                    printingConfirmation();
+                    setInvoiceNumber();
+                    Home c = new Home();
+                    Home d = new Home();
+                    Home ex = new Home();
+                    Home f = new Home();
+                    Home g = new Home();
+                    c.getSummaryReport();
+                    d.getTotalByLabNow();
+                    ex.getTotalByMedicineNow();
+                    f.getGrandTotalReport();
+                    g.getTotalCustomer();
+                    setCustomerNumber();
+                    resetAllData();
+
+                }
+                
+            }
+            else{
+            transactionExecute();           
+            }   
+        }
+
+
+        private void transactionExecute() {
             saveCustomerData();
             saveInvoiceTransaction();
             insertDataListOfService();
@@ -327,9 +374,6 @@ namespace ClinicV2
             g.getTotalCustomer();
             setCustomerNumber();
             resetAllData();
-           
-           
-
         }
 
         public void isInvoiceIDExist() { 
@@ -383,12 +427,13 @@ namespace ClinicV2
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);           
             databaseConnection.Open();
             MySqlCommand command = databaseConnection.CreateCommand();
-            command.CommandText = @"INSERT INTO `tbl_customer`(`customer_name`, `customer_type`, `customer_address`)
-                                  VALUES (@customerName, @customerType, @customerAddress)";
+            command.CommandText = @"INSERT INTO `tbl_customer`(`customer_name`, `customer_type`, `customer_address`, `invoice_number`)
+                                  VALUES (@customerName, @customerType, @customerAddress, @invoiceNumber)";
             //command.Parameters.AddWithValue("@customerID", txtBoxCustomerID.Text);
             command.Parameters.AddWithValue("@customerName", txtBoxName.Text);
             command.Parameters.AddWithValue("@customerType", comboBoxCustomerType.Text);
             command.Parameters.AddWithValue("@customerAddress", txtBoxAddress.Text);
+            command.Parameters.AddWithValue("@invoiceNumber", txtBoxInvoiceID.Text);
             command.ExecuteNonQuery();
             databaseConnection.Close();
            
@@ -805,17 +850,23 @@ namespace ClinicV2
                    txtBoxCustomerID.Text = dataReader.GetString(0);
                    txtBoxName.Text = dataReader.GetString(2);
                    txtBoxAddress.Text = dataReader.GetString(4);
+                 
                     
                 }
                
                 databaseConnection.Close();
-               string x  =  getLatestInvoiceCustomer(txtBoxName.Text.ToString());
+                string x = getLatestInvoiceCustomer(txtBoxName.Text.ToString());
                 populateCustomer(x);
                 totalPrice = computeForTotal(totalPrice);
 
 
 
             }
+        }
+
+        private void setLessReturnTransaction(){
+            string x = getLatestInvoiceCustomer(txtBoxName.Text.ToString());
+            txtBoxInvoiceID.Text = x;
         }
         // WORKING-2
         public String getLatestInvoiceCustomer(String nameCustomer) {
@@ -857,13 +908,16 @@ namespace ClinicV2
 
             databaseConnection.Open();
             MySqlDataReader dataReader = command.ExecuteReader();
-
+            String doctorName = "";
             while (dataReader.Read())
             {
                 // WORKING - 3
                 dataGridView1.Rows.Add(dataReader.GetString(6),dataReader.GetString(1),dataReader.GetString(4),dataReader.GetString(7));
+                doctorName = dataReader.GetString(3);
 
             }
+            comboBox1.Text = doctorName;
+            
             databaseConnection.Close();
         
         
@@ -967,6 +1021,29 @@ namespace ClinicV2
                 reloadPriceBox();
 
             }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+
+            if (checkIfInvoiceExist())
+            {
+                Console.WriteLine("YEHEY");
+            }
+            else
+            {
+                Console.WriteLine("MAS YEHEY");
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            setLessReturnTransaction();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            setInvoiceNumber();
         }
     }
 }

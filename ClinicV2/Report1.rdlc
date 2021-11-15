@@ -469,56 +469,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>1.21651in</Top>
+          <Top>1.09151in</Top>
           <Left>0.16265in</Left>
           <Height>0.20833in</Height>
           <Width>2.72917in</Width>
           <ZIndex>1</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox2">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>Date:</Value>
-                  <Style>
-                    <FontSize>9pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-                <TextRun>
-                  <Value xml:space="preserve"> </Value>
-                  <Style>
-                    <FontSize>9pt</FontSize>
-                  </Style>
-                </TextRun>
-                <TextRun>
-                  <Value>=Parameters!parameterDate.Value</Value>
-                  <Style>
-                    <FontSize>9pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.99428in</Top>
-          <Left>0.19039in</Left>
-          <Height>0.25in</Height>
-          <Width>2.70143in</Width>
-          <ZIndex>2</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -559,11 +514,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>1.67484in</Top>
+          <Top>1.54984in</Top>
           <Left>0.16265in</Left>
           <Height>0.25in</Height>
           <Width>2.72917in</Width>
-          <ZIndex>3</ZIndex>
+          <ZIndex>2</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -582,7 +537,7 @@
           <Left>0.16265in</Left>
           <Height>0.61574in</Height>
           <Width>0.59921in</Width>
-          <ZIndex>4</ZIndex>
+          <ZIndex>3</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -686,7 +641,7 @@
           <Left>0.89934in</Left>
           <Height>0.50239in</Height>
           <Width>3.11231in</Width>
-          <ZIndex>5</ZIndex>
+          <ZIndex>4</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -718,11 +673,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>parameterInvoiceID</rd:DefaultName>
-          <Top>1.43873in</Top>
+          <Top>1.31373in</Top>
           <Left>0.16265in</Left>
           <Height>0.25in</Height>
           <Width>2.22917in</Width>
-          <ZIndex>6</ZIndex>
+          <ZIndex>5</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
