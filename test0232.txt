@@ -1,0 +1,164 @@
+
+xlWorkSheet.Cells[1, 1] = "Date";
+                xlWorkSheet.Cells[1, 2] = "Invoice ID";
+                xlWorkSheet.Cells[1, 3] = "Customer's Name";
+                xlWorkSheet.Cells[1, 4] = "Item-Service Name";
+                xlWorkSheet.Cells[1, 5] = "Price";
+                xlWorkSheet.Cells[1, 6] = "Quantity";
+                xlWorkSheet.Cells[1, 7] = "Total";
+
+                MySqlDataReader dataReader = commandDatabase.ExecuteReader();
+                int y = 2;
+                while (dataReader.Read())
+                {
+                    xlWorkSheet.Cells[y, 1] = dataReader.GetDateTime(0).ToString("MM-dd-yyyy");
+                    xlWorkSheet.Cells[y, 2] = dataReader.GetString(1);
+                    xlWorkSheet.Cells[y, 3] = dataReader.GetString(2);
+                    xlWorkSheet.Cells[y, 4] = dataReader.GetString(3);
+                    xlWorkSheet.Cells[y, 5] = dataReader.GetString(4);
+                    xlWorkSheet.Cells[y, 6] = dataReader.GetString(5);
+                    xlWorkSheet.Cells[y, 7] = dataReader.GetString(6);
+                    y++;
+                }
+                databaseConnection.Close();
+
+
+SELECT 
+DATE(tbl_list_service.date),
+tbl_list_service.invoice_number,
+tbl_invoice.custome_name,
+tbl_service.service_name,
+price,
+quantity, 
+total
+from ((tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name) 
+join tbl_invoice on tbl_list_service.invoice_number=tbl_invoice.invoice_number)
+where tbl_service.type='service' and date(tbl_list_service.date)=CURDATE() 
+ORDER by tbl_list_service.date
+
+
+SELECT 
+DATE(tbl_list_service.date),
+tbl_list_service.invoice_number,
+tbl_invoice.custome_name,
+tbl_service.service_name,
+price,
+quantity, 
+total
+from ((tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name) 
+join tbl_invoice on tbl_list_service.invoice_number=tbl_invoice.invoice_number)
+where tbl_service.type='medicine' and date(tbl_list_service.date)=CURDATE() 
+ORDER by tbl_list_service.date
+
+
+SELECT 
+DATE(tbl_list_service.date),
+tbl_list_service.invoice_number,
+tbl_invoice.custome_name,
+tbl_service.service_name,
+price,
+quantity, 
+total
+from ((tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name) 
+join tbl_invoice on tbl_list_service.invoice_number=tbl_invoice.invoice_number)
+where tbl_service.type='lab' and date(tbl_list_service.date)=CURDATE() 
+ORDER by tbl_list_service.date
+
+
+
+// MONTH MEDICINE
+
+SELECT DATE(tbl_list_service.date),
+tbl_list_service.invoice_number,
+tbl_invoice.custome_name, 
+tbl_service.service_name, 
+price, quantity, 
+total 
+from ((tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name) 
+join tbl_invoice on tbl_list_service.invoice_number=tbl_invoice.invoice_number)
+where tbl_service.type='medicine' and month(tbl_list_service.date)=6 ORDER by tbl_list_service.date
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT DATE(tbl_list_service.date), tbl_list_service.invoice_number, tbl_service.service_name, price, quantity, total from ((tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name) join tbl_invoice on tbl_list_service.invoice_number=tbl_invoice.invoice_number) where tbl_service.type='service' and date(tbl_list_service.date)=CURDATE() ORDER by tbl_list_service.date
+
+
+
+
+
+
+SELECT 
+	DATE(date),
+    invoice_number,
+    tbl_service.service_name, 
+    price,
+    quantity,
+    total 
+    from ((tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name)
+    where tbl_service.type='service' and date(date)=CURDATE() ORDER by date)
+
+
+
+JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+
+
+SELECT DATE(date),
+invoice_number,
+tbl_service.service_name, 
+tbl_invoice.custome_name, 
+price,
+quantity, 
+total 
+from (tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name inner join tbl_invoice on tbl_list_service.invoice_number = tbl_invoice.invoice_number where tbl_service.type='service' and date(date)=CURDATE() ORDER by date
+
+
+
+
+join tbl_customer.invoice_number=tbl_list_service.invoice_number

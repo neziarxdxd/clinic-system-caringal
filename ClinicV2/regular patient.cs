@@ -322,9 +322,23 @@ namespace ClinicV2
        
         private void button2_Click(object sender, EventArgs e)
         {
+            if (!isCustomerComplete())
+            {
+                 DialogResult dialogResult = MessageBox.Show("Do you want to save and print it? ", "Success Saved", MessageBoxButtons.YesNo);
+                 if (dialogResult == DialogResult.Yes)
+                 {
+                     executePrintingSaving();
+                 }
+                
+            }
+            else {
+                MessageBox.Show("Empty fields kindly fill in some blanks");
+            }
+        }
 
-
-            if(checkIfInvoiceExist())
+        private void executePrintingSaving()
+        {
+            if (checkIfInvoiceExist())
             {
                 DialogResult dialogResult = MessageBox.Show("Do you want to update the transaction?", "Success Saved", MessageBoxButtons.YesNo);
 
@@ -348,11 +362,12 @@ namespace ClinicV2
                     resetAllData();
 
                 }
-                
+
             }
-            else{
-            transactionExecute();           
-            }   
+            else
+            {
+                transactionExecute();
+            }
         }
 
 
@@ -835,34 +850,80 @@ namespace ClinicV2
             else
 
             {
-               double totalPrice = 0;
-                MySqlCommand command = databaseConnection.CreateCommand();
-                command.CommandText = "SELECT * FROM `tbl_customer` WHERE `customer_name`=@nameCustomer";
-                command.Parameters.AddWithValue("@nameCustomer", searchBarComboBox.Text);
-
-
-                databaseConnection.Open();
-                MySqlDataReader dataReader = command.ExecuteReader();
-                string y = "";
-                while (dataReader.Read())
-                {
-
-                   txtBoxCustomerID.Text = dataReader.GetString(0);
-                   txtBoxName.Text = dataReader.GetString(2);
-                   txtBoxAddress.Text = dataReader.GetString(4);
-                 
-                    
+                DialogResult dialogResult = MessageBox.Show("Do you want to do LESS RETURN TRANSACTION?", "Less Return Transaction Set", MessageBoxButtons.YesNoCancel);
+                if (dialogResult == DialogResult.Yes) {
+                    lessReturnTransactionData();
                 }
-               
-                databaseConnection.Close();
-                string x = getLatestInvoiceCustomer(txtBoxName.Text.ToString());
-                populateCustomer(x);
-                totalPrice = computeForTotal(totalPrice);
+                if (dialogResult == DialogResult.No)
+                {
+                    newTransactionData();
+                }
 
 
 
             }
         }
+
+        public void lessReturnTransactionData() {
+
+            double totalPrice = 0;
+            MySqlCommand command = databaseConnection.CreateCommand();
+            command.CommandText = "SELECT * FROM `tbl_customer` WHERE `customer_name`=@nameCustomer";
+            command.Parameters.AddWithValue("@nameCustomer", searchBarComboBox.Text);
+
+
+            databaseConnection.Open();
+            MySqlDataReader dataReader = command.ExecuteReader();
+            string y = "";
+            while (dataReader.Read())
+            {
+
+                txtBoxCustomerID.Text = dataReader.GetString(0);
+                txtBoxName.Text = dataReader.GetString(2);
+                txtBoxAddress.Text = dataReader.GetString(4);
+
+
+            }
+
+            databaseConnection.Close();
+            string x = getLatestInvoiceCustomer(txtBoxName.Text.ToString());
+            setLessReturnTransaction();
+            populateCustomer(x);
+            totalPrice = computeForTotal(totalPrice);
+        }
+
+        public void newTransactionData()
+        {
+
+            double totalPrice = 0;
+            MySqlCommand command = databaseConnection.CreateCommand();
+            command.CommandText = "SELECT * FROM `tbl_customer` WHERE `customer_name`=@nameCustomer";
+            command.Parameters.AddWithValue("@nameCustomer", searchBarComboBox.Text);
+
+
+            databaseConnection.Open();
+            MySqlDataReader dataReader = command.ExecuteReader();
+            string y = "";
+            while (dataReader.Read())
+            {
+
+                txtBoxCustomerID.Text = dataReader.GetString(0);
+                txtBoxName.Text = dataReader.GetString(2);
+                txtBoxAddress.Text = dataReader.GetString(4);
+
+
+            }
+
+            databaseConnection.Close();
+            string x = getLatestInvoiceCustomer(txtBoxName.Text.ToString());            
+            populateCustomer(x);
+            setInvoiceNumber();
+            totalPrice = computeForTotal(totalPrice);
+        }
+
+
+
+
 
         private void setLessReturnTransaction(){
             string x = getLatestInvoiceCustomer(txtBoxName.Text.ToString());
@@ -1038,7 +1099,7 @@ namespace ClinicV2
 
         private void button10_Click(object sender, EventArgs e)
         {
-            setLessReturnTransaction();
+            
         }
 
         private void button11_Click(object sender, EventArgs e)
