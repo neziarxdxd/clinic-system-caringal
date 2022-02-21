@@ -54,16 +54,17 @@ namespace ClinicV2
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = databaseConnection.CreateCommand();
             databaseConnection.Open();
-            commandDatabase.CommandText = @"SELECT DATE(date),invoice_number,tbl_service.service_name, price,quantity,total from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where tbl_service.type='Medicine'";
+            commandDatabase.CommandText = @"SELECT DATE(tbl_list_service.date), tbl_list_service.invoice_number, tbl_invoice.custome_name, tbl_service.service_name, price, quantity, total from ((tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name) join tbl_invoice on tbl_list_service.invoice_number=tbl_invoice.invoice_number) where tbl_service.type='medicine'";
 
 
             xlWorkSheet.Cells[1, 1] = "Date";
             xlWorkSheet.Cells[1, 2] = "Invoice ID";
-            xlWorkSheet.Cells[1, 3] = "Name";
-            xlWorkSheet.Cells[1, 4] = "Price";
-            xlWorkSheet.Cells[1, 5] = "Quantity";
-            xlWorkSheet.Cells[1, 6] = "Total";
-            
+            xlWorkSheet.Cells[1, 3] = "Customer's Name";
+            xlWorkSheet.Cells[1, 4] = "Item-Service Name";
+            xlWorkSheet.Cells[1, 5] = "Price";
+            xlWorkSheet.Cells[1, 6] = "Quantity";
+            xlWorkSheet.Cells[1, 7] = "Total";
+
             MySqlDataReader dataReader = commandDatabase.ExecuteReader();
             int y = 2;
             while (dataReader.Read())
@@ -74,6 +75,7 @@ namespace ClinicV2
                 xlWorkSheet.Cells[y, 4] = dataReader.GetString(3);
                 xlWorkSheet.Cells[y, 5] = dataReader.GetString(4);
                 xlWorkSheet.Cells[y, 6] = dataReader.GetString(5);
+                xlWorkSheet.Cells[y, 7] = dataReader.GetString(6);
                 y++;
             }
 
@@ -117,15 +119,25 @@ namespace ClinicV2
                 MySqlConnection databaseConnection = new MySqlConnection(connectionString);
                 MySqlCommand commandDatabase = databaseConnection.CreateCommand();
                 databaseConnection.Open();
-                commandDatabase.CommandText = @"SELECT DATE(date),invoice_number,tbl_service.service_name, price,quantity,total from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where tbl_service.type='Medicine' and month(date) =@monthSpec ORDER by date";
+                commandDatabase.CommandText = @"SELECT DATE(tbl_list_service.date),
+                tbl_list_service.invoice_number,
+                tbl_invoice.custome_name, 
+                tbl_service.service_name, 
+                price, quantity, 
+                total 
+                from ((tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name) 
+                join tbl_invoice on tbl_list_service.invoice_number=tbl_invoice.invoice_number)
+                where tbl_service.type='medicine' and month(tbl_list_service.date)=@monthSpec ORDER by tbl_list_service.date
+                ";
                 commandDatabase.Parameters.AddWithValue("@monthSpec", (month+1));
 
                 xlWorkSheet.Cells[1, 1] = "Date";
                 xlWorkSheet.Cells[1, 2] = "Invoice ID";
-                xlWorkSheet.Cells[1, 3] = "Name";
-                xlWorkSheet.Cells[1, 4] = "Price";
-                xlWorkSheet.Cells[1, 5] = "Quantity";
-                xlWorkSheet.Cells[1, 6] = "Total";
+                xlWorkSheet.Cells[1, 3] = "Customer's Name";
+                xlWorkSheet.Cells[1, 4] = "Item-Service Name";
+                xlWorkSheet.Cells[1, 5] = "Price";
+                xlWorkSheet.Cells[1, 6] = "Quantity";
+                xlWorkSheet.Cells[1, 7] = "Total";
 
                 MySqlDataReader dataReader = commandDatabase.ExecuteReader();
                 int y = 2;
@@ -137,6 +149,7 @@ namespace ClinicV2
                     xlWorkSheet.Cells[y, 4] = dataReader.GetString(3);
                     xlWorkSheet.Cells[y, 5] = dataReader.GetString(4);
                     xlWorkSheet.Cells[y, 6] = dataReader.GetString(5);
+                    xlWorkSheet.Cells[y, 7] = dataReader.GetString(6);
                     y++;
                 }
                 databaseConnection.Close();
@@ -161,27 +174,39 @@ namespace ClinicV2
                 MySqlConnection databaseConnection = new MySqlConnection(connectionString);
                 MySqlCommand commandDatabase = databaseConnection.CreateCommand();
                 databaseConnection.Open();
-                commandDatabase.CommandText = @"SELECT DATE(date),invoice_number,tbl_service.service_name, price,quantity,total from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where tbl_service.type='Medicine' and date(date)=CURDATE() ORDER by date";
+                commandDatabase.CommandText = @"SELECT 
+                DATE(tbl_list_service.date),
+                tbl_list_service.invoice_number,
+                tbl_invoice.custome_name,
+                tbl_service.service_name,
+                price,
+                quantity, 
+                total
+                from ((tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name) 
+                join tbl_invoice on tbl_list_service.invoice_number=tbl_invoice.invoice_number)
+                where tbl_service.type='medicine' and date(tbl_list_service.date)=CURDATE() 
+                ORDER by tbl_list_service.date";
 
 
                 xlWorkSheet.Cells[1, 1] = "Date";
                 xlWorkSheet.Cells[1, 2] = "Invoice ID";
-                xlWorkSheet.Cells[1, 3] = "Name";
-                xlWorkSheet.Cells[1, 4] = "Price";
-                xlWorkSheet.Cells[1, 5] = "Quantity";
-                xlWorkSheet.Cells[1, 6] = "Total";
+                xlWorkSheet.Cells[1, 3] = "Customer's Name";
+                xlWorkSheet.Cells[1, 4] = "Item-Service Name";
+                xlWorkSheet.Cells[1, 5] = "Price";
+                xlWorkSheet.Cells[1, 6] = "Quantity";
+                xlWorkSheet.Cells[1, 7] = "Total";
 
                 MySqlDataReader dataReader = commandDatabase.ExecuteReader();
                 int y = 2;
                 while (dataReader.Read())
                 {
-
-                    xlWorkSheet.Cells[y, 1] = dataReader.GetDateTime(0).ToString("MM-dd-yyyy");                  
+                    xlWorkSheet.Cells[y, 1] = dataReader.GetDateTime(0).ToString("MM-dd-yyyy");
                     xlWorkSheet.Cells[y, 2] = dataReader.GetString(1);
                     xlWorkSheet.Cells[y, 3] = dataReader.GetString(2);
                     xlWorkSheet.Cells[y, 4] = dataReader.GetString(3);
                     xlWorkSheet.Cells[y, 5] = dataReader.GetString(4);
                     xlWorkSheet.Cells[y, 6] = dataReader.GetString(5);
+                    xlWorkSheet.Cells[y, 7] = dataReader.GetString(6);
                     y++;
                 }
                 databaseConnection.Close();
@@ -232,15 +257,25 @@ namespace ClinicV2
                 MySqlConnection databaseConnection = new MySqlConnection(connectionString);
                 MySqlCommand commandDatabase = databaseConnection.CreateCommand();
                 databaseConnection.Open();
-                commandDatabase.CommandText = @"SELECT DATE(date),invoice_number,tbl_service.service_name, price,quantity,total from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where tbl_service.type='Lab' and month(date)=@monthSpec ORDER by date";
+                commandDatabase.CommandText = @"SELECT DATE(tbl_list_service.date),
+                tbl_list_service.invoice_number,
+                tbl_invoice.custome_name, 
+                tbl_service.service_name, 
+                price, quantity, 
+                total 
+                from ((tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name) 
+                join tbl_invoice on tbl_list_service.invoice_number=tbl_invoice.invoice_number)
+                where tbl_service.type='lab' and month(tbl_list_service.date)=@monthSpec ORDER by tbl_list_service.date
+                ";
                 commandDatabase.Parameters.AddWithValue("@monthSpec", (month + 1));
 
                 xlWorkSheet.Cells[1, 1] = "Date";
                 xlWorkSheet.Cells[1, 2] = "Invoice ID";
-                xlWorkSheet.Cells[1, 3] = "Name";
-                xlWorkSheet.Cells[1, 4] = "Price";
-                xlWorkSheet.Cells[1, 5] = "Quantity";
-                xlWorkSheet.Cells[1, 6] = "Total";
+                xlWorkSheet.Cells[1, 3] = "Customer's Name";
+                xlWorkSheet.Cells[1, 4] = "Item-Service Name";
+                xlWorkSheet.Cells[1, 5] = "Price";
+                xlWorkSheet.Cells[1, 6] = "Quantity";
+                xlWorkSheet.Cells[1, 7] = "Total";
 
                 MySqlDataReader dataReader = commandDatabase.ExecuteReader();
                 int y = 2;
@@ -252,6 +287,7 @@ namespace ClinicV2
                     xlWorkSheet.Cells[y, 4] = dataReader.GetString(3);
                     xlWorkSheet.Cells[y, 5] = dataReader.GetString(4);
                     xlWorkSheet.Cells[y, 6] = dataReader.GetString(5);
+                    xlWorkSheet.Cells[y, 7] = dataReader.GetString(6);
                     y++;
                 }
                 databaseConnection.Close();
@@ -276,15 +312,26 @@ namespace ClinicV2
                 MySqlConnection databaseConnection = new MySqlConnection(connectionString);
                 MySqlCommand commandDatabase = databaseConnection.CreateCommand();
                 databaseConnection.Open();
-                commandDatabase.CommandText = @"SELECT DATE(date),invoice_number,tbl_service.service_name, price,quantity,total from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where tbl_service.type='lab' and date(date)=CURDATE() ORDER by date";
-
+                commandDatabase.CommandText = @"SELECT 
+                DATE(tbl_list_service.date),
+                tbl_list_service.invoice_number,
+                tbl_invoice.custome_name,
+                tbl_service.service_name,
+                price,
+                quantity, 
+                total
+                from ((tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name) 
+                join tbl_invoice on tbl_list_service.invoice_number=tbl_invoice.invoice_number)
+                where tbl_service.type='lab' and date(tbl_list_service.date)=CURDATE() 
+                ORDER by tbl_list_service.date";
 
                 xlWorkSheet.Cells[1, 1] = "Date";
                 xlWorkSheet.Cells[1, 2] = "Invoice ID";
-                xlWorkSheet.Cells[1, 3] = "Name";
-                xlWorkSheet.Cells[1, 4] = "Price";
-                xlWorkSheet.Cells[1, 5] = "Quantity";
-                xlWorkSheet.Cells[1, 6] = "Total";
+                xlWorkSheet.Cells[1, 3] = "Customer's Name";
+                xlWorkSheet.Cells[1, 4] = "Item-Service Name";
+                xlWorkSheet.Cells[1, 5] = "Price";
+                xlWorkSheet.Cells[1, 6] = "Quantity";
+                xlWorkSheet.Cells[1, 7] = "Total";
 
                 MySqlDataReader dataReader = commandDatabase.ExecuteReader();
                 int y = 2;
@@ -296,6 +343,7 @@ namespace ClinicV2
                     xlWorkSheet.Cells[y, 4] = dataReader.GetString(3);
                     xlWorkSheet.Cells[y, 5] = dataReader.GetString(4);
                     xlWorkSheet.Cells[y, 6] = dataReader.GetString(5);
+                    xlWorkSheet.Cells[y, 7] = dataReader.GetString(6);
                     y++;
                 }
                 databaseConnection.Close();
@@ -343,15 +391,17 @@ namespace ClinicV2
                 MySqlConnection databaseConnection = new MySqlConnection(connectionString);
                 MySqlCommand commandDatabase = databaseConnection.CreateCommand();
                 databaseConnection.Open();
-                commandDatabase.CommandText = @"SELECT DATE(date),invoice_number,tbl_service.service_name, price,quantity,total from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where tbl_service.type='service' and doctor_name=@doctor ORDER by date";
+                commandDatabase.CommandText = @"SELECT DATE(tbl_list_service.date), tbl_list_service.invoice_number, tbl_invoice.custome_name, tbl_service.service_name, price, quantity, total from ((tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name) join tbl_invoice on tbl_list_service.invoice_number=tbl_invoice.invoice_number) where tbl_service.type='service' and tbl_list_service.doctor_name=@doctor ORDER by tbl_list_service.date";
                 commandDatabase.Parameters.AddWithValue("@doctor", doctorName[i]);
+
 
                 xlWorkSheet.Cells[1, 1] = "Date";
                 xlWorkSheet.Cells[1, 2] = "Invoice ID";
-                xlWorkSheet.Cells[1, 3] = "Name";
-                xlWorkSheet.Cells[1, 4] = "Price";
-                xlWorkSheet.Cells[1, 5] = "Quantity";
-                xlWorkSheet.Cells[1, 6] = "Total";
+                xlWorkSheet.Cells[1, 3] = "Customer's Name";
+                xlWorkSheet.Cells[1, 4] = "Item-Service Name";
+                xlWorkSheet.Cells[1, 5] = "Price";
+                xlWorkSheet.Cells[1, 6] = "Quantity";
+                xlWorkSheet.Cells[1, 7] = "Total";
 
                 MySqlDataReader dataReader = commandDatabase.ExecuteReader();
                 int y = 2;
@@ -363,6 +413,7 @@ namespace ClinicV2
                     xlWorkSheet.Cells[y, 4] = dataReader.GetString(3);
                     xlWorkSheet.Cells[y, 5] = dataReader.GetString(4);
                     xlWorkSheet.Cells[y, 6] = dataReader.GetString(5);
+                    xlWorkSheet.Cells[y, 7] = dataReader.GetString(6);
                     y++;
                 }
                 databaseConnection.Close();
@@ -387,16 +438,25 @@ namespace ClinicV2
                 MySqlConnection databaseConnection = new MySqlConnection(connectionString);
                 MySqlCommand commandDatabase = databaseConnection.CreateCommand();
                 databaseConnection.Open();
-                commandDatabase.CommandText = @"SELECT DATE(date),invoice_number,tbl_service.service_name, price,quantity,total from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where tbl_service.type='service' and month(date)=@monthSpec ORDER by date";
+                commandDatabase.CommandText = @"SELECT DATE(tbl_list_service.date),
+                tbl_list_service.invoice_number,
+                tbl_invoice.custome_name, 
+                tbl_service.service_name, 
+                price, quantity, 
+                total 
+                from ((tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name) 
+                join tbl_invoice on tbl_list_service.invoice_number=tbl_invoice.invoice_number)
+                where tbl_service.type='service' and month(tbl_list_service.date)=@monthSpec ORDER by tbl_list_service.date
+                ";
                 commandDatabase.Parameters.AddWithValue("@monthSpec", (month + 1));
-
 
                 xlWorkSheet.Cells[1, 1] = "Date";
                 xlWorkSheet.Cells[1, 2] = "Invoice ID";
-                xlWorkSheet.Cells[1, 3] = "Name";
-                xlWorkSheet.Cells[1, 4] = "Price";
-                xlWorkSheet.Cells[1, 5] = "Quantity";
-                xlWorkSheet.Cells[1, 6] = "Total";
+                xlWorkSheet.Cells[1, 3] = "Customer's Name";
+                xlWorkSheet.Cells[1, 4] = "Item-Service Name";
+                xlWorkSheet.Cells[1, 5] = "Price";
+                xlWorkSheet.Cells[1, 6] = "Quantity";
+                xlWorkSheet.Cells[1, 7] = "Total";
 
                 MySqlDataReader dataReader = commandDatabase.ExecuteReader();
                 int y = 2;
@@ -408,6 +468,7 @@ namespace ClinicV2
                     xlWorkSheet.Cells[y, 4] = dataReader.GetString(3);
                     xlWorkSheet.Cells[y, 5] = dataReader.GetString(4);
                     xlWorkSheet.Cells[y, 6] = dataReader.GetString(5);
+                    xlWorkSheet.Cells[y, 7] = dataReader.GetString(6);
                     y++;
                 }
                 databaseConnection.Close();
@@ -433,15 +494,25 @@ namespace ClinicV2
                 MySqlConnection databaseConnection = new MySqlConnection(connectionString);
                 MySqlCommand commandDatabase = databaseConnection.CreateCommand();
                 databaseConnection.Open();
-                commandDatabase.CommandText = @"SELECT DATE(date),invoice_number,tbl_service.service_name, price,quantity,total from tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name where tbl_service.type='service' and date(date)=CURDATE() ORDER by date";
-
-
+                commandDatabase.CommandText = @"SELECT 
+                DATE(tbl_list_service.date),
+                tbl_list_service.invoice_number,
+                tbl_invoice.custome_name,
+                tbl_service.service_name,
+                price,
+                quantity, 
+                total
+                from ((tbl_list_service inner join tbl_service on tbl_list_service.service_name = tbl_service.service_name) 
+                join tbl_invoice on tbl_list_service.invoice_number=tbl_invoice.invoice_number)
+                where tbl_service.type='service' and date(tbl_list_service.date)=CURDATE() 
+                ORDER by tbl_list_service.date";
                 xlWorkSheet.Cells[1, 1] = "Date";
                 xlWorkSheet.Cells[1, 2] = "Invoice ID";
-                xlWorkSheet.Cells[1, 3] = "Name";
-                xlWorkSheet.Cells[1, 4] = "Price";
-                xlWorkSheet.Cells[1, 5] = "Quantity";
-                xlWorkSheet.Cells[1, 6] = "Total";
+                xlWorkSheet.Cells[1, 3] = "Customer's Name";
+                xlWorkSheet.Cells[1, 4] = "Item-Service Name";
+                xlWorkSheet.Cells[1, 5] = "Price";
+                xlWorkSheet.Cells[1, 6] = "Quantity";
+                xlWorkSheet.Cells[1, 7] = "Total";
 
                 MySqlDataReader dataReader = commandDatabase.ExecuteReader();
                 int y = 2;
@@ -453,6 +524,7 @@ namespace ClinicV2
                     xlWorkSheet.Cells[y, 4] = dataReader.GetString(3);
                     xlWorkSheet.Cells[y, 5] = dataReader.GetString(4);
                     xlWorkSheet.Cells[y, 6] = dataReader.GetString(5);
+                    xlWorkSheet.Cells[y, 7] = dataReader.GetString(6);
                     y++;
                 }
                 databaseConnection.Close();
